@@ -1,0 +1,5011 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "marketing-rule",
+    "version": "1.0",
+    "title": "marketing-rule",
+    "termsOfService": "marketing-rule"
+  },
+  "host": "http://localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "元字段管理（指标管理）",
+      "description": "Metadata Controller"
+    },
+    {
+      "name": "品控1.0-规则分支管理",
+      "description": "Rule Instance Branch Controller"
+    },
+    {
+      "name": "品控1.0-规则实例管理",
+      "description": "Rule Instance Controller"
+    },
+    {
+      "name": "品控1.0-评级计算",
+      "description": "Rating Controller"
+    },
+    {
+      "name": "品控2.0-准入评级管理",
+      "description": "Admittance Rating Controller"
+    },
+    {
+      "name": "品控2.0-策略管理",
+      "description": "Policy Controller"
+    },
+    {
+      "name": "品控2.0-规则管理",
+      "description": "Rule V 2 Controller"
+    },
+    {
+      "name": "品控2.0-评级等级管理",
+      "description": "Rating Level Controller"
+    },
+    {
+      "name": "品控2.0-评级计算",
+      "description": "Rating V 2 Controller"
+    }
+  ],
+  "paths": {
+    "/admin/api/admittance/rating/create": {
+      "post": {
+        "tags": ["品控2.0-准入评级管理"],
+        "summary": "创建准入评级",
+        "operationId": "createAdmittanceRatingUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateAdmittanceRatingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«string»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/admittance/rating/delete": {
+      "post": {
+        "tags": ["品控2.0-准入评级管理"],
+        "summary": "删除准入评级(逻辑删除)",
+        "operationId": "deleteAdmittanceRatingUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteAdmittanceRatingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/admittance/rating/detail": {
+      "get": {
+        "tags": ["品控2.0-准入评级管理"],
+        "summary": "查询准入评级明细",
+        "operationId": "qryAdmittanceRatingDetailUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "admittanceId",
+            "in": "query",
+            "description": "admittanceId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«AdmittanceRatingDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/admittance/rating/online/change": {
+      "post": {
+        "tags": ["品控2.0-准入评级管理"],
+        "summary": "准入评级上下线",
+        "operationId": "admittanceRatingOnlineChangeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdmittanceRatingOnlineChangeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/admittance/rating/page": {
+      "post": {
+        "tags": ["品控2.0-准入评级管理"],
+        "summary": "分页查询准入评级列表",
+        "operationId": "pageQryAdmittanceRatingsUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQryAdmittanceRatingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«AdmittanceRatingSummaryDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/admittance/rating/update": {
+      "post": {
+        "tags": ["品控2.0-准入评级管理"],
+        "summary": "修改准入评级",
+        "operationId": "updateAdmittanceRatingUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateAdmittanceRatingRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/metadata/all": {
+      "get": {
+        "tags": ["元字段管理（指标管理）"],
+        "summary": "查询所有元字段",
+        "operationId": "qryAllMetadatasUsingGET",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«MetadataDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/metadata/create": {
+      "post": {
+        "tags": ["元字段管理（指标管理）"],
+        "summary": "创建元字段",
+        "operationId": "createMetadataUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateMetadataRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/metadata/delete": {
+      "post": {
+        "tags": ["元字段管理（指标管理）"],
+        "summary": "删除元字段(逻辑删除)",
+        "operationId": "deleteMetadataUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteMetadataRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/metadata/detail/fieldKey": {
+      "get": {
+        "tags": ["元字段管理（指标管理）"],
+        "summary": "查询元字段明细（根据字段名）",
+        "operationId": "qryMetadataDetailByFieldKeyUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "fieldKey",
+            "in": "query",
+            "description": "fieldKey",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«MetadataDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/metadata/detail/id": {
+      "get": {
+        "tags": ["元字段管理（指标管理）"],
+        "summary": "查询元字段明细（根据id）",
+        "operationId": "qryMetadataDetailByIdUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "metadataId",
+            "in": "query",
+            "description": "metadataId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«MetadataDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/metadata/page": {
+      "post": {
+        "tags": ["元字段管理（指标管理）"],
+        "summary": "分页查询元字段列表",
+        "operationId": "pageQryMetadatasUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQryMetadataRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«MetadataSummaryDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/metadata/update": {
+      "post": {
+        "tags": ["元字段管理（指标管理）"],
+        "summary": "修改元字段",
+        "operationId": "updateMetadataUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateMetadataRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/policy/all": {
+      "get": {
+        "tags": ["品控2.0-策略管理"],
+        "summary": "查询所有策略",
+        "operationId": "qryAllPoliciesUsingGET",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«PolicySummaryDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/policy/create": {
+      "post": {
+        "tags": ["品控2.0-策略管理"],
+        "summary": "创建策略",
+        "operationId": "createPolicyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreatePolicyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/policy/delete": {
+      "post": {
+        "tags": ["品控2.0-策略管理"],
+        "summary": "删除策略(逻辑删除)",
+        "operationId": "deletePolicyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeletePolicyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/policy/detail/id": {
+      "get": {
+        "tags": ["品控2.0-策略管理"],
+        "summary": "查询策略明细（根据id）",
+        "operationId": "qryPolicyDetailByIdUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "policyId",
+            "in": "query",
+            "description": "policyId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«PolicyDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/policy/online/change": {
+      "post": {
+        "tags": ["品控2.0-策略管理"],
+        "summary": "策略上下线",
+        "operationId": "policyOnlineChangeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PolicyOnlineChangeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/policy/page": {
+      "post": {
+        "tags": ["品控2.0-策略管理"],
+        "summary": "分页查询策略列表",
+        "operationId": "pageQryPoliciesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQryPolicyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«PolicySummaryDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/policy/update": {
+      "post": {
+        "tags": ["品控2.0-策略管理"],
+        "summary": "修改策略",
+        "operationId": "updatePolicyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatePolicyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rating/level/all": {
+      "get": {
+        "tags": ["品控2.0-评级等级管理"],
+        "summary": "查询所有评级等级",
+        "operationId": "qryAllRatingLevelUsingGET",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«SelectorDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/branch/create": {
+      "post": {
+        "tags": ["品控1.0-规则分支管理"],
+        "summary": "创建规则分支",
+        "operationId": "createRuleInstanceBranchUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateRuleInstanceBranchRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RuleDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/branch/delete": {
+      "post": {
+        "tags": ["品控1.0-规则分支管理"],
+        "summary": "删除规则分支(逻辑删除)",
+        "operationId": "deleteRuleInstanceBranchUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteRuleInstanceBranchRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/branch/detail": {
+      "get": {
+        "tags": ["品控1.0-规则分支管理"],
+        "summary": "查询规则分支明细",
+        "operationId": "qryRuleInstanceBranchDetailUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "branchId",
+            "in": "query",
+            "description": "branchId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RuleDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/branch/page": {
+      "post": {
+        "tags": ["品控1.0-规则分支管理"],
+        "summary": "分页查询规则分支列表",
+        "operationId": "pageQryRuleInstanceBranchesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQryRuleInstanceBranchesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«RuleSummaryDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/branch/release": {
+      "post": {
+        "tags": ["品控1.0-规则分支管理"],
+        "summary": "分支发布",
+        "operationId": "ruleBranchReleaseUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleBranchReleaseRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/branch/update": {
+      "post": {
+        "tags": ["品控1.0-规则分支管理"],
+        "summary": "修改规则分支",
+        "operationId": "updateRuleInstanceBranchUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateRuleInstanceBranchRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/create": {
+      "post": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "创建规则实例",
+        "operationId": "createRuleInstanceUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateRuleInstanceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«string»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/delete": {
+      "post": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "删除规则实例(逻辑删除)",
+        "operationId": "deleteRuleInstanceUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteRuleInstanceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/detail": {
+      "get": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "查询规则实例明细",
+        "operationId": "qryRuleInstanceDetailUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "ruleId",
+            "in": "query",
+            "description": "ruleId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RuleDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/offline": {
+      "post": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "规则实例下线",
+        "operationId": "ruleInstanceOfflineUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleInstanceOfflineRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/online": {
+      "post": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "规则实例上线",
+        "operationId": "ruleInstanceOnlineUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleInstanceOnlineRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/page": {
+      "post": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "分页查询规则实例列表",
+        "operationId": "pageQryRuleInstancesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQryRuleInstanceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«RuleSummaryDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/ratingType/all": {
+      "get": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "查询所有的评级类型",
+        "operationId": "qryAllRatingTypeUsingGET",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«SelectorDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/release/history/detail": {
+      "get": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "查询发布历史明细",
+        "operationId": "qryRuleInstanceReleaseHistoryDetailUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "releaseId",
+            "in": "query",
+            "description": "releaseId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RuleReleaseDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/release/history/page": {
+      "post": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "分页查询发布历史",
+        "operationId": "pageQryRuleInstanceReleaseHistoriesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQryRuleInstanceReleaseHistoryRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«RuleReleaseSummaryDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/ruleType/all": {
+      "get": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "查询所有的规则类型",
+        "operationId": "qryAllRuleTypeUsingGET",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«SelectorDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/same/scopes/page": {
+      "post": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "分页查询相同适用范围的规则",
+        "operationId": "pageQrySameScopesRuleInstancesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQrySameScopesRuleInstancesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«RuleDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/rule/instance/update": {
+      "post": {
+        "tags": ["品控1.0-规则实例管理"],
+        "summary": "修改规则实例(针对从未发布过的规则)",
+        "operationId": "updateRuleInstanceUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateRuleInstanceRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/all": {
+      "get": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "查询所有规则",
+        "operationId": "qryAllRulesUsingGET",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«RuleSummaryV2Dto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/content/compile": {
+      "post": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "规则内容编译",
+        "operationId": "contentCompileUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContentCompileRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/create": {
+      "post": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "创建规则",
+        "operationId": "createRuleUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateRuleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«string»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/delete": {
+      "post": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "删除规则(逻辑删除)",
+        "operationId": "deleteRuleUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteRuleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/detail": {
+      "get": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "查询规则明细",
+        "operationId": "qryRuleDetailUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "ruleId",
+            "in": "query",
+            "description": "ruleId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RuleV2Dto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/history/page": {
+      "post": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "分页查询规则历史列表",
+        "operationId": "pageQryRuleHistoriesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQryRuleHistoriesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«RuleHistorySummaryV2Dto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/online/change": {
+      "post": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "规则上下线",
+        "operationId": "ruleOnlineChangeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleOnlineChangeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/page": {
+      "post": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "分页查询规则列表",
+        "operationId": "pageQryRulesUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PageQryRuleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PageResponse«RuleSummaryV2Dto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/test": {
+      "post": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "规则测试",
+        "operationId": "ruleTestUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RuleTestRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RuleTestResultDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/api/v2/rule/update": {
+      "post": {
+        "tags": ["品控2.0-规则管理"],
+        "summary": "修改规则",
+        "operationId": "updateRuleUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateRuleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«object»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/rating/compute": {
+      "post": {
+        "tags": ["品控1.0-评级计算"],
+        "summary": "计算评级",
+        "operationId": "ratingComputeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RatingComputeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RatingComputeResultDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/rating/query/outBizNo": {
+      "get": {
+        "tags": ["品控1.0-评级计算"],
+        "summary": "根据外部业务单号查询",
+        "operationId": "qryByOutBizNoUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "outBizNo",
+            "in": "query",
+            "description": "outBizNo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«RatingComputeResultDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/rating/query/outRequestNo": {
+      "get": {
+        "tags": ["品控1.0-评级计算"],
+        "summary": "根据外部请求号查询",
+        "operationId": "qryByOutRequestNoUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "outRequestNo",
+            "in": "query",
+            "description": "outRequestNo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RatingComputeResultDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/rating/replay/compute": {
+      "post": {
+        "tags": ["品控1.0-评级计算"],
+        "summary": "计算评级（流量回放）",
+        "operationId": "ratingReplayComputeUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RatingComputeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RatingComputeResultDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/rating/replay/query/outBizNo": {
+      "get": {
+        "tags": ["品控1.0-评级计算"],
+        "summary": "根据外部业务单号查询（流量回放）",
+        "operationId": "qryReplayByOutBizNoUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "outBizNo",
+            "in": "query",
+            "description": "outBizNo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«RatingComputeResultDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/rating/replay/query/outRequestNo": {
+      "get": {
+        "tags": ["品控1.0-评级计算"],
+        "summary": "根据外部请求号查询（流量回放）",
+        "operationId": "qryReplayByOutRequestNoReplayUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "outRequestNo",
+            "in": "query",
+            "description": "outRequestNo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RatingComputeResultDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/rating/compute": {
+      "post": {
+        "tags": ["品控2.0-评级计算"],
+        "summary": "计算评级",
+        "operationId": "ratingComputeUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RatingComputeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RatingResultDto»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/rating/query/outBizNo": {
+      "get": {
+        "tags": ["品控2.0-评级计算"],
+        "summary": "根据外部业务单号查询",
+        "operationId": "qryByOutBizNoUsingGET_1",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "outBizNo",
+            "in": "query",
+            "description": "outBizNo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ListResponse«RatingResultDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/rating/query/outRequestNo": {
+      "get": {
+        "tags": ["品控2.0-评级计算"],
+        "summary": "根据外部请求号查询",
+        "operationId": "qryByOutRequestNoUsingGET_1",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "outRequestNo",
+            "in": "query",
+            "description": "outRequestNo",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CommonResponse«RatingResultDto»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "AdmittanceRatingDto": {
+      "type": "object",
+      "properties": {
+        "admittanceId": {
+          "type": "string",
+          "description": "准入评级id"
+        },
+        "admittanceName": {
+          "type": "string",
+          "description": "准入评级名称"
+        },
+        "description": {
+          "type": "string",
+          "description": "准入评级描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "policyIds": {
+          "type": "array",
+          "description": "策略id列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scopes": {
+          "type": "object",
+          "description": "适用范围",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "AdmittanceRatingDto"
+    },
+    "AdmittanceRatingOnlineChangeRequest": {
+      "type": "object",
+      "required": ["admittanceId", "online"],
+      "properties": {
+        "admittanceId": {
+          "type": "string",
+          "description": "准入分类id"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        }
+      },
+      "title": "AdmittanceRatingOnlineChangeRequest"
+    },
+    "AdmittanceRatingSummaryDto": {
+      "type": "object",
+      "properties": {
+        "admittanceId": {
+          "type": "string",
+          "description": "准入评级id"
+        },
+        "admittanceName": {
+          "type": "string",
+          "description": "准入评级名称"
+        },
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "description": {
+          "type": "string",
+          "description": "准入评级描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上下线"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        },
+        "updateBy": {
+          "type": "string",
+          "description": "最后修改人"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "最后修改时间(yyyy-MM-dd HH:mm:ss)"
+        }
+      },
+      "title": "AdmittanceRatingSummaryDto"
+    },
+    "BottomLineDto": {
+      "type": "object",
+      "properties": {
+        "boolBottomLine": {
+          "type": "boolean",
+          "description": "boolean类型底线值(true/false)"
+        },
+        "extension": {
+          "type": "string",
+          "description": "前端使用的扩展"
+        },
+        "numberBottomLine": {
+          "type": "string",
+          "description": "数值类型底线值【(1, 10)：代表 1 < x < 10；(1, 10]：代表 1 < x <= 10；[1, 10]：代表 1 <= x <= 10；[1, 10)：代表 1 <= x < 10；(1, ) 或 (1, ]：代表 x > 1；[1, ] 或 [1, )：代表 x >= 1；(, 10) 或 [, 10)：代表 x < 10；(, 10] 或 [, 10]：代表 x <= 10；】"
+        },
+        "stringBottomLines": {
+          "type": "array",
+          "description": "string类型底线值(如果元字段有枚举值则必须在枚举值范围内)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stringBottomLinesMatchType": {
+          "type": "string",
+          "description": "string类型底线值匹配方式（containsAny(匹配任何一个),containsAll(匹配全部),containsOne(只匹配一个),containsNone(不匹配任何一个(黑名单)）"
+        }
+      },
+      "title": "BottomLineDto"
+    },
+    "CommonResponse«AdmittanceRatingDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/AdmittanceRatingDto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«AdmittanceRatingDto»"
+    },
+    "CommonResponse«MetadataDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/MetadataDto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«MetadataDto»"
+    },
+    "CommonResponse«PolicyDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/PolicyDto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«PolicyDto»"
+    },
+    "CommonResponse«RatingComputeResultDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/RatingComputeResultDto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«RatingComputeResultDto»"
+    },
+    "CommonResponse«RatingResultDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/RatingResultDto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«RatingResultDto»"
+    },
+    "CommonResponse«RuleDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/RuleDto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«RuleDto»"
+    },
+    "CommonResponse«RuleReleaseDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/RuleReleaseDto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«RuleReleaseDto»"
+    },
+    "CommonResponse«RuleTestResultDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/RuleTestResultDto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«RuleTestResultDto»"
+    },
+    "CommonResponse«RuleV2Dto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "description": "业务对象",
+          "$ref": "#/definitions/RuleV2Dto"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«RuleV2Dto»"
+    },
+    "CommonResponse«object»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "type": "object",
+          "description": "业务对象"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«object»"
+    },
+    "CommonResponse«string»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "item": {
+          "type": "string",
+          "description": "业务对象"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "CommonResponse«string»"
+    },
+    "ContentCompileRequest": {
+      "type": "object",
+      "required": ["agenda", "content", "ruleNo"],
+      "properties": {
+        "agenda": {
+          "type": "string",
+          "description": "agenda"
+        },
+        "content": {
+          "type": "string",
+          "description": "脚本内容"
+        },
+        "ruleNo": {
+          "type": "string",
+          "description": "规则编号"
+        }
+      },
+      "title": "ContentCompileRequest"
+    },
+    "CreateAdmittanceRatingRequest": {
+      "type": "object",
+      "properties": {
+        "admittanceName": {
+          "type": "string",
+          "description": "准入分类名称"
+        },
+        "description": {
+          "type": "string",
+          "description": "准入分类描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "policyIds": {
+          "type": "array",
+          "description": "策略id列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scopes": {
+          "type": "object",
+          "description": "适用范围",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签列表",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "CreateAdmittanceRatingRequest"
+    },
+    "CreateMetadataRequest": {
+      "type": "object",
+      "required": ["fieldKey", "fieldName", "fieldType"],
+      "properties": {
+        "enumValues": {
+          "type": "array",
+          "description": "枚举值列表(当字段类型为字符串型时可设置)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldDesc": {
+          "type": "string",
+          "description": "字段描述"
+        },
+        "fieldKey": {
+          "type": "string",
+          "description": "字段英文名(全局唯一)"
+        },
+        "fieldName": {
+          "type": "string",
+          "description": "字段中文名"
+        },
+        "fieldType": {
+          "type": "string",
+          "description": "字段类型",
+          "enum": ["String", "Number", "Boolean"]
+        },
+        "fieldValueRange": {
+          "type": "string",
+          "description": "可选值区间(当字段类型为数值型时可设置)【(1, 10)：代表 1 < x < 10；(1, 10]：代表 1 < x <= 10；[1, 10]：代表 1 <= x <= 10；[1, 10)：代表 1 <= x < 10；(1, ) 或 (1, ]：代表 x > 1；[1, ] 或 [1, )：代表 x >= 1；(, 10) 或 [, 10)：代表 x < 10；(, 10] 或 [, 10]：代表 x <= 10；】"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签(用于方便筛选用)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "CreateMetadataRequest"
+    },
+    "CreatePolicyRequest": {
+      "type": "object",
+      "required": ["policyName"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "策略描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "policyName": {
+          "type": "string",
+          "description": "策略名称"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "ruleIds": {
+          "type": "array",
+          "description": "规则id列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "CreatePolicyRequest"
+    },
+    "CreateRuleInstanceBranchRequest": {
+      "type": "object",
+      "required": ["branchName", "ruleId"],
+      "properties": {
+        "branchName": {
+          "type": "string",
+          "description": "规则分支名称"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "sourceBranchId": {
+          "type": "string",
+          "description": "源规则分支id(为空，则fork规则实例本身)"
+        }
+      },
+      "title": "CreateRuleInstanceBranchRequest"
+    },
+    "CreateRuleInstanceRequest": {
+      "type": "object",
+      "required": ["ruleName", "ruleType"],
+      "properties": {
+        "metadataConfigs": {
+          "type": "array",
+          "description": "元字段数据配置列表",
+          "items": {
+            "$ref": "#/definitions/MetadataConfigDto"
+          }
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "ratingScores": {
+          "type": "array",
+          "description": "评级分数列表",
+          "items": {
+            "$ref": "#/definitions/RatingScoreDto"
+          }
+        },
+        "ruleDescription": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleType": {
+          "type": "string",
+          "description": "规则类型"
+        },
+        "scopes": {
+          "type": "object",
+          "description": "适用范围",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        }
+      },
+      "title": "CreateRuleInstanceRequest"
+    },
+    "CreateRuleRequest": {
+      "type": "object",
+      "required": ["agenda", "content", "rating", "ruleName", "ruleNo"],
+      "properties": {
+        "agenda": {
+          "type": "string",
+          "description": "agenda"
+        },
+        "content": {
+          "type": "string",
+          "description": "脚本内容"
+        },
+        "description": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleNo": {
+          "type": "string",
+          "description": "规则编号"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "CreateRuleRequest"
+    },
+    "DeleteAdmittanceRatingRequest": {
+      "type": "object",
+      "required": ["admittanceId"],
+      "properties": {
+        "admittanceId": {
+          "type": "string",
+          "description": "准入分类id"
+        }
+      },
+      "title": "DeleteAdmittanceRatingRequest"
+    },
+    "DeleteMetadataRequest": {
+      "type": "object",
+      "required": ["metadataIds"],
+      "properties": {
+        "metadataIds": {
+          "type": "array",
+          "description": "元字段id列表",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "DeleteMetadataRequest"
+    },
+    "DeletePolicyRequest": {
+      "type": "object",
+      "required": ["policyId"],
+      "properties": {
+        "policyId": {
+          "type": "string",
+          "description": "策略id"
+        }
+      },
+      "title": "DeletePolicyRequest"
+    },
+    "DeleteRuleInstanceBranchRequest": {
+      "type": "object",
+      "required": ["branchIds"],
+      "properties": {
+        "branchIds": {
+          "type": "array",
+          "description": "规则分支id列表",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "DeleteRuleInstanceBranchRequest"
+    },
+    "DeleteRuleInstanceRequest": {
+      "type": "object",
+      "required": ["ruleIds"],
+      "properties": {
+        "ruleIds": {
+          "type": "array",
+          "description": "规则实例id列表",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "DeleteRuleInstanceRequest"
+    },
+    "DeleteRuleRequest": {
+      "type": "object",
+      "required": ["ruleId"],
+      "properties": {
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        }
+      },
+      "title": "DeleteRuleRequest"
+    },
+    "FieldComputeDetailDto": {
+      "type": "object",
+      "properties": {
+        "bottomLine": {
+          "type": "string",
+          "description": "底线值"
+        },
+        "bottomLinePass": {
+          "type": "boolean",
+          "description": "是否通过底线值"
+        },
+        "fieldKey": {
+          "type": "string",
+          "description": "字段英文名"
+        },
+        "fieldName": {
+          "type": "string",
+          "description": "字段中文名"
+        },
+        "fieldType": {
+          "type": "string",
+          "description": "字段类型"
+        },
+        "finalScore": {
+          "type": "number",
+          "description": "最终分数"
+        },
+        "matchScores": {
+          "type": "array",
+          "description": "命中分数列表",
+          "items": {
+            "$ref": "#/definitions/ScoreConditionDto"
+          }
+        },
+        "requestValue": {
+          "type": "string",
+          "description": "字段请求值"
+        },
+        "weight": {
+          "type": "number",
+          "description": "权重(非百分比)"
+        }
+      },
+      "title": "FieldComputeDetailDto"
+    },
+    "ListResponse«MetadataDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/MetadataDto"
+          }
+        }
+      },
+      "title": "ListResponse«MetadataDto»"
+    },
+    "ListResponse«PolicySummaryDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/PolicySummaryDto"
+          }
+        }
+      },
+      "title": "ListResponse«PolicySummaryDto»"
+    },
+    "ListResponse«RatingComputeResultDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/RatingComputeResultDto"
+          }
+        }
+      },
+      "title": "ListResponse«RatingComputeResultDto»"
+    },
+    "ListResponse«RatingResultDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/RatingResultDto"
+          }
+        }
+      },
+      "title": "ListResponse«RatingResultDto»"
+    },
+    "ListResponse«RuleSummaryV2Dto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/RuleSummaryV2Dto"
+          }
+        }
+      },
+      "title": "ListResponse«RuleSummaryV2Dto»"
+    },
+    "ListResponse«SelectorDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/SelectorDto"
+          }
+        }
+      },
+      "title": "ListResponse«SelectorDto»"
+    },
+    "MetadataConfigDto": {
+      "type": "object",
+      "required": ["metadataId"],
+      "properties": {
+        "bottomLine": {
+          "description": "底线对象",
+          "$ref": "#/definitions/BottomLineDto"
+        },
+        "metadataId": {
+          "type": "string",
+          "description": "元字段id"
+        },
+        "scoreFormula": {
+          "description": "分值计算公式",
+          "$ref": "#/definitions/ScoreFormulaDto"
+        }
+      },
+      "title": "MetadataConfigDto"
+    },
+    "MetadataDto": {
+      "type": "object",
+      "properties": {
+        "enumValues": {
+          "type": "array",
+          "description": "枚举值列表(当字段类型为字符串型时可设置)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldDesc": {
+          "type": "string",
+          "description": "字段描述"
+        },
+        "fieldKey": {
+          "type": "string",
+          "description": "字段英文名(全局唯一)"
+        },
+        "fieldName": {
+          "type": "string",
+          "description": "字段中文名"
+        },
+        "fieldType": {
+          "type": "string",
+          "description": "字段类型",
+          "enum": ["String", "Number", "Boolean"]
+        },
+        "fieldValueRange": {
+          "type": "string",
+          "description": "可选值区间(当字段类型为数值型时可设置)【(1, 10)：代表 1 < x < 10；(1, 10]：代表 1 < x <= 10；[1, 10]：代表 1 <= x <= 10；[1, 10)：代表 1 <= x < 10；(1, ) 或 (1, ]：代表 x > 1；[1, ] 或 [1, )：代表 x >= 1；(, 10) 或 [, 10)：代表 x < 10；(, 10] 或 [, 10]：代表 x <= 10；】"
+        },
+        "metadataId": {
+          "type": "string",
+          "description": "元字段id"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签(用于方便筛选用)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "MetadataDto"
+    },
+    "MetadataSummaryDto": {
+      "type": "object",
+      "properties": {
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "fieldDesc": {
+          "type": "string",
+          "description": "字段描述"
+        },
+        "fieldKey": {
+          "type": "string",
+          "description": "字段英文名(全局唯一)"
+        },
+        "fieldName": {
+          "type": "string",
+          "description": "字段中文名"
+        },
+        "fieldType": {
+          "type": "string",
+          "description": "字段类型",
+          "enum": ["String", "Number", "Boolean"]
+        },
+        "metadataId": {
+          "type": "string",
+          "description": "元字段id"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签(用于方便筛选用)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "updateBy": {
+          "type": "string",
+          "description": "最后修改人"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "最后修改时间(yyyy-MM-dd HH:mm:ss)"
+        }
+      },
+      "title": "MetadataSummaryDto"
+    },
+    "PageQryAdmittanceRatingRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize"],
+      "properties": {
+        "admittanceName": {
+          "type": "string",
+          "description": "准入分类名称"
+        },
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "description": {
+          "type": "string",
+          "description": "准入分类描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tag": {
+          "type": "string",
+          "description": "标签"
+        }
+      },
+      "title": "PageQryAdmittanceRatingRequest"
+    },
+    "PageQryMetadataRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize"],
+      "properties": {
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "fieldDesc": {
+          "type": "string",
+          "description": "字段描述"
+        },
+        "fieldKey": {
+          "type": "string",
+          "description": "字段英文名(全局唯一)"
+        },
+        "fieldName": {
+          "type": "string",
+          "description": "字段中文名"
+        },
+        "fieldType": {
+          "type": "string",
+          "description": "字段类型[String(\"字符串\"),Number(\"数值型\"),Boolean(\"布尔型\")]"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "status": {
+          "type": "string",
+          "description": "字段状态(valid:可用，invalid:不可用)"
+        },
+        "tag": {
+          "type": "string",
+          "description": "标签(用于方便筛选用)"
+        }
+      },
+      "title": "PageQryMetadataRequest"
+    },
+    "PageQryPolicyRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize"],
+      "properties": {
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "description": {
+          "type": "string",
+          "description": "策略描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "policyName": {
+          "type": "string",
+          "description": "策略名称"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        },
+        "tag": {
+          "type": "string",
+          "description": "标签(用于方便筛选用)"
+        }
+      },
+      "title": "PageQryPolicyRequest"
+    },
+    "PageQryRuleHistoriesRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize", "ruleId"],
+      "properties": {
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "endTime": {
+          "type": "string",
+          "description": "创建结束时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "创建开始时间(yyyy-MM-dd HH:mm:ss)"
+        }
+      },
+      "title": "PageQryRuleHistoriesRequest"
+    },
+    "PageQryRuleInstanceBranchesRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize", "ruleId"],
+      "properties": {
+        "branchName": {
+          "type": "string",
+          "description": "分支名称"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "status": {
+          "type": "string",
+          "description": "字段状态(valid:可用，invalid:不可用)"
+        },
+        "whetherReleased": {
+          "type": "boolean",
+          "description": "是否曾经发布过"
+        }
+      },
+      "title": "PageQryRuleInstanceBranchesRequest"
+    },
+    "PageQryRuleInstanceReleaseHistoryRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize", "ruleId"],
+      "properties": {
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        }
+      },
+      "title": "PageQryRuleInstanceReleaseHistoryRequest"
+    },
+    "PageQryRuleInstanceRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize"],
+      "properties": {
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "endTime": {
+          "type": "string",
+          "description": "创建结束时间"
+        },
+        "fieldKey": {
+          "type": "string",
+          "description": "字段英文名(全局唯一)"
+        },
+        "fieldName": {
+          "type": "string",
+          "description": "字段中文名"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleType": {
+          "type": "string",
+          "description": "规则类型"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "创建开始时间"
+        },
+        "status": {
+          "type": "string",
+          "description": "字段状态(valid:可用，invalid:不可用)"
+        }
+      },
+      "title": "PageQryRuleInstanceRequest"
+    },
+    "PageQryRuleRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize"],
+      "properties": {
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "description": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "ratings": {
+          "type": "array",
+          "description": "评级列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleNo": {
+          "type": "string",
+          "description": "规则编号"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tag": {
+          "type": "string",
+          "description": "标签"
+        }
+      },
+      "title": "PageQryRuleRequest"
+    },
+    "PageQrySameScopesRuleInstancesRequest": {
+      "type": "object",
+      "required": ["pageNum", "pageSize", "resultExcludeOneself", "ruleId"],
+      "properties": {
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码(1开始)"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页面展示记录数"
+        },
+        "resultExcludeOneself": {
+          "type": "boolean",
+          "description": "返回结果是否排除自己"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        }
+      },
+      "title": "PageQrySameScopesRuleInstancesRequest"
+    },
+    "PageResponse«AdmittanceRatingSummaryDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/AdmittanceRatingSummaryDto"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        }
+      },
+      "title": "PageResponse«AdmittanceRatingSummaryDto»"
+    },
+    "PageResponse«MetadataSummaryDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/MetadataSummaryDto"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        }
+      },
+      "title": "PageResponse«MetadataSummaryDto»"
+    },
+    "PageResponse«PolicySummaryDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/PolicySummaryDto"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        }
+      },
+      "title": "PageResponse«PolicySummaryDto»"
+    },
+    "PageResponse«RuleDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/RuleDto"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        }
+      },
+      "title": "PageResponse«RuleDto»"
+    },
+    "PageResponse«RuleHistorySummaryV2Dto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/RuleHistorySummaryV2Dto"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        }
+      },
+      "title": "PageResponse«RuleHistorySummaryV2Dto»"
+    },
+    "PageResponse«RuleReleaseSummaryDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/RuleReleaseSummaryDto"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        }
+      },
+      "title": "PageResponse«RuleReleaseSummaryDto»"
+    },
+    "PageResponse«RuleSummaryDto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/RuleSummaryDto"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        }
+      },
+      "title": "PageResponse«RuleSummaryDto»"
+    },
+    "PageResponse«RuleSummaryV2Dto»": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "series": {
+          "type": "array",
+          "description": "数据集",
+          "items": {
+            "$ref": "#/definitions/RuleSummaryV2Dto"
+          }
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "totalPages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        }
+      },
+      "title": "PageResponse«RuleSummaryV2Dto»"
+    },
+    "PolicyDto": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "策略描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "policyId": {
+          "type": "string",
+          "description": "策略id"
+        },
+        "policyName": {
+          "type": "string",
+          "description": "策略名称"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "ruleIds": {
+          "type": "array",
+          "description": "规则编号列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "PolicyDto"
+    },
+    "PolicyOnlineChangeRequest": {
+      "type": "object",
+      "required": ["online", "policyId"],
+      "properties": {
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "policyId": {
+          "type": "string",
+          "description": "策略id"
+        }
+      },
+      "title": "PolicyOnlineChangeRequest"
+    },
+    "PolicySummaryDto": {
+      "type": "object",
+      "properties": {
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "description": {
+          "type": "string",
+          "description": "策略描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上下线"
+        },
+        "policyId": {
+          "type": "string",
+          "description": "策略id"
+        },
+        "policyName": {
+          "type": "string",
+          "description": "策略名称"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        },
+        "updateBy": {
+          "type": "string",
+          "description": "最后修改人"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "最后修改时间(yyyy-MM-dd HH:mm:ss)"
+        }
+      },
+      "title": "PolicySummaryDto"
+    },
+    "RatingComputeRequest": {
+      "type": "object",
+      "required": [
+        "matchConditions",
+        "outBizNo",
+        "outRequestNo",
+        "ratingMetrics"
+      ],
+      "properties": {
+        "matchConditions": {
+          "type": "object",
+          "description": "规则匹配条件",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "outBizNo": {
+          "type": "string",
+          "description": "外部业务订单号(一个订单号允许多个请求)"
+        },
+        "outRequestNo": {
+          "type": "string",
+          "description": "外部请求号"
+        },
+        "ratingMetrics": {
+          "type": "array",
+          "description": "评级指标列表",
+          "items": {
+            "$ref": "#/definitions/RatingMetricDto"
+          }
+        }
+      },
+      "title": "RatingComputeRequest"
+    },
+    "RatingComputeResultDto": {
+      "type": "object",
+      "properties": {
+        "bottomLinePass": {
+          "type": "boolean",
+          "description": "是否通过底线值(所有设置底线值的指标都通过即为通过)"
+        },
+        "fieldComputeDetails": {
+          "type": "array",
+          "description": "字段计算明细列表",
+          "items": {
+            "$ref": "#/definitions/FieldComputeDetailDto"
+          }
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级"
+        },
+        "releaseId": {
+          "type": "string",
+          "description": "规则版本id"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "totalScore": {
+          "type": "number",
+          "description": "总得分"
+        }
+      },
+      "title": "RatingComputeResultDto"
+    },
+    "RatingMetricDto": {
+      "type": "object",
+      "properties": {
+        "boolValue": {
+          "type": "boolean",
+          "description": "Boolean类型度量值"
+        },
+        "fieldKey": {
+          "type": "string",
+          "description": "字段英文名"
+        },
+        "numberValue": {
+          "type": "number",
+          "description": "Number类型度量值(支持小数)"
+        },
+        "stringValue": {
+          "type": "string",
+          "description": "字符串类型度量值"
+        },
+        "stringValues": {
+          "type": "array",
+          "description": "字符串类型（集合）度量值",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "RatingMetricDto"
+    },
+    "RatingResultDto": {
+      "type": "object",
+      "properties": {
+        "admittanceId": {
+          "type": "string",
+          "description": "命中准入评级id"
+        },
+        "admittanceName": {
+          "type": "string",
+          "description": "命中准入评级名称"
+        },
+        "pass": {
+          "type": "boolean",
+          "description": "是否通过"
+        },
+        "policyId": {
+          "type": "string",
+          "description": "命中策略id"
+        },
+        "policyName": {
+          "type": "string",
+          "description": "命中策略名称"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "rejectReason": {
+          "type": "string",
+          "description": "拒绝原因"
+        },
+        "ruleResults": {
+          "type": "array",
+          "description": "规则执行结果",
+          "items": {
+            "$ref": "#/definitions/RuleResultDto"
+          }
+        }
+      },
+      "title": "RatingResultDto"
+    },
+    "RatingScoreDto": {
+      "type": "object",
+      "required": ["rating", "scoreRange"],
+      "properties": {
+        "rating": {
+          "type": "string",
+          "description": "评级等级"
+        },
+        "scoreRange": {
+          "type": "string",
+          "description": "分数区间"
+        }
+      },
+      "title": "RatingScoreDto"
+    },
+    "RuleBranchReleaseRequest": {
+      "type": "object",
+      "required": ["branchId", "comment", "focus"],
+      "properties": {
+        "branchId": {
+          "type": "string",
+          "description": "规则分支id"
+        },
+        "comment": {
+          "type": "string",
+          "description": "留言"
+        },
+        "focus": {
+          "type": "boolean",
+          "description": "是否强制启用，用于规则适用范围冲突的场景，会把其他冲突的规则改为下线"
+        }
+      },
+      "title": "RuleBranchReleaseRequest"
+    },
+    "RuleDto": {
+      "type": "object",
+      "required": ["ruleName", "ruleType"],
+      "properties": {
+        "branchId": {
+          "type": "string",
+          "description": "本次发布对应的分支id"
+        },
+        "branchName": {
+          "type": "string",
+          "description": "本次发布对应的分支名称"
+        },
+        "metadataConfigs": {
+          "type": "array",
+          "description": "元字段数据配置列表",
+          "items": {
+            "$ref": "#/definitions/MetadataConfigDto"
+          }
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "ratingScores": {
+          "type": "array",
+          "description": "评级分数列表",
+          "items": {
+            "$ref": "#/definitions/RatingScoreDto"
+          }
+        },
+        "releaseId": {
+          "type": "string",
+          "description": "发布id"
+        },
+        "ruleDescription": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleType": {
+          "type": "string",
+          "description": "规则类型"
+        },
+        "scopes": {
+          "type": "object",
+          "description": "适用范围",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        },
+        "whetherReleased": {
+          "type": "boolean",
+          "description": "是否曾经发布过"
+        }
+      },
+      "title": "RuleDto"
+    },
+    "RuleHistorySummaryV2Dto": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "脚本内容"
+        },
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "description": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleNo": {
+          "type": "string",
+          "description": "规则编号"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "RuleHistorySummaryV2Dto"
+    },
+    "RuleInstanceOfflineRequest": {
+      "type": "object",
+      "required": ["ruleId"],
+      "properties": {
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        }
+      },
+      "title": "RuleInstanceOfflineRequest"
+    },
+    "RuleInstanceOnlineRequest": {
+      "type": "object",
+      "required": ["focus", "ruleId"],
+      "properties": {
+        "focus": {
+          "type": "boolean",
+          "description": "是否强制启用，用于规则适用范围冲突的场景，会把其他冲突的规则改为下线"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        }
+      },
+      "title": "RuleInstanceOnlineRequest"
+    },
+    "RuleOnlineChangeRequest": {
+      "type": "object",
+      "required": ["online", "ruleId"],
+      "properties": {
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        }
+      },
+      "title": "RuleOnlineChangeRequest"
+    },
+    "RuleReleaseDto": {
+      "type": "object",
+      "required": ["ruleName", "ruleType"],
+      "properties": {
+        "branchId": {
+          "type": "string",
+          "description": "本次发布对应的分支id"
+        },
+        "branchName": {
+          "type": "string",
+          "description": "本次发布对应的分支名称"
+        },
+        "comment": {
+          "type": "string",
+          "description": "发布留言"
+        },
+        "metadataConfigs": {
+          "type": "array",
+          "description": "元字段数据配置列表",
+          "items": {
+            "$ref": "#/definitions/MetadataConfigDto"
+          }
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "ratingScores": {
+          "type": "array",
+          "description": "评级分数列表",
+          "items": {
+            "$ref": "#/definitions/RatingScoreDto"
+          }
+        },
+        "releaseId": {
+          "type": "string",
+          "description": "发布id"
+        },
+        "ruleDescription": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleType": {
+          "type": "string",
+          "description": "规则类型"
+        },
+        "scopes": {
+          "type": "object",
+          "description": "适用范围",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        }
+      },
+      "title": "RuleReleaseDto"
+    },
+    "RuleReleaseSummaryDto": {
+      "type": "object",
+      "properties": {
+        "branchId": {
+          "type": "string",
+          "description": "本次发布对应的分支id"
+        },
+        "branchName": {
+          "type": "string",
+          "description": "本次发布对应的分支名称"
+        },
+        "comment": {
+          "type": "string",
+          "description": "留言"
+        },
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "releaseId": {
+          "type": "string",
+          "description": "发布id"
+        },
+        "ruleDescription": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleType": {
+          "type": "string",
+          "description": "规则类型"
+        },
+        "updateBy": {
+          "type": "string",
+          "description": "最后修改人"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "最后修改时间(yyyy-MM-dd HH:mm:ss)"
+        }
+      },
+      "title": "RuleReleaseSummaryDto"
+    },
+    "RuleResultDto": {
+      "type": "object",
+      "properties": {
+        "pass": {
+          "type": "boolean",
+          "description": "是否通过"
+        },
+        "qcMetricName": {
+          "type": "string",
+          "description": "品控指标名称"
+        },
+        "result": {
+          "type": "string",
+          "description": "结果"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "命中规则名称"
+        },
+        "ruleNo": {
+          "type": "string",
+          "description": "命中规则编号"
+        }
+      },
+      "title": "RuleResultDto"
+    },
+    "RuleSummaryDto": {
+      "type": "object",
+      "properties": {
+        "branchId": {
+          "type": "string",
+          "description": "本次发布对应的分支id"
+        },
+        "branchName": {
+          "type": "string",
+          "description": "本次发布对应的分支名称"
+        },
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "releaseId": {
+          "type": "string",
+          "description": "发布id"
+        },
+        "ruleDescription": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleType": {
+          "type": "string",
+          "description": "规则类型"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        },
+        "updateBy": {
+          "type": "string",
+          "description": "最后修改人"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "最后修改时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "whetherReleased": {
+          "type": "boolean",
+          "description": "是否曾经上过线/发布过(如果true，不显示编辑按钮，只能通过分支编辑发布)"
+        }
+      },
+      "title": "RuleSummaryDto"
+    },
+    "RuleSummaryV2Dto": {
+      "type": "object",
+      "properties": {
+        "agenda": {
+          "type": "string",
+          "description": "agenda"
+        },
+        "createBy": {
+          "type": "string",
+          "description": "创建人"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间(yyyy-MM-dd HH:mm:ss)"
+        },
+        "description": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上下线"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleNo": {
+          "type": "string",
+          "description": "规则编号"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        },
+        "updateBy": {
+          "type": "string",
+          "description": "最后修改人"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "最后修改时间(yyyy-MM-dd HH:mm:ss)"
+        }
+      },
+      "title": "RuleSummaryV2Dto"
+    },
+    "RuleTestRequest": {
+      "type": "object",
+      "required": ["ratingMetrics", "ruleId"],
+      "properties": {
+        "ratingMetrics": {
+          "type": "string",
+          "description": "评级指标"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        }
+      },
+      "title": "RuleTestRequest"
+    },
+    "RuleTestResultDto": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "description": "返回内容"
+        },
+        "result": {
+          "type": "string",
+          "description": "规则执行结果"
+        }
+      },
+      "title": "RuleTestResultDto"
+    },
+    "RuleV2Dto": {
+      "type": "object",
+      "properties": {
+        "agenda": {
+          "type": "string",
+          "description": "agenda"
+        },
+        "content": {
+          "type": "string",
+          "description": "脚本内容"
+        },
+        "description": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上下线"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleNo": {
+          "type": "string",
+          "description": "规则编号"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "RuleV2Dto"
+    },
+    "ScoreConditionDto": {
+      "type": "object",
+      "properties": {
+        "condition": {
+          "type": "string",
+          "description": "分数对应的条件"
+        },
+        "extension": {
+          "type": "string",
+          "description": "前端使用的扩展"
+        },
+        "score": {
+          "type": "number",
+          "description": "分数"
+        }
+      },
+      "title": "ScoreConditionDto"
+    },
+    "ScoreFormulaDto": {
+      "type": "object",
+      "properties": {
+        "baseScore": {
+          "type": "number",
+          "description": "基础分数， 默认0分"
+        },
+        "scoreConditions": {
+          "type": "array",
+          "description": "分数段列表",
+          "items": {
+            "$ref": "#/definitions/ScoreConditionDto"
+          }
+        },
+        "weight": {
+          "type": "number",
+          "description": "权重"
+        }
+      },
+      "title": "ScoreFormulaDto"
+    },
+    "SelectorDto": {
+      "type": "object",
+      "properties": {
+        "display": {
+          "type": "string",
+          "description": "显示内容"
+        },
+        "value": {
+          "type": "string",
+          "description": "真实值"
+        }
+      },
+      "title": "SelectorDto"
+    },
+    "UpdateAdmittanceRatingRequest": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "admittanceId": {
+          "type": "string",
+          "description": "准入分类id"
+        },
+        "admittanceName": {
+          "type": "string",
+          "description": "准入分类名称"
+        },
+        "description": {
+          "type": "string",
+          "description": "准入分类描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "policyIds": {
+          "type": "array",
+          "description": "策略id列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scopes": {
+          "type": "object",
+          "description": "适用范围",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签列表",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "UpdateAdmittanceRatingRequest"
+    },
+    "UpdateMetadataRequest": {
+      "type": "object",
+      "required": ["fieldKey", "fieldName", "fieldType", "metadataId"],
+      "properties": {
+        "enumValues": {
+          "type": "array",
+          "description": "枚举值列表(当字段类型为字符串型时可设置)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldDesc": {
+          "type": "string",
+          "description": "字段描述"
+        },
+        "fieldKey": {
+          "type": "string",
+          "description": "字段英文名(全局唯一)"
+        },
+        "fieldName": {
+          "type": "string",
+          "description": "字段中文名"
+        },
+        "fieldType": {
+          "type": "string",
+          "description": "字段类型",
+          "enum": ["String", "Number", "Boolean"]
+        },
+        "fieldValueRange": {
+          "type": "string",
+          "description": "可选值区间(当字段类型为数值型时可设置)【(1, 10)：代表 1 < x < 10；(1, 10]：代表 1 < x <= 10；[1, 10]：代表 1 <= x <= 10；[1, 10)：代表 1 <= x < 10；(1, ) 或 (1, ]：代表 x > 1；[1, ] 或 [1, )：代表 x >= 1；(, 10) 或 [, 10)：代表 x < 10；(, 10] 或 [, 10]：代表 x <= 10；】"
+        },
+        "metadataId": {
+          "type": "string",
+          "description": "元字段id"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签(用于方便筛选用)",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "UpdateMetadataRequest"
+    },
+    "UpdatePolicyRequest": {
+      "type": "object",
+      "required": ["policyId", "policyName", "status"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "策略描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "policyId": {
+          "type": "string",
+          "description": "策略id"
+        },
+        "policyName": {
+          "type": "string",
+          "description": "策略名称"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "ruleIds": {
+          "type": "array",
+          "description": "规则id列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "UpdatePolicyRequest"
+    },
+    "UpdateRuleInstanceBranchRequest": {
+      "type": "object",
+      "required": ["branchId", "ruleName", "ruleType"],
+      "properties": {
+        "branchId": {
+          "type": "string",
+          "description": "规则分支id"
+        },
+        "metadataConfigs": {
+          "type": "array",
+          "description": "元字段数据配置列表",
+          "items": {
+            "$ref": "#/definitions/MetadataConfigDto"
+          }
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "ratingScores": {
+          "type": "array",
+          "description": "评级分数列表",
+          "items": {
+            "$ref": "#/definitions/RatingScoreDto"
+          }
+        },
+        "ruleDescription": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleType": {
+          "type": "string",
+          "description": "规则类型"
+        },
+        "scopes": {
+          "type": "object",
+          "description": "适用范围",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        }
+      },
+      "title": "UpdateRuleInstanceBranchRequest"
+    },
+    "UpdateRuleInstanceRequest": {
+      "type": "object",
+      "required": ["ruleId", "ruleName", "ruleType"],
+      "properties": {
+        "metadataConfigs": {
+          "type": "array",
+          "description": "元字段数据配置列表",
+          "items": {
+            "$ref": "#/definitions/MetadataConfigDto"
+          }
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "ratingScores": {
+          "type": "array",
+          "description": "评级分数列表",
+          "items": {
+            "$ref": "#/definitions/RatingScoreDto"
+          }
+        },
+        "ruleDescription": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleType": {
+          "type": "string",
+          "description": "规则类型"
+        },
+        "scopes": {
+          "type": "object",
+          "description": "适用范围",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态[valid:可用,invalid:不可用]"
+        }
+      },
+      "title": "UpdateRuleInstanceRequest"
+    },
+    "UpdateRuleRequest": {
+      "type": "object",
+      "required": [
+        "agenda",
+        "content",
+        "online",
+        "rating",
+        "ruleId",
+        "ruleName",
+        "ruleNo",
+        "status"
+      ],
+      "properties": {
+        "agenda": {
+          "type": "string",
+          "description": "agenda"
+        },
+        "content": {
+          "type": "string",
+          "description": "脚本内容"
+        },
+        "description": {
+          "type": "string",
+          "description": "规则描述"
+        },
+        "online": {
+          "type": "boolean",
+          "description": "是否上线"
+        },
+        "rating": {
+          "type": "string",
+          "description": "评级",
+          "enum": ["S", "A", "B", "C"]
+        },
+        "ruleId": {
+          "type": "string",
+          "description": "规则id"
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "规则名称"
+        },
+        "ruleNo": {
+          "type": "string",
+          "description": "规则编号"
+        },
+        "status": {
+          "type": "string",
+          "description": "可用状态",
+          "enum": ["valid", "invalid"]
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "UpdateRuleRequest"
+    }
+  }
+}

@@ -1,0 +1,5073 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "开环新链路-商品服务"
+  },
+  "host": "http://localhost:8081",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "主推款变更-admin",
+      "description": "Primary Change Admin Controller"
+    },
+    {
+      "name": "商品上架管理-API",
+      "description": "Product On Line Controller"
+    },
+    {
+      "name": "商品主推款管理-API",
+      "description": "Product Primary Controller"
+    },
+    {
+      "name": "商品人工通用审核-admin",
+      "description": "Product Manually Audit Controller"
+    },
+    {
+      "name": "商品信息视图-API",
+      "description": "Product View Controller"
+    },
+    {
+      "name": "商品关系管理-API",
+      "description": "Product Relation Controller"
+    },
+    {
+      "name": "商品变更管理-ADMIN",
+      "description": "Product Change Admin Controller"
+    },
+    {
+      "name": "商品变更管理-API",
+      "description": "Product Change Controller"
+    },
+    {
+      "name": "商品同步管理-API",
+      "description": "Product Sync Controller"
+    },
+    {
+      "name": "商品抽佣管理-API",
+      "description": "Product Commission Controller"
+    },
+    {
+      "name": "商品抽佣管理-admin",
+      "description": "Product Commission Admin Controller"
+    },
+    {
+      "name": "商品活动管理-API",
+      "description": "Product Activity Controller"
+    },
+    {
+      "name": "商品视图信息-admin",
+      "description": "Product Manage Admin Controller"
+    },
+    {
+      "name": "抖音CPS相关接口-ADMIN",
+      "description": "Dy Cps Admin Controller"
+    },
+    {
+      "name": "抖音CPS相关接口-API",
+      "description": "Dy Cps Controller"
+    },
+    {
+      "name": "通用回调-API",
+      "description": "Product Activity Notify Controller"
+    }
+  ],
+  "paths": {
+    "/admin/cps/abandon/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "废弃CPS计划",
+        "operationId": "abandonCpsPlanUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AbandonCpsPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/create/close/common/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "创建CPS闭环通用计划",
+        "operationId": "createCloseCommonPlanUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCloseCommonPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/create/close/orient/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "创建CPS闭环定向计划",
+        "operationId": "createCloseOrientPlanUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCloseOrientPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/create/open/common/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "创建CPS开环通用计划",
+        "operationId": "createOpenCommonPlanUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateOpenCommonPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/create/open/orient/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "创建CPS开环定向计划",
+        "operationId": "createOpenOrientPlanUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateOpenOrientPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/process/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "处理CPS配置",
+        "operationId": "processCpsPlanUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProcessCpsPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/query/config/manage/pending": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "查询CPS配置列表 (待处理)",
+        "operationId": "queryCpsConfigManagePendingUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryCpsConfigManageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QueryCpsConfigManageResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/query/config/manage/processd": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "查询CPS配置列表 （已处理）",
+        "operationId": "queryCpsConfigManageProcessdUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryCpsConfigManageRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QueryCpsConfigManageResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/query/plan/detail": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "获取CPS计划详情",
+        "operationId": "queryCpsPlanDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryCpsPlanDetailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QueryCpsPlanDetailResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/cps/query/plan/list": {
+      "post": {
+        "tags": ["抖音CPS相关接口-ADMIN"],
+        "summary": "获取CPS计划列表",
+        "operationId": "queryCpsPlanListUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryAdminCpsPlanListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QueryAdminCpsPlanListResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/primary/change/detail/query": {
+      "post": {
+        "tags": ["主推款变更-admin"],
+        "summary": "主推款变更",
+        "operationId": "detailQueryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "primaryChangeDetailQueryRequest",
+            "description": "primaryChangeDetailQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/主推款变更详情查询请求对象-admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/主推款变更详情查询返回对象-admin"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/product/activity/detail/query": {
+      "post": {
+        "tags": ["商品抽佣管理-admin"],
+        "summary": "抽佣详情查询",
+        "operationId": "detailQueryUsingPOST_3",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "commissionDetailQueryAdminRequest",
+            "description": "commissionDetailQueryAdminRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/抽佣详情查询-admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/合作期抽佣分页查询返回对象-ADMIN"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/product/change/detail/query": {
+      "post": {
+        "tags": ["商品变更管理-ADMIN"],
+        "summary": "商品变更记录详情查询",
+        "operationId": "detailQueryUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "changeProduceAdminDetailQueryRequest",
+            "description": "changeProduceAdminDetailQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/套餐变更详情查询请求对象-admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/套餐变更详情返回对象response-ADMIN"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/product/manage/detail/query": {
+      "post": {
+        "tags": ["商品视图信息-admin"],
+        "summary": "商品详情查询",
+        "operationId": "detailQueryUsingPOST_4",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "productDetailQueryAdminRequest",
+            "description": "productDetailQueryAdminRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品详情分页查询请求对象-admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/商品详情查询返回对象-admin"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/product/manage/page/query": {
+      "post": {
+        "tags": ["商品视图信息-admin"],
+        "summary": "商品分页查询",
+        "operationId": "pageQueryUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "productAdminPageQueryRequest",
+            "description": "productAdminPageQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品分页查询请求对象-admin"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/分页通用返回值«商品详情分页查询返回对象-ADMIN»"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/product/manage/snap/shoot/query": {
+      "post": {
+        "tags": ["商品视图信息-admin"],
+        "summary": "商品快照查询",
+        "operationId": "snapShootQueryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "productSnapShootQueryRequest",
+            "description": "productSnapShootQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品快照查询请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/商品快照查询返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/product/manually/audit": {
+      "post": {
+        "tags": ["商品人工通用审核-admin"],
+        "summary": "审核接口",
+        "operationId": "auditUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "productManuallyAuditRequest",
+            "description": "productManuallyAuditRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品审核请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/product/manually/audit/page/query": {
+      "post": {
+        "tags": ["商品人工通用审核-admin"],
+        "summary": "人工审核分页查询",
+        "operationId": "pageQueryUsingPOST_2",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "header",
+            "description": "UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "productManuallyAuditPageQueryRequest",
+            "description": "productManuallyAuditPageQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品通用人工审核请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/分页通用返回值«商品人工审核分页查询返回值»"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/cps/abandon/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-API"],
+        "summary": "废弃CPS计划",
+        "operationId": "abandonCpsPlanUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AbandonCpsPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/cps/create/close/common/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-API"],
+        "summary": "创建CPS闭环通用计划",
+        "operationId": "createCloseCommonPlanUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCloseCommonPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/cps/create/close/orient/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-API"],
+        "summary": "创建CPS闭环定向计划",
+        "operationId": "createCloseOrientPlanUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCloseOrientPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/cps/create/open/common/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-API"],
+        "summary": "创建CPS开环通用计划",
+        "operationId": "createOpenCommonPlanUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateOpenCommonPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/cps/create/open/orient/plan": {
+      "post": {
+        "tags": ["抖音CPS相关接口-API"],
+        "summary": "创建CPS开环定向计划",
+        "operationId": "createOpenOrientPlanUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateOpenOrientPlanRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperateCpsPlanResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/cps/query/plan/detail": {
+      "post": {
+        "tags": ["抖音CPS相关接口-API"],
+        "summary": "获取CPS计划详情",
+        "operationId": "queryCpsPlanDetailUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryCpsPlanDetailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QueryCpsPlanDetailResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/cps/query/plan/list": {
+      "post": {
+        "tags": ["抖音CPS相关接口-API"],
+        "summary": "获取CPS计划列表",
+        "operationId": "queryCpsPlanListUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*", "application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryCpsPlanListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QueryCpsPlanListResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/activity/create": {
+      "post": {
+        "tags": ["商品活动管理-API"],
+        "summary": "创建团购活动",
+        "operationId": "createUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "createActivityApiRequest",
+            "description": "createActivityApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/创建团购活动请求日志"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/activity/logs/query": {
+      "post": {
+        "tags": ["商品活动管理-API"],
+        "summary": "团购活动日志查询",
+        "operationId": "logsQueryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "activityLogsQueryApiRequest",
+            "description": "activityLogsQueryApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/团购活动日志查询请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/活动日志查询返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/activity/notify": {
+      "post": {
+        "tags": ["通用回调-API"],
+        "summary": "团购活动管理回调接口",
+        "operationId": "activityNotifyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "channelAuditNotifyRequest",
+            "description": "channelAuditNotifyRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/渠道审批回调请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/activity/query": {
+      "post": {
+        "tags": ["商品活动管理-API"],
+        "summary": "团购活动查询",
+        "operationId": "queryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "activityQueryApiRequest",
+            "description": "activityQueryApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/团购活动查询接口请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/活动查询返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/bind/cooperation/period": {
+      "post": {
+        "tags": ["商品关系管理-API"],
+        "summary": "合作期关系绑定",
+        "operationId": "bindPeriodUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bindPeriodApiRequest",
+            "description": "bindPeriodApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/合作期关系绑定请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/bind/merchant": {
+      "post": {
+        "tags": ["商品关系管理-API"],
+        "summary": "商户关系绑定",
+        "operationId": "bindMerchantUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bindMerchantApiRequest",
+            "description": "bindMerchantApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商户关系绑定请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/change/detail/query": {
+      "post": {
+        "tags": ["商品变更管理-API"],
+        "summary": "变更记录详情查询",
+        "operationId": "detailQueryUsingPOST_2",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "changeProductDetailQueryApiRequest",
+            "description": "changeProductDetailQueryApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品变更详情查询请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/变更商品详情返回对象-API"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/change/page/query": {
+      "post": {
+        "tags": ["商品变更管理-API"],
+        "summary": "变更记录查询",
+        "operationId": "pageQueryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "productChangeQueryRequest",
+            "description": "productChangeQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品变更分页查询请求对象-api"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/分页通用返回值«商品变更查询返回对象»"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/change/save/preserve": {
+      "post": {
+        "tags": ["商品变更管理-API"],
+        "summary": "创建商品保存",
+        "operationId": "savePreserveUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "saveProductPreserveRequest",
+            "description": "saveProductPreserveRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/新增商品保存请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/新增商品保存返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/change/save/submit": {
+      "post": {
+        "tags": ["商品变更管理-API"],
+        "summary": "创建商品提交",
+        "operationId": "saveSubmitUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "productSaveRequest",
+            "description": "productSaveRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/新增商品提交请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/新增商品保存返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/change/submit": {
+      "post": {
+        "tags": ["商品变更管理-API"],
+        "summary": "编辑商品提交",
+        "operationId": "changeSubmitUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "createProductRequest",
+            "description": "createProductRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/创建商品请求对象API"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/commission/logs/query": {
+      "post": {
+        "tags": ["商品抽佣管理-API"],
+        "summary": "历史抽佣记录查询",
+        "operationId": "logsQueryUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "commissionLogsQueryApiRequest",
+            "description": "commissionLogsQueryApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/抽佣日志查询请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/历史抽佣日志查询返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/commission/notify": {
+      "post": {
+        "tags": ["商品抽佣管理-API"],
+        "summary": "抽佣回调",
+        "operationId": "notifyUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "commissionNotifyRequest",
+            "description": "commissionNotifyRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/抽佣回调请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/commission/query": {
+      "post": {
+        "tags": ["商品抽佣管理-API"],
+        "summary": "抽佣详情查询",
+        "operationId": "queryCommissionUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "commissionDetailQueryApiRequest",
+            "description": "commissionDetailQueryApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/抽佣详情查询请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/抽佣详情查询返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/commission/save": {
+      "post": {
+        "tags": ["商品抽佣管理-API"],
+        "summary": "商品抽佣配置",
+        "operationId": "saveCommissionUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "commissionApiSaveRequest",
+            "description": "commissionApiSaveRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/配置抽佣请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/primary/change": {
+      "post": {
+        "tags": ["商品主推款管理-API"],
+        "summary": "主推款变更",
+        "operationId": "changePrimaryProductUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "changePrimaryProductRequest",
+            "description": "changePrimaryProductRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/主推款套餐变更请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/primary/query": {
+      "post": {
+        "tags": ["商品主推款管理-API"],
+        "summary": "主推款套餐查询",
+        "operationId": "primaryQueryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "primaryProductQueryRequest",
+            "description": "primaryProductQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/主推款套餐查询请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/主推款套餐查询返回response"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/report/async": {
+      "post": {
+        "tags": ["商品同步管理-API"],
+        "summary": "提报商品同步",
+        "operationId": "reportProductSyncUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/提报商品同步请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/sale/offline": {
+      "post": {
+        "tags": ["商品上架管理-API"],
+        "summary": "下架",
+        "operationId": "offLineUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "productOfflineApiRequest",
+            "description": "productOfflineApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品下架请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/sale/online": {
+      "post": {
+        "tags": ["商品上架管理-API"],
+        "summary": "上架",
+        "operationId": "onLineUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "productOnlineApiRequest",
+            "description": "productOnlineApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品上架请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/WalletResponse"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/view/detail/batch/query": {
+      "post": {
+        "tags": ["商品信息视图-API"],
+        "summary": "商品详情批量查询",
+        "operationId": "productDetailBatchQueryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "productDetailBatchQueryApiRequest",
+            "description": "productDetailBatchQueryApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品详情批量查询"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/商品详情查询集合返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/view/detail/query": {
+      "post": {
+        "tags": ["商品信息视图-API"],
+        "summary": "商品详情查询",
+        "operationId": "productDetailQueryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "productDetailQueryApiRequest",
+            "description": "productDetailQueryApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品详情单个查询请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/商品详情查询返回对象"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/product/view/page/query": {
+      "post": {
+        "tags": ["商品信息视图-API"],
+        "summary": "商品记录分页查询",
+        "operationId": "productQueryUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "productQueryApiRequest",
+            "description": "productQueryApiRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/商品信息查询请求对象"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/分页通用返回值«商品查询API返回对象»"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "AbandonCpsPlanRequest": {
+      "type": "object",
+      "required": ["cpsPlanNo"],
+      "properties": {
+        "cpsPlanNo": {
+          "type": "string",
+          "description": "盛付通计划id "
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id C端使用"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人 C端使用"
+        }
+      },
+      "title": "AbandonCpsPlanRequest"
+    },
+    "CloseProduct": {
+      "type": "object",
+      "required": ["commissionRate", "productName"],
+      "properties": {
+        "commissionRate": {
+          "type": "integer",
+          "format": "int32",
+          "description": "佣金比例 万分位 取值返回 100 ~ 8000"
+        },
+        "productId": {
+          "type": "string",
+          "description": "抖音内部商品ID "
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        }
+      },
+      "title": "CloseProduct"
+    },
+    "CpsConfigInfo": {
+      "type": "object",
+      "properties": {
+        "celSource": {
+          "type": "string",
+          "description": "来源 AGENT_CEL 代理商自采(C端) SHENG_CHANG_CEL 内部达运（B端）传空表示全部"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "提交时间"
+        },
+        "extra": {
+          "type": "string",
+          "description": "扩展字段"
+        },
+        "failReason": {
+          "type": "string",
+          "description": "失败原因"
+        },
+        "handleRemark": {
+          "type": "string",
+          "description": "处理意见"
+        },
+        "linkType": {
+          "type": "string",
+          "description": "链路  OPEN 开环(只能查看) CLOSE 闭环(可以处理)"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商法定名称"
+        },
+        "planType": {
+          "type": "string",
+          "description": "需求  COMMON 通用 ORIENT 定向"
+        },
+        "processStatus": {
+          "type": "string",
+          "description": "处理状态 ABANDONED:废弃 SUCCESS:处理成功 FAIL:处理失败 PENDING:待处理"
+        },
+        "sdpPlanNo": {
+          "type": "string",
+          "description": "盛付通生成的cps计划ID"
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户法定名称"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "更新时间"
+        }
+      },
+      "title": "CpsConfigInfo"
+    },
+    "CpsPlanDetail": {
+      "type": "object",
+      "properties": {
+        "batchNo": {
+          "type": "string",
+          "description": "批次号"
+        },
+        "commissionDuration": {
+          "type": "string",
+          "description": "佣金有效期，单位天"
+        },
+        "commissionRate": {
+          "type": "integer",
+          "format": "int32",
+          "description": "佣金比例 万分位 toB 闭环 通用多个商品场景使用"
+        },
+        "contentType": {
+          "type": "string",
+          "description": "商品支持的达人带货场景 SHORT_VIDEO：仅短视频 LIVE：仅直播间 SHORT_VIDEO_AND_LIVE：短视频和直播间"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "douyinIdList": {
+          "type": "array",
+          "description": "达人抖音号列表",
+          "items": {
+            "$ref": "#/definitions/DouyinCelInfo"
+          }
+        },
+        "failReason": {
+          "type": "string",
+          "description": "失败原因"
+        },
+        "handleImageUrls": {
+          "type": "array",
+          "description": "处理证明图片链接，可多张",
+          "items": {
+            "type": "string"
+          }
+        },
+        "handleRemark": {
+          "type": "string",
+          "description": "处理意见"
+        },
+        "linkType": {
+          "type": "string",
+          "description": "链路类型 OPEN 开环 CLOSE 闭环"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "代理商商户号"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商法定名称"
+        },
+        "merchantPhone": {
+          "type": "string",
+          "description": "计划联系人手机号码"
+        },
+        "planEndTime": {
+          "type": "string",
+          "description": "计划结束时间 秒级时间戳"
+        },
+        "planId": {
+          "type": "string",
+          "description": "抖音cps计划ID， 仅开环返回"
+        },
+        "planName": {
+          "type": "string",
+          "description": "抖音cps计划名称， 仅开环定向返回"
+        },
+        "planStartTime": {
+          "type": "string",
+          "description": "计划开始时间 秒级时间戳"
+        },
+        "planType": {
+          "type": "string",
+          "description": "计划类型 COMMON 通用 ORIENT 定向"
+        },
+        "processStatus": {
+          "type": "string",
+          "description": "处理状态 ABANDONED:废弃 SUCCESS:处理成功 FAIL:处理失败 PENDING:待处理"
+        },
+        "productList": {
+          "type": "array",
+          "description": "商品配置列表",
+          "items": {
+            "$ref": "#/definitions/ProductInfo"
+          }
+        },
+        "sdpPlanNo": {
+          "type": "string",
+          "description": "盛付通生成的cps计划ID"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源 AGENT_CEL 代理商自采 SHENG_CHANG_CEL 内部达运"
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户名称"
+        }
+      },
+      "title": "CpsPlanDetail"
+    },
+    "CpsPlanInfo": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "extra": {
+          "type": "string",
+          "description": "扩展字段"
+        },
+        "failReason": {
+          "type": "string",
+          "description": "失败原因"
+        },
+        "handleRemark": {
+          "type": "string",
+          "description": "处理意见"
+        },
+        "linkType": {
+          "type": "string",
+          "description": "链路  OPEN 开环(只能查看) CLOSE 闭环(可以处理)"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商法定名称"
+        },
+        "planId": {
+          "type": "string",
+          "description": "抖音cps计划ID， 仅开环成功有值"
+        },
+        "planName": {
+          "type": "string",
+          "description": "计划名称"
+        },
+        "planType": {
+          "type": "string",
+          "description": "计划类型 COMMON 通用 ORIENT 定向"
+        },
+        "processStatus": {
+          "type": "string",
+          "description": "处理状态 ABANDONED:废弃 SUCCESS:处理成功 FAIL:处理失败 PENDING:待处理"
+        },
+        "sdpPlanNo": {
+          "type": "string",
+          "description": "盛付通生成的cps计划ID"
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户名称"
+        }
+      },
+      "title": "CpsPlanInfo"
+    },
+    "CreateCloseCommonPlanRequest": {
+      "type": "object",
+      "required": [
+        "contentType",
+        "merchantId",
+        "merchantName",
+        "planName",
+        "productList",
+        "storeAbbr",
+        "subMerchantId",
+        "subMerchantName"
+      ],
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "description": "达人带货场景  SHORT_VIDEO：仅短视频 LIVE：仅直播间  SHORT_VIDEO_AND_LIVE：短视频和直播间"
+        },
+        "extra": {
+          "type": "string",
+          "description": "扩展字段，备用"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "代理商商户号"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商商户名称"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id C端使用"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人 C端使用"
+        },
+        "planName": {
+          "type": "string",
+          "description": "cps计划名称"
+        },
+        "productList": {
+          "type": "array",
+          "description": "团购商品列表 取值范围 1~50",
+          "items": {
+            "$ref": "#/definitions/CloseProduct"
+          }
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户名称"
+        }
+      },
+      "title": "CreateCloseCommonPlanRequest"
+    },
+    "CreateCloseOrientPlanRequest": {
+      "type": "object",
+      "required": [
+        "contentType",
+        "douyinIdList",
+        "merchantId",
+        "merchantName",
+        "merchantPhone",
+        "planName",
+        "productList",
+        "storeAbbr",
+        "subMerchantId",
+        "subMerchantName"
+      ],
+      "properties": {
+        "commissionDuration": {
+          "type": "integer",
+          "format": "int64",
+          "description": "佣金有效期 单位 天, 短视频必传"
+        },
+        "contentType": {
+          "type": "string",
+          "description": "达人带货场景  SHORT_VIDEO：仅短视频 LIVE：仅直播间"
+        },
+        "douyinIdList": {
+          "type": "array",
+          "description": "抖音达人",
+          "items": {
+            "$ref": "#/definitions/DouyinCelInfo"
+          }
+        },
+        "extra": {
+          "type": "string",
+          "description": "扩展字段，备用"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "代理商商户号"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商商户名称"
+        },
+        "merchantPhone": {
+          "type": "string",
+          "description": "联系人手机"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id  C端使用"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人  C端使用"
+        },
+        "planEndTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "期望计划结束时间"
+        },
+        "planName": {
+          "type": "string",
+          "description": "cps计划名称"
+        },
+        "planStartTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "期望计划开始时间"
+        },
+        "productList": {
+          "type": "array",
+          "description": "团购商品列表 取值范围 1~50",
+          "items": {
+            "$ref": "#/definitions/CloseProduct"
+          }
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户名称"
+        }
+      },
+      "title": "CreateCloseOrientPlanRequest"
+    },
+    "CreateOpenCommonPlanRequest": {
+      "type": "object",
+      "required": [
+        "contentType",
+        "merchantId",
+        "merchantName",
+        "planName",
+        "productList",
+        "storeAbbr",
+        "subMerchantId",
+        "subMerchantName"
+      ],
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "description": "达人带货场景  SHORT_VIDEO：仅短视频 LIVE：仅直播间  SHORT_VIDEO_AND_LIVE：短视频和直播间"
+        },
+        "extra": {
+          "type": "string",
+          "description": "扩展字段，备用"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "代理商商户号"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商商户名称"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id  C端使用"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人  C端使用"
+        },
+        "planName": {
+          "type": "string",
+          "description": "cps计划名称"
+        },
+        "productList": {
+          "type": "array",
+          "description": "团购商品列表 取值范围 1~50",
+          "items": {
+            "$ref": "#/definitions/OpenProduct"
+          }
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户名称"
+        }
+      },
+      "title": "CreateOpenCommonPlanRequest"
+    },
+    "CreateOpenOrientPlanRequest": {
+      "type": "object",
+      "required": [
+        "contentType",
+        "douyinIdList",
+        "merchantId",
+        "merchantName",
+        "merchantPhone",
+        "planName",
+        "productList",
+        "storeAbbr",
+        "subMerchantId",
+        "subMerchantName"
+      ],
+      "properties": {
+        "commissionDuration": {
+          "type": "integer",
+          "format": "int64",
+          "description": "佣金有效期 单位 天, 短视频必传"
+        },
+        "contentType": {
+          "type": "string",
+          "description": "达人带货场景  SHORT_VIDEO：仅短视频 LIVE：仅直播间"
+        },
+        "douyinIdList": {
+          "type": "array",
+          "description": "抖音达人 最多传入200个",
+          "items": {
+            "$ref": "#/definitions/DouyinCelInfo"
+          }
+        },
+        "extra": {
+          "type": "string",
+          "description": "扩展字段，备用"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "代理商商户号"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商商户名称"
+        },
+        "merchantPhone": {
+          "type": "string",
+          "description": "联系人手机"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id  C端使用"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人  C端使用"
+        },
+        "planEndTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "期望计划结束时间"
+        },
+        "planName": {
+          "type": "string",
+          "description": "抖音cps计划名称"
+        },
+        "planStartTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "期望计划开始时间"
+        },
+        "productList": {
+          "type": "array",
+          "description": "团购商品列表 取值范围 1~50",
+          "items": {
+            "$ref": "#/definitions/OpenProduct"
+          }
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户名称"
+        }
+      },
+      "title": "CreateOpenOrientPlanRequest"
+    },
+    "DouyinCelInfo": {
+      "type": "object",
+      "required": ["celName", "douyinId"],
+      "properties": {
+        "celName": {
+          "type": "string",
+          "description": "达人昵称"
+        },
+        "douyinId": {
+          "type": "string",
+          "description": "达人抖音号"
+        }
+      },
+      "title": "DouyinCelInfo"
+    },
+    "DyCpsPlanInfo": {
+      "type": "object",
+      "properties": {
+        "batchNo": {
+          "type": "string",
+          "description": "批次号"
+        },
+        "createTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "extra": {
+          "type": "string",
+          "description": "扩展字段"
+        },
+        "failReason": {
+          "type": "string",
+          "description": "失败原因"
+        },
+        "handleRemark": {
+          "type": "string",
+          "description": "处理意见"
+        },
+        "linkType": {
+          "type": "string",
+          "description": "链路类型 OPEN 开环 CLOSE 闭环"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "代理商商户号"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商法定名称"
+        },
+        "planId": {
+          "type": "string",
+          "description": "抖音cps计划ID， 仅开环返回"
+        },
+        "planType": {
+          "type": "string",
+          "description": "计划类型 COMMON 通用 ORIENT 定向"
+        },
+        "processStatus": {
+          "type": "string",
+          "description": "处理状态 ABANDONED:废弃 SUCCESS:处理成功 FAIL:处理失败 PENDING:待处理"
+        },
+        "sdpPlanNo": {
+          "type": "string",
+          "description": "盛付通生成的cps计划ID"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源 AGENT_CEL 代理商自采 SHENG_CHANG_CEL 内部达运"
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户名称"
+        }
+      },
+      "title": "DyCpsPlanInfo"
+    },
+    "OpenProduct": {
+      "type": "object",
+      "required": ["commissionRate", "productId"],
+      "properties": {
+        "commissionRate": {
+          "type": "integer",
+          "format": "int32",
+          "description": "佣金比例 万分位 取值返回 100 ~ 8000"
+        },
+        "productId": {
+          "type": "string",
+          "description": "抖音内部商品ID "
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        }
+      },
+      "title": "OpenProduct"
+    },
+    "OperateCpsPlanResponse": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "OperateCpsPlanResponse"
+    },
+    "ProcessCpsPlanRequest": {
+      "type": "object",
+      "required": ["cpsPlanNo", "processStatus"],
+      "properties": {
+        "cpsPlanNo": {
+          "type": "string",
+          "description": "盛付通计划id"
+        },
+        "handleImageUrlList": {
+          "type": "array",
+          "description": "处理上传图片链接列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "handleRemark": {
+          "type": "string",
+          "description": "处理意见"
+        },
+        "processStatus": {
+          "type": "string",
+          "description": "cps 计划状态 处理只能处理成功和失败  SUCCESS:处理成功 FAIL:处理失败"
+        }
+      },
+      "title": "ProcessCpsPlanRequest"
+    },
+    "ProductInfo": {
+      "type": "object",
+      "properties": {
+        "commissionRate": {
+          "type": "integer",
+          "format": "int32",
+          "description": "佣金比例 万分位"
+        },
+        "productId": {
+          "type": "string",
+          "description": "抖音内部商品ID "
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        }
+      },
+      "title": "ProductInfo"
+    },
+    "QueryAdminCpsPlanListRequest": {
+      "type": "object",
+      "properties": {
+        "endTime": {
+          "type": "string",
+          "description": "结束时间 yyyy-MM-dd HH:mm:ss， 开始时间和结束时间同时传有效"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商商户名称"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人 B端使用"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码 最小取值 1 不填默认1"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页大小 最小取值 1 最大取值2000  不填默认100"
+        },
+        "planType": {
+          "type": "string",
+          "description": "需求 COMMON 通用 ORIENT 定向"
+        },
+        "processStatus": {
+          "type": "array",
+          "description": "cps 计划状态 ABANDONED:废弃 SUCCESS:处理成功 FAIL:处理失败 PENDING:待处理 传空表示全部",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startTime": {
+          "type": "string",
+          "description": "开始时间 yyyy-MM-dd HH:mm:ss， 开始时间和结束时间同时传有效"
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户法定名称"
+        }
+      },
+      "title": "QueryAdminCpsPlanListRequest"
+    },
+    "QueryAdminCpsPlanListResponse": {
+      "type": "object",
+      "properties": {
+        "cpsPlanInfos": {
+          "type": "array",
+          "description": "cps配置列表",
+          "items": {
+            "$ref": "#/definitions/CpsPlanInfo"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "cps配置总条数"
+        }
+      },
+      "title": "QueryAdminCpsPlanListResponse"
+    },
+    "QueryCpsConfigManageRequest": {
+      "type": "object",
+      "properties": {
+        "celSource": {
+          "type": "string",
+          "description": "来源 AGENT_CEL 代理商自采(C端) SHENG_CHANG_CEL 内部达运（B端）传空表示全部"
+        },
+        "endTime": {
+          "type": "string",
+          "description": "提交结束时间 yyyy-MM-dd HH:mm:ss， 开始时间和结束时间同时传有效"
+        },
+        "merchantName": {
+          "type": "string",
+          "description": "代理商商户名称"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码 最小取值 1 不填默认1"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页大小 最小取值 1 最大取值2000  不填默认100"
+        },
+        "planType": {
+          "type": "string",
+          "description": "需求 COMMON 通用 ORIENT 定向"
+        },
+        "processStatus": {
+          "type": "array",
+          "description": "cps 计划状态 ABANDONED:废弃 SUCCESS:处理成功 FAIL:处理失败 PENDING:待处理 传空表示全部",
+          "items": {
+            "type": "string"
+          }
+        },
+        "startTime": {
+          "type": "string",
+          "description": "提交开始时间 yyyy-MM-dd HH:mm:ss， 开始时间和结束时间同时传有效"
+        },
+        "storeAbbr": {
+          "type": "string",
+          "description": "商户简称"
+        },
+        "subMerchantName": {
+          "type": "string",
+          "description": "商户法定名称"
+        }
+      },
+      "title": "QueryCpsConfigManageRequest"
+    },
+    "QueryCpsConfigManageResponse": {
+      "type": "object",
+      "properties": {
+        "cpsConfigInfos": {
+          "type": "array",
+          "description": "cps配置列表",
+          "items": {
+            "$ref": "#/definitions/CpsConfigInfo"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "cps配置总条数"
+        }
+      },
+      "title": "QueryCpsConfigManageResponse"
+    },
+    "QueryCpsPlanDetailRequest": {
+      "type": "object",
+      "required": ["cpsPlanNo"],
+      "properties": {
+        "cpsPlanNo": {
+          "type": "string",
+          "description": "盛付通计划id"
+        }
+      },
+      "title": "QueryCpsPlanDetailRequest"
+    },
+    "QueryCpsPlanDetailResponse": {
+      "type": "object",
+      "properties": {
+        "cpsPlanDetail": {
+          "description": "cps计划详情",
+          "$ref": "#/definitions/CpsPlanDetail"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "QueryCpsPlanDetailResponse"
+    },
+    "QueryCpsPlanListRequest": {
+      "type": "object",
+      "required": ["merchantId"],
+      "properties": {
+        "endTime": {
+          "type": "string",
+          "description": "结束时间 yyyy-MM-dd HH:mm:ss， 开始时间和结束时间同时传有效"
+        },
+        "merchantId": {
+          "type": "string",
+          "description": "代理商商户号 跟C端对齐"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id C端使用"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人 C端使用"
+        },
+        "pageNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码 最小取值 1 不填默认1"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页大小 最小取值 1 最大取值10 不填默认10"
+        },
+        "planType": {
+          "type": "string",
+          "description": "需求 COMMON 通用 ORIENT 定向"
+        },
+        "processStatus": {
+          "type": "string",
+          "description": "cps 计划状态 ABANDONED:废弃 SUCCESS:处理成功 FAIL:处理失败 PENDING:待处理"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "开始时间 yyyy-MM-dd HH:mm:ss， 开始时间和结束时间同时传有效"
+        },
+        "subMerchantName": {
+          "type": "string"
+        }
+      },
+      "title": "QueryCpsPlanListRequest"
+    },
+    "QueryCpsPlanListResponse": {
+      "type": "object",
+      "properties": {
+        "cpsPlanList": {
+          "type": "array",
+          "description": "cps计划列表",
+          "items": {
+            "$ref": "#/definitions/DyCpsPlanInfo"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "cps计划列表总条数"
+        }
+      },
+      "title": "QueryCpsPlanListResponse"
+    },
+    "WalletResponse": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "WalletResponse"
+    },
+    "item": {
+      "type": "object",
+      "properties": {
+        "auditCommissionRatio": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "commissionAuditStatus": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "itemId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "productId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "item"
+    },
+    "主推款变更详情查询请求对象-admin": {
+      "type": "object",
+      "properties": {
+        "changeSerialNo": {
+          "type": "string",
+          "description": "变更唯一流水号"
+        },
+        "requestNo": {
+          "type": "string",
+          "description": "请求NO"
+        }
+      },
+      "title": "主推款变更详情查询请求对象-admin"
+    },
+    "主推款变更详情查询返回对象-admin": {
+      "type": "object",
+      "properties": {
+        "changePrimaryProductDetail": {
+          "description": "变更后主推款详情",
+          "$ref": "#/definitions/商品详情分页查询返回对象-ADMIN"
+        },
+        "changeRemark": {
+          "type": "string",
+          "description": "变更备注"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "originPrimaryProductDetail": {
+          "description": "变更前主推款详情",
+          "$ref": "#/definitions/商品详情分页查询返回对象-ADMIN"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "主推款变更详情查询返回对象-admin"
+    },
+    "主推款套餐变更请求对象": {
+      "type": "object",
+      "required": ["operatorId", "productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "changeRemark": {
+          "type": "string",
+          "description": "变更原因"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "主推款套餐变更请求对象"
+    },
+    "主推款套餐查询请求对象": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期编号"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "主推款套餐查询请求对象"
+    },
+    "主推款套餐查询返回response": {
+      "type": "object",
+      "properties": {
+        "categoryId": {
+          "type": "array",
+          "description": "行业分类",
+          "items": {
+            "type": "string"
+          }
+        },
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品id"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "productInfo": {
+          "description": "商品详情",
+          "$ref": "#/definitions/套餐info-具体取值范围参考抖音文档"
+        },
+        "productType": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "product_type\n1 : 团购套餐\n3 : 预售券\n4 : 日历房\n5 : 门票\n7 : 旅行跟拍\n8 : 一日游\n11 : 代金券"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "主推款套餐查询返回response"
+    },
+    "分页通用返回值«商品人工审核分页查询返回值»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "数据详情",
+          "items": {
+            "$ref": "#/definitions/商品人工审核分页查询返回值"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "分页通用返回值«商品人工审核分页查询返回值»"
+    },
+    "分页通用返回值«商品变更查询返回对象»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "数据详情",
+          "items": {
+            "$ref": "#/definitions/商品变更查询返回对象"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "分页通用返回值«商品变更查询返回对象»"
+    },
+    "分页通用返回值«商品查询API返回对象»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "数据详情",
+          "items": {
+            "$ref": "#/definitions/商品查询API返回对象"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "分页通用返回值«商品查询API返回对象»"
+    },
+    "分页通用返回值«商品详情分页查询返回对象-ADMIN»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "数据详情",
+          "items": {
+            "$ref": "#/definitions/商品详情分页查询返回对象-ADMIN"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总条数"
+        }
+      },
+      "title": "分页通用返回值«商品详情分页查询返回对象-ADMIN»"
+    },
+    "创建商品请求对象API": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "array",
+          "description": "类目ID",
+          "items": {
+            "type": "string"
+          }
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人名称"
+        },
+        "operatorRemark": {
+          "type": "string",
+          "description": "申请备注"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "productInfo": {
+          "description": "商品详情",
+          "$ref": "#/definitions/餐饮类商品info"
+        },
+        "productType": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "product_type\n1 : 团购套餐\n3 : 预售券\n4 : 日历房\n5 : 门票\n7 : 旅行跟拍\n8 : 一日游\n11 : 代金券"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "创建商品请求对象API"
+    },
+    "创建团购活动请求日志": {
+      "type": "object",
+      "required": ["operatorId", "poi", "soldEndTime", "soldStartTime"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "poi": {
+          "type": "array",
+          "description": "活动关联门店",
+          "items": {
+            "type": "string"
+          }
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        },
+        "soldEndTime": {
+          "type": "string",
+          "description": "售卖结束日期 yyyy-MM-dd HH:mm:ss"
+        },
+        "soldStartTime": {
+          "type": "string",
+          "description": "售卖起止日期 yyyy-MM-dd HH:mm:ss"
+        }
+      },
+      "title": "创建团购活动请求日志"
+    },
+    "历史抽佣日志查询INFO": {
+      "type": "object",
+      "properties": {
+        "auditRemark": {
+          "type": "string",
+          "description": "人工审核备注"
+        },
+        "auditTime": {
+          "type": "string",
+          "description": "审核日期 yyyy-MM-dd HH:mm:ss"
+        },
+        "changeCommissionRate": {
+          "type": "number",
+          "description": "变更后抽佣"
+        },
+        "changeRemark": {
+          "type": "string",
+          "description": "变更原因"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "errorMsg": {
+          "type": "string",
+          "description": "异常原因"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "originalCommissionRate": {
+          "type": "number",
+          "description": "变更前抽佣"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态 WAIT_RETRY/REQUEST_FAIL/INTERIOR_WAIT_AUDIT/INTERIOR_AUDIT_REJECT/CHANNEL_WAIT_AUDIT/SUCCESS/CHANNEL_AUDIT_REJECT"
+        }
+      },
+      "title": "历史抽佣日志查询INFO"
+    },
+    "历史抽佣日志查询返回对象": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "抽佣日志INFO",
+          "items": {
+            "$ref": "#/definitions/历史抽佣日志查询INFO"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "历史抽佣日志查询返回对象"
+    },
+    "变更商品详情返回对象-API": {
+      "type": "object",
+      "properties": {
+        "auditRemark": {
+          "type": "string",
+          "description": "审核备注"
+        },
+        "auditTime": {
+          "type": "string",
+          "description": "审核日期 yyyy-MM-dd HH:mm:ss"
+        },
+        "categoryId": {
+          "type": "array",
+          "description": "行业分类",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changeSerialNo": {
+          "type": "string",
+          "description": "快照上皮你流水号"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "productInfo": {
+          "description": "商品详情",
+          "$ref": "#/definitions/套餐info-具体取值范围参考抖音文档"
+        },
+        "productType": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "product_type\n1 : 团购套餐\n3 : 预售券\n4 : 日历房\n5 : 门票\n7 : 旅行跟拍\n8 : 一日游\n11 : 代金券"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态      EDITING(\"EDITING\", \"编辑中\"),\n    QUALITY_CONTROL_WAIT_AUDIT(\"QUALITY_CONTROL_WAIT_AUDIT\", \"品控待审核\"),\n    QUALITY_CONTROL_AUDIT_REJECT(\"QUALITY_CONTROL_AUDIT_REJECT\", \"品控审核拒绝\"),\n    CHANNEL_WAIT_AUDIT(\"CHANNEL_WAIT_AUDIT\", \"渠道待审核\"),\n    CHANNEL_REQUEST_FAIL(\"CHANNEL_REQUEST_FAIL\", \"渠道请求失败\"),\n    CHANNEL_AUDIT_SUCCESS(\"CHANNEL_AUDIT_SUCCESS\", \"渠道审核通过\"),\n    CHANNEL_AUDIT_REJECT(\"CHANNEL_AUDIT_REJECT\", \"渠道审核拒绝\"),"
+        }
+      },
+      "title": "变更商品详情返回对象-API"
+    },
+    "合作期关系绑定请求对象": {
+      "type": "object",
+      "required": [
+        "channelAccountId",
+        "channelAccountName",
+        "channelPeriodId",
+        "commissionType",
+        "periodId",
+        "reportSerialNo"
+      ],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "channelAccountId": {
+          "type": "string",
+          "description": "渠道方商户名称"
+        },
+        "channelAccountName": {
+          "type": "string",
+          "description": "渠道方商户ID"
+        },
+        "channelPeriodId": {
+          "type": "string",
+          "description": "渠道方合作期ID"
+        },
+        "commissionRate": {
+          "type": "number",
+          "description": "抽佣率  示例：12.34% 上送1234"
+        },
+        "commissionType": {
+          "type": "string",
+          "description": "抽佣方式     ENTIRETY_COMMISSION(\"ENTIRETY_COMMISSION\", \"整体抽佣\"),\n    INDEPENDENT_COMMISSION(\"INDEPENDENT_COMMISSION\", \"商品单独抽佣\");"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "reportSerialNo": {
+          "type": "string",
+          "description": "提报订单号"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "合作期关系绑定请求对象"
+    },
+    "合作期抽佣分页查询返回对象-ADMIN": {
+      "type": "object",
+      "properties": {
+        "changeCommissionRate": {
+          "type": "number",
+          "description": "变更后抽佣"
+        },
+        "changeRemark": {
+          "type": "string",
+          "description": "变更原因"
+        },
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品id"
+        },
+        "commissionSerialNo": {
+          "type": "string",
+          "description": "commissionSerialNo"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "发起日期"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "mchId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "originalCommissionRate": {
+          "type": "number",
+          "description": "变更前抽佣"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "primaryFlag": {
+          "type": "string",
+          "description": "是否主推款 Y/N"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "productSource": {
+          "type": "string",
+          "description": " 商品来源 MARKETING_REGISTER->提报"
+        },
+        "publishStatus": {
+          "type": "string",
+          "description": "商品上下架 ON_LINE  OFF_LINE"
+        },
+        "reportSerialNo": {
+          "type": "string",
+          "description": "提报业务流水号"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "soldEndTime": {
+          "type": "string",
+          "description": "合作期结束日期"
+        },
+        "soldStartTime": {
+          "type": "string",
+          "description": "合作期开始日期"
+        }
+      },
+      "title": "合作期抽佣分页查询返回对象-ADMIN"
+    },
+    "商品上架请求对象": {
+      "type": "object",
+      "required": ["operatorId", "productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "商品上架请求对象"
+    },
+    "商品下架请求对象": {
+      "type": "object",
+      "required": ["operatorId", "productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "商品下架请求对象"
+    },
+    "商品人工审核分页查询返回值": {
+      "type": "object",
+      "properties": {
+        "channelAccountId": {
+          "type": "string",
+          "description": "渠道商户号"
+        },
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品id"
+        },
+        "commissionRate": {
+          "type": "number",
+          "description": "抽佣"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "firstCreateActivityStatus": {
+          "type": "string",
+          "description": "首次创建团购活动状态 Y/N"
+        },
+        "id": {
+          "type": "string",
+          "description": "id->交互流水号"
+        },
+        "mchId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "primaryFlag": {
+          "type": "string",
+          "description": "是否主推款 Y/N"
+        },
+        "processStatus": {
+          "type": "string",
+          "description": "审核状态 WAI_AUDIT->待审核 PASS->通过 REJECT->拒绝"
+        },
+        "processType": {
+          "type": "string",
+          "description": "流程标签 PRIMARY_CHANGE 主推款变更  COMMISSION_CHANGE 抽佣变更 PRODUCT_CHANGE 商品修改 PRODUCT_SAVE 商品新增"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "productSource": {
+          "type": "string",
+          "description": " 商品来源 MARKETING_REGISTER->提报 MARKETING_PRODUCT ->商品服务"
+        },
+        "publishStatus": {
+          "type": "string",
+          "description": "商品上下架 ON_LINE  OFF_LINE"
+        },
+        "relationId": {
+          "type": "string",
+          "description": "关联业务id"
+        },
+        "reportSerialNo": {
+          "type": "string",
+          "description": "提报订单号"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "soldEndTime": {
+          "type": "string",
+          "description": "售卖结束时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "soldStartTime": {
+          "type": "string",
+          "description": "售卖开始时间 yyyy-MM-dd HH:mm:ss"
+        }
+      },
+      "title": "商品人工审核分页查询返回值"
+    },
+    "商品信息查询请求对象": {
+      "type": "object",
+      "required": ["operatorId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "firstActivityStatus": {
+          "type": "string",
+          "description": "首次团购活动创建状态 Y/N"
+        },
+        "firstCommissionStatus": {
+          "type": "string",
+          "description": "首次抽佣状态 Y/N"
+        },
+        "mchId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "当前页默认：1"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "example": 10,
+          "description": "每页数量默认:10"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "poi": {
+          "type": "string",
+          "description": "店铺POI"
+        },
+        "publishStatus": {
+          "type": "string",
+          "description": "上下架状态 ON_LINE 上架  OFF_LINE 下架"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "商品信息查询请求对象"
+    },
+    "商品分页查询请求对象-admin": {
+      "type": "object",
+      "properties": {
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品id"
+        },
+        "firstCommissionStatus": {
+          "type": "string",
+          "description": "首次抽佣状态 Y/N"
+        },
+        "firstCreateActivityStatus": {
+          "type": "string",
+          "description": "首次创建团购活动状态 Y/N"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "当前页默认：1"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "example": 10,
+          "description": "每页数量默认:10"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期id"
+        },
+        "primaryFlag": {
+          "type": "string",
+          "description": "是否主推款 Y/N"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "productSource": {
+          "type": "string",
+          "description": " 商品来源 REPORT->提报"
+        },
+        "publishStatus": {
+          "type": "string",
+          "description": "商品上下架 ON_LINE  OFF_LINE"
+        },
+        "requestNo": {
+          "type": "string",
+          "description": "请求NO"
+        }
+      },
+      "title": "商品分页查询请求对象-admin"
+    },
+    "商品变更分页查询请求对象-api": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员id"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "当前页默认：1"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "example": 10,
+          "description": "每页数量默认:10"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "商品变更分页查询请求对象-api"
+    },
+    "商品变更查询返回对象": {
+      "type": "object",
+      "properties": {
+        "auditOperatorName": {
+          "type": "string",
+          "description": "审核人名称"
+        },
+        "auditRemark": {
+          "type": "string",
+          "description": "审核日志"
+        },
+        "auditTime": {
+          "type": "string",
+          "description": "人工审核日期"
+        },
+        "changeSerialNo": {
+          "type": "string",
+          "description": "快照流水"
+        },
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道方商品流水"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "lastChangeTime": {
+          "type": "string",
+          "description": "最后一次变更时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员id"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "productName": {
+          "type": "string",
+          "description": "套餐名称"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态      EDITING(\"EDITING\", \"编辑中\"),\n    QUALITY_CONTROL_WAIT_AUDIT(\"QUALITY_CONTROL_WAIT_AUDIT\", \"品控待审核\"),\n    QUALITY_CONTROL_AUDIT_REJECT(\"QUALITY_CONTROL_AUDIT_REJECT\", \"品控审核拒绝\"),\n    CHANNEL_WAIT_AUDIT(\"CHANNEL_WAIT_AUDIT\", \"渠道待审核\"),\n    CHANNEL_REQUEST_FAIL(\"CHANNEL_REQUEST_FAIL\", \"渠道请求失败\"),\n    CHANNEL_AUDIT_SUCCESS(\"CHANNEL_AUDIT_SUCCESS\", \"渠道审核通过\"),\n    CHANNEL_AUDIT_REJECT(\"CHANNEL_AUDIT_REJECT\", \"渠道审核拒绝\"),"
+        }
+      },
+      "title": "商品变更查询返回对象"
+    },
+    "商品变更详情查询请求对象": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "changeSerialNo": {
+          "type": "string",
+          "description": "变更流水号"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员id"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "商品变更详情查询请求对象"
+    },
+    "商品审核请求对象": {
+      "type": "object",
+      "properties": {
+        "auditRemark": {
+          "type": "string",
+          "description": "审核备注"
+        },
+        "auditStatus": {
+          "type": "string",
+          "description": "审核状态 PASS->通过  REJECT->拒绝"
+        },
+        "id": {
+          "type": "string",
+          "description": "id->交互流水号"
+        },
+        "requestNo": {
+          "type": "string",
+          "description": "请求NO"
+        }
+      },
+      "title": "商品审核请求对象"
+    },
+    "商品快照查询请求对象": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "requestNo": {
+          "type": "string",
+          "description": "请求NO"
+        }
+      },
+      "title": "商品快照查询请求对象"
+    },
+    "商品快照查询返回对象": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "productDetailQueryAdminResponses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/商品详情查询返回对象-admin"
+          }
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "商品快照查询返回对象"
+    },
+    "商品查询API返回对象": {
+      "type": "object",
+      "properties": {
+        "actualAmount": {
+          "type": "number",
+          "description": "售卖价格"
+        },
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品ID"
+        },
+        "commissionFlowStatus": {
+          "type": "string",
+          "description": "抽佣流程 目前状态   NONE  未创建抽佣 INTERIOR_PROCESSING 内部审核中  CHANNEL_PROCESSING 渠道处理中INTERIOR_REJECT 内部拒绝 PASS 通过  CHANNEL_REJECT 拒绝"
+        },
+        "commissionRate": {
+          "type": "number",
+          "description": "抽佣率  示例：12.34% 返回1234"
+        },
+        "dishesImageList": {
+          "type": "string",
+          "description": "菜品图"
+        },
+        "firstActivityStatus": {
+          "type": "string",
+          "description": "首次团购活动创建状态 Y/N"
+        },
+        "firstCommissionStatus": {
+          "type": "string",
+          "description": "首次抽佣状态 Y/N"
+        },
+        "imageList": {
+          "type": "string",
+          "description": "封面图"
+        },
+        "originAmount": {
+          "type": "number",
+          "description": "商品原价"
+        },
+        "pois": {
+          "type": "array",
+          "description": "店铺相关信息",
+          "items": {
+            "type": "string"
+          }
+        },
+        "primaryFlag": {
+          "type": "string",
+          "description": "主推款标签 Y/N"
+        },
+        "produceId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "productSaveSerialNo": {
+          "type": "string",
+          "description": "商品新增业务流水号"
+        },
+        "productStatus": {
+          "type": "string",
+          "description": "套餐状态       WAIT_RETRY(\"WAIT_RETRY\", \"等待重试\"),\n    PROCESSING(\"PROCESSING\", \"处理中\"),\n    SUCCESS(\"SUCCESS\", \"成功\"),\n    FAIL(\"FAIL\", \"失败\");"
+        },
+        "publishFlowStatus": {
+          "type": "string",
+          "description": "上下架流程 最后一次状态  NONE 无 CHANNEL_PROCESSING 渠道处理中  PASS 通过  CHANNEL_REJECT 拒绝"
+        },
+        "publishStatus": {
+          "type": "string",
+          "description": "上下架状态 ON_LINE  OFF_LINE"
+        },
+        "soldEndTime": {
+          "type": "string",
+          "description": "售卖结束时间"
+        },
+        "soldStartTime": {
+          "type": "string",
+          "description": "售卖起始时间"
+        },
+        "stockInfo": {
+          "type": "string",
+          "description": "库存信息"
+        },
+        "validFlag": {
+          "type": "string",
+          "description": "是否有效标签 Y/N"
+        }
+      },
+      "title": "商品查询API返回对象"
+    },
+    "商品详情分页查询请求对象-admin": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string",
+          "description": "请求NO"
+        }
+      },
+      "title": "商品详情分页查询请求对象-admin"
+    },
+    "商品详情分页查询返回对象-ADMIN": {
+      "type": "object",
+      "properties": {
+        "actualAmount": {
+          "type": "number",
+          "description": "顾客实际支付金额"
+        },
+        "channelAccountId": {
+          "type": "string",
+          "description": "渠道商户号"
+        },
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品id"
+        },
+        "commissionRate": {
+          "type": "number",
+          "description": "抽佣"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "firstCreateActivityStatus": {
+          "type": "string",
+          "description": "首次创建团购活动状态 Y/N"
+        },
+        "id": {
+          "type": "string",
+          "description": "id"
+        },
+        "mchId": {
+          "type": "string",
+          "description": "商户号"
+        },
+        "originAmount": {
+          "type": "number",
+          "description": "商品原价"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "primaryFlag": {
+          "type": "string",
+          "description": "是否主推款 Y/N"
+        },
+        "processStatus": {
+          "type": "string",
+          "description": "审核状态 WAI_AUDIT->待审核 PASS->通过 REJECT->拒绝"
+        },
+        "processType": {
+          "type": "string",
+          "description": "流程标签 PRIMARY_CHANGE 主推款变更  COMMISSION_CHANGE 抽佣变更"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "productSource": {
+          "type": "string",
+          "description": " 商品来源 MARKETING_REGISTER->提报"
+        },
+        "publishStatus": {
+          "type": "string",
+          "description": "商品上下架 ON_LINE  OFF_LINE"
+        },
+        "reportSerialNo": {
+          "type": "string",
+          "description": "提报订单号"
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "soldEndTime": {
+          "type": "string",
+          "description": "售卖结束时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "soldStartTime": {
+          "type": "string",
+          "description": "售卖开始时间 yyyy-MM-dd HH:mm:ss"
+        }
+      },
+      "title": "商品详情分页查询返回对象-ADMIN"
+    },
+    "商品详情单个查询请求对象": {
+      "type": "object",
+      "required": ["operatorId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "商品详情单个查询请求对象"
+    },
+    "商品详情批量查询": {
+      "type": "object",
+      "required": ["operatorId", "productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "array",
+          "description": "商品ID",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "商品详情批量查询"
+    },
+    "商品详情查询返回对象": {
+      "type": "object",
+      "properties": {
+        "categoryId": {
+          "type": "array",
+          "description": "行业分类",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changeAuditRemark": {
+          "type": "string",
+          "description": "审核备注"
+        },
+        "changeAuditStatus": {
+          "type": "string",
+          "description": "审核状态   EDITING(\\\"EDITING\\\", \\\"编辑中\\\"),\\n\" +\n            \"    QUALITY_CONTROL_WAIT_AUDIT(\\\"QUALITY_CONTROL_WAIT_AUDIT\\\", \\\"品控待审核\\\"),\\n\" +\n            \"    QUALITY_CONTROL_AUDIT_REJECT(\\\"QUALITY_CONTROL_AUDIT_REJECT\\\", \\\"品控审核拒绝\\\"),\\n\" +\n            \"    CHANNEL_WAIT_AUDIT(\\\"CHANNEL_WAIT_AUDIT\\\", \\\"渠道待审核\\\"),\\n\" +\n            \"    CHANNEL_REQUEST_FAIL(\\\"CHANNEL_REQUEST_FAIL\\\", \\\"渠道请求失败\\\"),\\n\" +\n            \"    CHANNEL_AUDIT_SUCCESS(\\\"CHANNEL_AUDIT_SUCCESS\\\", \\\"渠道审核通过\\\"),\\n\" +\n            \"    CHANNEL_AUDIT_REJECT(\\\"CHANNEL_AUDIT_REJECT\\\", \\\"渠道审核拒绝\\\"),"
+        },
+        "changeAuditTime": {
+          "type": "string",
+          "description": "审核日期 yyyy-MM-dd HH:mm:ss"
+        },
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品id"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "productInfo": {
+          "description": "商品详情",
+          "$ref": "#/definitions/套餐info-具体取值范围参考抖音文档"
+        },
+        "productType": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "product_type\n1 : 团购套餐\n3 : 预售券\n4 : 日历房\n5 : 门票\n7 : 旅行跟拍\n8 : 一日游\n11 : 代金券"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "商品详情查询返回对象"
+    },
+    "商品详情查询返回对象-admin": {
+      "type": "object",
+      "properties": {
+        "categoryId": {
+          "type": "array",
+          "description": "行业分类",
+          "items": {
+            "type": "string"
+          }
+        },
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品id"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "productInfo": {
+          "description": "商品详情",
+          "$ref": "#/definitions/套餐info-具体取值范围参考抖音文档"
+        },
+        "productType": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "product_type\n1 : 团购套餐\n3 : 预售券\n4 : 日历房\n5 : 门票\n7 : 旅行跟拍\n8 : 一日游\n11 : 代金券"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "商品详情查询返回对象-admin"
+    },
+    "商品详情查询集合返回对象": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "productInfo": {
+          "type": "array",
+          "description": "商品详情",
+          "items": {
+            "$ref": "#/definitions/套餐info-具体取值范围参考抖音文档"
+          }
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "商品详情查询集合返回对象"
+    },
+    "商品通用人工审核请求对象": {
+      "type": "object",
+      "properties": {
+        "channelProductId": {
+          "type": "string",
+          "description": "渠道商品id"
+        },
+        "firstCreateActivityStatus": {
+          "type": "string",
+          "description": "首次创建团购活动状态 Y/N"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "当前页默认：1"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "example": 10,
+          "description": "每页数量默认:10"
+        },
+        "primaryFlag": {
+          "type": "string",
+          "description": "是否主推款 Y/N"
+        },
+        "processStatus": {
+          "type": "array",
+          "description": "审核状态 WAI_AUDIT->待审核 PASS->通过 REJECT->拒绝",
+          "items": {
+            "type": "string"
+          }
+        },
+        "processType": {
+          "type": "string",
+          "description": "流程标签 PRIMARY_CHANGE 主推款变更  COMMISSION_CHANGE 抽佣变更"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "productSource": {
+          "type": "string",
+          "description": " 商品来源 REPORT->提报"
+        },
+        "publishStatus": {
+          "type": "string",
+          "description": "发布状态 ON_LINE 上线  OFF_LINE 下线"
+        },
+        "requestNo": {
+          "type": "string",
+          "description": "请求NO"
+        }
+      },
+      "title": "商品通用人工审核请求对象"
+    },
+    "商户关系绑定请求对象": {
+      "type": "object",
+      "required": [
+        "agentMchId",
+        "agentMchName",
+        "mchId",
+        "mchName",
+        "reportSerialNo"
+      ],
+      "properties": {
+        "agentMchId": {
+          "type": "string",
+          "description": "代理商户号"
+        },
+        "agentMchName": {
+          "type": "string",
+          "description": "代理商户名称"
+        },
+        "appId": {
+          "type": "string"
+        },
+        "mchId": {
+          "type": "string",
+          "description": "子商户号"
+        },
+        "mchName": {
+          "type": "string",
+          "description": "子商户名称"
+        },
+        "reportSerialNo": {
+          "type": "string",
+          "description": "提报订单号"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "商户关系绑定请求对象"
+    },
+    "团购活动日志查询请求对象": {
+      "type": "object",
+      "required": ["operatorId", "productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "团购活动日志查询请求对象"
+    },
+    "团购活动查询接口请求对象": {
+      "type": "object",
+      "required": ["operatorId", "productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "团购活动查询接口请求对象"
+    },
+    "套餐info-具体取值范围参考抖音文档": {
+      "type": "object",
+      "properties": {
+        "Description": {
+          "type": "string",
+          "description": "商品描述"
+        },
+        "EntryType": {
+          "type": "string",
+          "description": "入口类型（1:H5 2:小程序 3:抖音 4:lynx）"
+        },
+        "FrontCategoryTag": {
+          "type": "string",
+          "description": "前台品类标签(数组json)"
+        },
+        "IndustryType": {
+          "type": "string",
+          "description": "商品行业类型"
+        },
+        "IsConfirmImme": {
+          "type": "string",
+          "description": "是否立即确认(true/false)"
+        },
+        "IsNeedPick": {
+          "type": "string",
+          "description": "是否需要取票(true/false)"
+        },
+        "NearestOrderTime": {
+          "type": "string",
+          "description": "最早可订时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "Notification": {
+          "type": "string",
+          "description": "使用规则"
+        },
+        "RecommendWord": {
+          "type": "string",
+          "description": "推荐语"
+        },
+        "RefundPolicy": {
+          "type": "string",
+          "description": "退款政策：1-允许退款 2-不可退款 3-有条件退"
+        },
+        "SortWeight": {
+          "type": "integer",
+          "format": "int64",
+          "description": "排序权重"
+        },
+        "SubTitle": {
+          "type": "string",
+          "description": "副标题"
+        },
+        "SuitableGroup": {
+          "type": "string",
+          "description": "适用人群（成人\n     儿童\n     老年\n     学生\n     特殊人群\n     男士\n     女士\n     1大1小\n     2大1小\n     团体\n     情侣\n     通用人群\n     其他人群）"
+        },
+        "TagList": {
+          "type": "string",
+          "description": "标签列表"
+        },
+        "TicketType": {
+          "type": "string",
+          "description": "票种类型（4、票种类型（TicketType）的枚举\n     传指定的中文字符串：\n\n     单景点/门店单门票\n     游玩项目票\n     景区/门店含门票套餐\n     景区/门店不含门票套餐\n     景区交通票\n     景区餐饮票\n     景区/门店卡券\n     多景点联票\n     景区/门店服务\n     语音导览\n     人工讲解\n     景区纪念品\n     门店活动体验\n     其他票种\n     演出票）"
+        },
+        "account_name": {
+          "type": "string",
+          "description": "商家名称"
+        },
+        "actual_amount": {
+          "type": "number",
+          "description": "顾客实际支付金额"
+        },
+        "appointment": {
+          "type": "string",
+          "description": "预约信息"
+        },
+        "auto_renew": {
+          "type": "string",
+          "description": "自动延期标签(true/false)"
+        },
+        "bring_out_meal": {
+          "type": "string",
+          "description": "是否可以外带(true/false)"
+        },
+        "can_no_use_date": {
+          "type": "string",
+          "description": "不可使用日期"
+        },
+        "client_key": {
+          "type": "string",
+          "description": "券码服务商"
+        },
+        "code_source_type": {
+          "type": "string",
+          "description": "券码生成方式(1-抖音码 2-三方码 3-预导码)"
+        },
+        "commission_rate": {
+          "type": "number",
+          "description": "抽佣比例"
+        },
+        "commodity": {
+          "type": "string",
+          "description": "菜品搭配"
+        },
+        "contains_insurance": {
+          "type": "string",
+          "description": "是否包含保险(true/false)"
+        },
+        "customer_reserved_info": {
+          "type": "string",
+          "description": "留资规则"
+        },
+        "description_rich_text": {
+          "type": "string",
+          "description": "其他说明信息"
+        },
+        "detail_image_list": {
+          "type": "string",
+          "description": "长图"
+        },
+        "dishes_image_list": {
+          "type": "string",
+          "description": "菜品图"
+        },
+        "environment_image_list": {
+          "type": "string",
+          "description": "环境图"
+        },
+        "extra_json": {
+          "type": "string",
+          "description": "额外非入参JSON"
+        },
+        "free_pack": {
+          "type": "string",
+          "description": "是否可以打包(true/false)"
+        },
+        "holiday_additional_charge": {
+          "type": "string",
+          "description": "节假日是否额外收费（true/false）"
+        },
+        "image_list": {
+          "type": "string",
+          "description": "封面图"
+        },
+        "limit_buy_rule": {
+          "type": "string",
+          "description": "限购规则"
+        },
+        "limit_gender": {
+          "type": "string",
+          "description": "是否限制性别(0-不限制 1-限制男性 2-限制女性)"
+        },
+        "limit_hair_length": {
+          "type": "string",
+          "description": "是否限制长短发（0-不限制 1-限制长发 2-限制短发）"
+        },
+        "limit_rule": {
+          "type": "string",
+          "description": "限制购买规则"
+        },
+        "market_price": {
+          "type": "number",
+          "description": "市场价"
+        },
+        "origin_amount": {
+          "type": "number",
+          "description": "商品原价"
+        },
+        "original_vip_can_experience": {
+          "type": "string",
+          "description": "商家原会员是否可以使用"
+        },
+        "platform_unified_description": {
+          "type": "string",
+          "description": "平台使用统一说明"
+        },
+        "pois": {
+          "type": "array",
+          "description": "商品绑定店铺",
+          "items": {
+            "type": "string"
+          }
+        },
+        "primary_flag": {
+          "type": "string",
+          "description": "是否主推款(Y/N)"
+        },
+        "private_room": {
+          "type": "string",
+          "description": "是否可以使用包间(true/false)"
+        },
+        "product_id": {
+          "type": "string",
+          "description": "套餐业务流水号->若上送视为老套餐修改,不上送视为新套餐新增"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "real_name_info": {
+          "type": "string",
+          "description": "实名信息"
+        },
+        "rec_person_num": {
+          "type": "integer",
+          "format": "int64",
+          "description": "建议使用人数"
+        },
+        "rec_person_num_max": {
+          "type": "integer",
+          "format": "int64",
+          "description": "最多使用人数"
+        },
+        "refund_need_merchant_confirm": {
+          "type": "string",
+          "description": "退款是否需要商家审核（true/false）"
+        },
+        "refund_type": {
+          "type": "string",
+          "description": "退款信息"
+        },
+        "remove_flag": {
+          "type": "string",
+          "description": "删除标签（Y/N）"
+        },
+        "settle_type": {
+          "type": "string",
+          "description": "收款方式（1-总店结算 2-分店结算）"
+        },
+        "show_channel": {
+          "type": "string",
+          "description": "投放渠道 1-不限制 2-仅直播间可见"
+        },
+        "sold_end_time": {
+          "type": "string",
+          "description": "售卖结束时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "sold_start_time": {
+          "type": "string",
+          "description": "售卖开始时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "stock_info": {
+          "type": "string",
+          "description": "库存信息"
+        },
+        "superimposed_discounts": {
+          "type": "string",
+          "description": "是否可以享受店内其他优惠（true/false）"
+        },
+        "trade_url": {
+          "type": "string",
+          "description": "小程序提单跳转URL"
+        },
+        "use_date": {
+          "type": "string",
+          "description": "使用日期"
+        },
+        "use_time": {
+          "type": "string",
+          "description": "使用时间"
+        },
+        "use_type": {
+          "type": "string",
+          "description": "团购使用方式(1-到店核销)"
+        }
+      },
+      "title": "套餐info-具体取值范围参考抖音文档"
+    },
+    "套餐变更详情查询请求对象-admin": {
+      "type": "object",
+      "required": ["changeSerialNo"],
+      "properties": {
+        "changeSerialNo": {
+          "type": "string",
+          "description": "变更业务流水号"
+        },
+        "requestNo": {
+          "type": "string",
+          "description": "请求NO"
+        }
+      },
+      "title": "套餐变更详情查询请求对象-admin"
+    },
+    "套餐变更详情返回对象response-ADMIN": {
+      "type": "object",
+      "properties": {
+        "changeProductModel": {
+          "description": "变更后商品对象",
+          "$ref": "#/definitions/商品详情查询返回对象-admin"
+        },
+        "changeRemark": {
+          "type": "string",
+          "description": "变更原因"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "originProductModel": {
+          "description": "变更前商品对象",
+          "$ref": "#/definitions/商品详情查询返回对象-admin"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "套餐变更详情返回对象response-ADMIN"
+    },
+    "抽佣回调请求对象": {
+      "type": "object",
+      "properties": {
+        "commissionRecordItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/item"
+          }
+        },
+        "orderId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "抽佣回调请求对象"
+    },
+    "抽佣日志查询请求对象": {
+      "type": "object",
+      "required": ["operatorId", "productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "抽佣日志查询请求对象"
+    },
+    "抽佣详情查询-admin": {
+      "type": "object",
+      "properties": {
+        "commissionSerialNo": {
+          "type": "string",
+          "description": "抽佣业务流水号"
+        },
+        "requestNo": {
+          "type": "string",
+          "description": "请求NO"
+        }
+      },
+      "title": "抽佣详情查询-admin"
+    },
+    "抽佣详情查询请求对象": {
+      "type": "object",
+      "required": ["productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "抽佣详情查询请求对象"
+    },
+    "抽佣详情查询返回对象": {
+      "type": "object",
+      "properties": {
+        "commissionRate": {
+          "type": "number",
+          "description": "商品当前抽佣"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "firstCommissionStatus": {
+          "type": "string",
+          "description": "首次抽佣状态 Y/N"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "productName": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "抽佣详情查询返回对象"
+    },
+    "提报商品同步请求对象": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "array",
+          "description": "类目ID",
+          "items": {
+            "type": "string"
+          }
+        },
+        "productInfo": {
+          "type": "array",
+          "description": "商品详情",
+          "items": {
+            "$ref": "#/definitions/套餐info-具体取值范围参考抖音文档"
+          }
+        },
+        "productType": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "product_type\n1 : 团购套餐\n3 : 预售券\n4 : 日历房\n5 : 门票\n7 : 旅行跟拍\n8 : 一日游\n11 : 代金券"
+        },
+        "reportSerialNo": {
+          "type": "string",
+          "description": "提报订单号"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "提报商品同步请求对象"
+    },
+    "新增商品保存请求对象": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "array",
+          "description": "类目ID",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changeSerialNo": {
+          "type": "string",
+          "description": "变更业务流水号 非空则认为保存 空则认为新增"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人名称"
+        },
+        "operatorRemark": {
+          "type": "string",
+          "description": "申请备注"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "productInfo": {
+          "description": "商品详情",
+          "$ref": "#/definitions/餐饮类商品info"
+        },
+        "productType": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "product_type\n1 : 团购套餐\n3 : 预售券\n4 : 日历房\n5 : 门票\n7 : 旅行跟拍\n8 : 一日游\n11 : 代金券"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "新增商品保存请求对象"
+    },
+    "新增商品保存返回对象": {
+      "type": "object",
+      "properties": {
+        "changeSerialNo": {
+          "type": "string",
+          "description": "变更流水号"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "新增商品保存返回对象"
+    },
+    "新增商品提交请求对象": {
+      "type": "object",
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "categoryId": {
+          "type": "array",
+          "description": "类目ID",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changeSerialNo": {
+          "type": "string",
+          "description": "变更业务流水号 非空则认为保存 空则认为新增"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作人id"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作人名称"
+        },
+        "operatorRemark": {
+          "type": "string",
+          "description": "申请备注"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "productInfo": {
+          "description": "商品详情",
+          "$ref": "#/definitions/餐饮类商品info"
+        },
+        "productType": {
+          "type": "integer",
+          "format": "int32",
+          "example": 1,
+          "description": "product_type\n1 : 团购套餐\n3 : 预售券\n4 : 日历房\n5 : 门票\n7 : 旅行跟拍\n8 : 一日游\n11 : 代金券"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "新增商品提交请求对象"
+    },
+    "活动日志Model": {
+      "type": "object",
+      "properties": {
+        "auditTime": {
+          "type": "string",
+          "description": "审核日期 yyyy-MM-dd HH:mm:ss"
+        },
+        "createTime": {
+          "type": "string",
+          "description": "创建时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "errorMsg": {
+          "type": "string",
+          "description": "异常原因"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态  INIT(\"INIT\", \"初始化\"),\n    WAIT_RETRY(\"WAIT_RETRY\", \"等待重试\"),\n    PROCESSING(\"PROCESSING\", \"处理中\"),\n    SUCCESS(\"SUCCESS\", \"成功\"),\n    FAIL(\"FAIL\", \"失败\");"
+        }
+      },
+      "title": "活动日志Model"
+    },
+    "活动日志查询返回对象": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "活动日志Model",
+          "items": {
+            "$ref": "#/definitions/活动日志Model"
+          }
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "resultCode": {
+          "type": "string"
+        }
+      },
+      "title": "活动日志查询返回对象"
+    },
+    "活动查询返回对象": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "string"
+        },
+        "errorCodeDes": {
+          "type": "string"
+        },
+        "periodId": {
+          "type": "string",
+          "description": "合作期ID"
+        },
+        "poi": {
+          "type": "array",
+          "description": "店铺关联POI",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resultCode": {
+          "type": "string"
+        },
+        "soldEndTime": {
+          "type": "string",
+          "description": "售卖结束日期 yyyy-MM-dd HH:mm:ss"
+        },
+        "soldStartTime": {
+          "type": "string",
+          "description": "售卖起止日期 yyyy-MM-dd HH:mm:ss"
+        }
+      },
+      "title": "活动查询返回对象"
+    },
+    "渠道审批回调请求对象": {
+      "type": "object",
+      "properties": {
+        "operateType": {
+          "type": "string",
+          "description": "操作类型 CREATE/UPDATE/ONLINE/OFFLINE/UPDATE_DIRECTLY"
+        },
+        "productId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "商品ID"
+        },
+        "reason": {
+          "type": "string",
+          "description": "审核拒绝原因"
+        },
+        "status": {
+          "type": "string",
+          "description": " 审核结果，商家审核通过 - MERCHANT_CONFIRM_SUCCESS；商家审核拒绝/超时 - MERCHANT_CONFIRM_FAIL；平台审核通过 - PASS；平台审核拒绝 - FAIL"
+        }
+      },
+      "title": "渠道审批回调请求对象"
+    },
+    "配置抽佣请求对象": {
+      "type": "object",
+      "required": ["commissionRate", "operatorId", "productId"],
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "changeRemark": {
+          "type": "string",
+          "description": "变更原因"
+        },
+        "commissionRate": {
+          "type": "integer",
+          "format": "int32",
+          "description": "佣金 示例： 12.34% 上送：1234"
+        },
+        "operatorId": {
+          "type": "string",
+          "description": "操作员ID"
+        },
+        "operatorName": {
+          "type": "string",
+          "description": "操作员名称"
+        },
+        "productId": {
+          "type": "string",
+          "description": "商品ID"
+        },
+        "requestNo": {
+          "type": "string"
+        }
+      },
+      "title": "配置抽佣请求对象"
+    },
+    "餐饮类商品info": {
+      "type": "object",
+      "properties": {
+        "Description": {
+          "type": "string",
+          "description": "商品描述"
+        },
+        "EntryType": {
+          "type": "string",
+          "description": "入口类型（1:H5 2:小程序 3:抖音 4:lynx）"
+        },
+        "FrontCategoryTag": {
+          "type": "string",
+          "description": "前台品类标签(数组json)"
+        },
+        "IndustryType": {
+          "type": "string",
+          "description": "商品行业类型"
+        },
+        "IsConfirmImme": {
+          "type": "string",
+          "description": "是否立即确认(true/false)"
+        },
+        "IsNeedPick": {
+          "type": "string",
+          "description": "是否需要取票(true/false)"
+        },
+        "NearestOrderTime": {
+          "type": "string",
+          "description": "最早可订时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "Notification": {
+          "type": "string",
+          "description": "使用规则"
+        },
+        "RecommendWord": {
+          "type": "string",
+          "description": "推荐语"
+        },
+        "RefundPolicy": {
+          "type": "string",
+          "description": "退款政策：1-允许退款 2-不可退款 3-有条件退"
+        },
+        "SortWeight": {
+          "type": "integer",
+          "format": "int64",
+          "description": "排序权重"
+        },
+        "SubTitle": {
+          "type": "string",
+          "description": "副标题"
+        },
+        "SuitableGroup": {
+          "type": "string",
+          "description": "适用人群（成人\n     儿童\n     老年\n     学生\n     特殊人群\n     男士\n     女士\n     1大1小\n     2大1小\n     团体\n     情侣\n     通用人群\n     其他人群）"
+        },
+        "TagList": {
+          "type": "string",
+          "description": "标签列表"
+        },
+        "TicketType": {
+          "type": "string",
+          "description": "票种类型（4、票种类型（TicketType）的枚举\n     传指定的中文字符串：\n\n     单景点/门店单门票\n     游玩项目票\n     景区/门店含门票套餐\n     景区/门店不含门票套餐\n     景区交通票\n     景区餐饮票\n     景区/门店卡券\n     多景点联票\n     景区/门店服务\n     语音导览\n     人工讲解\n     景区纪念品\n     门店活动体验\n     其他票种\n     演出票）"
+        },
+        "actual_amount": {
+          "type": "number",
+          "description": "顾客实际支付金额"
+        },
+        "appointment": {
+          "type": "string",
+          "description": "预约信息"
+        },
+        "auto_renew": {
+          "type": "string",
+          "description": "自动延期标签(true/false)"
+        },
+        "bring_out_meal": {
+          "type": "string",
+          "description": "是否可以外带(true/false)"
+        },
+        "can_no_use_date": {
+          "type": "string",
+          "description": "不可使用日期"
+        },
+        "client_key": {
+          "type": "string",
+          "description": "券码服务商"
+        },
+        "code_source_type": {
+          "type": "string",
+          "description": "券码生成方式(1-抖音码 2-三方码 3-预导码)"
+        },
+        "commission_rate": {
+          "type": "number",
+          "description": "抽佣比例"
+        },
+        "commodity": {
+          "type": "string",
+          "description": "菜品搭配"
+        },
+        "contains_insurance": {
+          "type": "string",
+          "description": "是否包含保险(true/false)"
+        },
+        "customer_reserved_info": {
+          "type": "string",
+          "description": "留资规则"
+        },
+        "description_rich_text": {
+          "type": "string",
+          "description": "其他说明信息"
+        },
+        "detail_image_list": {
+          "type": "string",
+          "description": "长图"
+        },
+        "dishes_image_list": {
+          "type": "string",
+          "description": "菜品图"
+        },
+        "environment_image_list": {
+          "type": "string",
+          "description": "环境图"
+        },
+        "extra_json": {
+          "type": "string",
+          "description": "额外非入参JSON"
+        },
+        "free_pack": {
+          "type": "string",
+          "description": "是否可以打包(true/false)"
+        },
+        "holiday_additional_charge": {
+          "type": "string",
+          "description": "节假日是否额外收费（true/false）"
+        },
+        "image_list": {
+          "type": "string",
+          "description": "封面图"
+        },
+        "limit_buy_rule": {
+          "type": "string",
+          "description": "限购规则"
+        },
+        "limit_gender": {
+          "type": "string",
+          "description": "是否限制性别(0-不限制 1-限制男性 2-限制女性)"
+        },
+        "limit_hair_length": {
+          "type": "string",
+          "description": "是否限制长短发（0-不限制 1-限制长发 2-限制短发）"
+        },
+        "limit_rule": {
+          "type": "string",
+          "description": "限制购买规则"
+        },
+        "market_price": {
+          "type": "number",
+          "description": "市场价"
+        },
+        "origin_amount": {
+          "type": "number",
+          "description": "商品原价"
+        },
+        "original_vip_can_experience": {
+          "type": "string",
+          "description": "商家原会员是否可以使用"
+        },
+        "platform_unified_description": {
+          "type": "string",
+          "description": "平台使用统一说明"
+        },
+        "pois": {
+          "type": "array",
+          "description": "商品绑定poi",
+          "items": {
+            "type": "string"
+          }
+        },
+        "private_room": {
+          "type": "string",
+          "description": "是否可以使用包间(true/false)"
+        },
+        "product_id": {
+          "type": "string",
+          "description": "商品id"
+        },
+        "product_name": {
+          "type": "string",
+          "description": "商品名称"
+        },
+        "real_name_info": {
+          "type": "string",
+          "description": "实名信息"
+        },
+        "rec_person_num": {
+          "type": "integer",
+          "format": "int64",
+          "description": "建议使用人数"
+        },
+        "rec_person_num_max": {
+          "type": "integer",
+          "format": "int64",
+          "description": "最多使用人数"
+        },
+        "refund_need_merchant_confirm": {
+          "type": "string",
+          "description": "退款是否需要商家审核（true/false）"
+        },
+        "refund_type": {
+          "type": "string",
+          "description": "退款信息"
+        },
+        "settle_type": {
+          "type": "string",
+          "description": "收款方式（1-总店结算 2-分店结算）"
+        },
+        "show_channel": {
+          "type": "string",
+          "description": "投放渠道 1-不限制 2-仅直播间可见"
+        },
+        "sold_end_time": {
+          "type": "string",
+          "description": "售卖结束时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "sold_start_time": {
+          "type": "string",
+          "description": "售卖开始时间 yyyy-MM-dd HH:mm:ss"
+        },
+        "stock_info": {
+          "type": "string",
+          "description": "库存信息"
+        },
+        "superimposed_discounts": {
+          "type": "string",
+          "description": "是否可以享受店内其他优惠（true/false）"
+        },
+        "trade_url": {
+          "type": "string",
+          "description": "小程序提单跳转URL"
+        },
+        "use_date": {
+          "type": "string",
+          "description": "使用日期"
+        },
+        "use_time": {
+          "type": "string",
+          "description": "使用时间"
+        },
+        "use_type": {
+          "type": "string",
+          "description": "团购使用方式(1-到店核销)"
+        }
+      },
+      "title": "餐饮类商品info"
+    }
+  }
+}
