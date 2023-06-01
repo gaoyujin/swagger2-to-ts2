@@ -366,7 +366,7 @@ export class SwaggerToApiUse {
   // 获取模板信息
   getTemplateInfo(fileMode: string) {
     const tempPath = path.join(
-      process.cwd(),
+      __dirname,
       'templates',
       this.configData.template + path.sep + fileMode + '.ejs'
     )

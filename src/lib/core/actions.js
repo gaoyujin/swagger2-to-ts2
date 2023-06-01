@@ -28,14 +28,11 @@ export const createFile = () => {
 
 // 获取模板信息
 export const getConfigTemplate = () => {
-  const tempPath =
-    process.cwd() +
-    path.sep +
-    'templates' +
-    path.sep +
-    'config' +
-    path.sep +
-    'init.json'
+  const tempPath = path.resolve(
+    __dirname,
+
+    '.' + path.sep + 'templates' + path.sep + 'config' + path.sep + 'init.json'
+  )
 
   const tempData = fs.readFileSync(tempPath)
   return tempData.toString()
