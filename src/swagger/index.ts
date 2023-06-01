@@ -32,7 +32,7 @@ const defaultConfig: ConfigInfo = {
   },
   api: {
     isCreate: false, // 是否创建
-    dir: '/api', // 模型添加的目录，相对项目src来说
+    dir: 'api', // 模型添加的目录，相对项目src来说
     isCover: false, // 是否覆盖
     isCreateUse: true, // 是否生成调用文件
     httpPath: '/@/utils/http', // axios的封装类地址
