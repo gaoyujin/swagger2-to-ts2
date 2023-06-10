@@ -114,7 +114,11 @@ export const useQryAdmittanceRatingDetail = async (data: {
 ## 修改历史说明
 
 - 0.1.0 <br/>
-  1、完成rollup的打包配置<br/>
+  1、完成 rollup 的打包配置<br/>
+
+- 0.1.1 <br/>
+  1、修改 API 引用 model 的路劲，在添加服务名称后不匹配问题<br/>
+  2、添加排除路径，设置不生成的接口路径（因为，有时一个服务中，既有 PC 端接口，又有移动端接口，PC 不想生成移动的，移动不想生成 PC 的）<br/>
 
 ## License
 
