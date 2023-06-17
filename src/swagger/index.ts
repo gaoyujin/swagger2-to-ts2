@@ -142,8 +142,9 @@ export class SwaggerToTypescript {
     // }, 100)
 
     // var swaggerUrl = this.swaggerUrl.replace("swagger-ui.html", "v2/api-docs");
-    const urlArr = this.swaggerUrl.split("//");
-    var swaggerUrl = urlArr[0] + "/v2/api-docs";
+    const httpUrl = this.swaggerUrl.split("://");
+    const urlArr = httpUrl[1].split("/");
+    var swaggerUrl = httpUrl[0] + "://" + urlArr[0] + "/v2/api-docs";
     if (this.configData.httpReplace) {
       swaggerUrl = swaggerUrl.replace("https", "http");
     }
