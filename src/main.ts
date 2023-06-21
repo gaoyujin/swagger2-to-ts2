@@ -1,7 +1,6 @@
-import { program }  from 'commander'
+import { program } from 'commander'
 import { helpOptions } from './lib/core/help.js'
 import { createCommands } from './lib/core/create.js'
-
 
 // 定义显示模块的版本号
 program.version(require('../package.json').version)
@@ -14,3 +13,9 @@ createCommands()
 
 // 解析终端指令
 program.parse(process.argv)
+
+// import { SwaggerToTypescript } from './swagger'
+
+// new SwaggerToTypescript('http://rmssjp.sdptest.shengpay.com/doc.html#', () => {
+//   console.log('运行了')
+// })

@@ -1,0 +1,1027 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "rms-schedule-job-platform",
+    "version": "1.0",
+    "title": "rms-schedule-job-platform",
+    "termsOfService": "rms-schedule-job-platform"
+  },
+  "host": "rmssjp.sdptest.shengpay.com",
+  "basePath": "/",
+  "tags": [
+    { "name": "dow-jones-controller", "description": "Dow Jones Controller" },
+    { "name": "hello-controller", "description": "Hello Controller" },
+    { "name": "name-list-controller", "description": "Name List Controller" }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["hello-controller"],
+        "summary": "hello",
+        "operationId": "helloUsingGET",
+        "produces": ["application/json;charset=UTF-8"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "WalletResponse",
+              "$ref": "#/definitions/WalletResponse"
+            }
+          },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/dowjones/findAllByCondition": {
+      "post": {
+        "tags": ["dow-jones-controller"],
+        "summary": "根据条件查询",
+        "operationId": "findAllByConditionUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "DowJones$FindAllByConditionRequest",
+              "$ref": "#/definitions/DowJones$FindAllByConditionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "CommonResponse«DowJones$FindAllByConditionResponse»",
+              "$ref": "#/definitions/CommonResponse«DowJones$FindAllByConditionResponse»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/dowjones/findBaseInfo": {
+      "post": {
+        "tags": ["dow-jones-controller"],
+        "summary": "查询基础信息",
+        "operationId": "findBaseInfoUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "DowJones$FindBaseInfoRequest",
+              "$ref": "#/definitions/DowJones$FindBaseInfoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "CommonResponse«DowJones$FindBaseInfoResponse»",
+              "$ref": "#/definitions/CommonResponse«DowJones$FindBaseInfoResponse»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/dowjones/findReferenceInfo": {
+      "post": {
+        "tags": ["dow-jones-controller"],
+        "summary": "查询名单信息",
+        "operationId": "findReferenceInfoUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "FindReferenceInfoRequest",
+              "$ref": "#/definitions/FindReferenceInfoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "CommonResponse«FindReferenceInfoResponse»",
+              "$ref": "#/definitions/CommonResponse«FindReferenceInfoResponse»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/dowjones/getDetail": {
+      "post": {
+        "tags": ["dow-jones-controller"],
+        "summary": "查询明细",
+        "operationId": "getDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "DowJones$GetDetailRequest",
+              "$ref": "#/definitions/DowJones$GetDetailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "CommonResponse«DowJones$GetDetailResponse»",
+              "$ref": "#/definitions/CommonResponse«DowJones$GetDetailResponse»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/name/list/findAllByCondition": {
+      "post": {
+        "tags": ["name-list-controller"],
+        "summary": "根据条件查询",
+        "operationId": "findAllByConditionUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "FindAllByConditionRequest",
+              "$ref": "#/definitions/FindAllByConditionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "CommonResponse«NameList$FindAllByConditionResponse»",
+              "$ref": "#/definitions/CommonResponse«NameList$FindAllByConditionResponse»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/name/list/findAllTraceRecord": {
+      "post": {
+        "tags": ["name-list-controller"],
+        "summary": "查询回溯记录列表",
+        "operationId": "findAllTraceRecordUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "FindAllTraceRecordRequest",
+              "$ref": "#/definitions/FindAllTraceRecordRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "CommonResponse«FindAllTraceRecordResponse»",
+              "$ref": "#/definitions/CommonResponse«FindAllTraceRecordResponse»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/name/list/findAllTraceRecordDetail": {
+      "post": {
+        "tags": ["name-list-controller"],
+        "summary": "查询回溯记录明细列表",
+        "operationId": "findAllTraceRecordDetailUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "FindAllTraceRecordDetailRequest",
+              "$ref": "#/definitions/FindAllTraceRecordDetailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "CommonResponse«FindAllTraceRecordDetailResponse»",
+              "$ref": "#/definitions/CommonResponse«FindAllTraceRecordDetailResponse»"
+            }
+          },
+          "201": { "description": "Created" },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    },
+    "/clear": {
+      "get": {
+        "tags": ["hello-controller"],
+        "summary": "clear",
+        "operationId": "clearUsingGET",
+        "produces": ["application/json;charset=UTF-8"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "WalletResponse",
+              "$ref": "#/definitions/WalletResponse"
+            }
+          },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "CommonResponse«DowJones$FindAllByConditionResponse»": {
+      "type": "object",
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorCodeDes": { "type": "string" },
+        "item": {
+          "description": "业务对象",
+          "originalRef": "DowJones$FindAllByConditionResponse",
+          "$ref": "#/definitions/DowJones$FindAllByConditionResponse"
+        },
+        "resultCode": { "type": "string" }
+      },
+      "title": "CommonResponse«DowJones$FindAllByConditionResponse»"
+    },
+    "CommonResponse«DowJones$FindBaseInfoResponse»": {
+      "type": "object",
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorCodeDes": { "type": "string" },
+        "item": {
+          "description": "业务对象",
+          "originalRef": "DowJones$FindBaseInfoResponse",
+          "$ref": "#/definitions/DowJones$FindBaseInfoResponse"
+        },
+        "resultCode": { "type": "string" }
+      },
+      "title": "CommonResponse«DowJones$FindBaseInfoResponse»"
+    },
+    "CommonResponse«DowJones$GetDetailResponse»": {
+      "type": "object",
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorCodeDes": { "type": "string" },
+        "item": {
+          "description": "业务对象",
+          "originalRef": "DowJones$GetDetailResponse",
+          "$ref": "#/definitions/DowJones$GetDetailResponse"
+        },
+        "resultCode": { "type": "string" }
+      },
+      "title": "CommonResponse«DowJones$GetDetailResponse»"
+    },
+    "CommonResponse«FindAllTraceRecordDetailResponse»": {
+      "type": "object",
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorCodeDes": { "type": "string" },
+        "item": {
+          "description": "业务对象",
+          "originalRef": "FindAllTraceRecordDetailResponse",
+          "$ref": "#/definitions/FindAllTraceRecordDetailResponse"
+        },
+        "resultCode": { "type": "string" }
+      },
+      "title": "CommonResponse«FindAllTraceRecordDetailResponse»"
+    },
+    "CommonResponse«FindAllTraceRecordResponse»": {
+      "type": "object",
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorCodeDes": { "type": "string" },
+        "item": {
+          "description": "业务对象",
+          "originalRef": "FindAllTraceRecordResponse",
+          "$ref": "#/definitions/FindAllTraceRecordResponse"
+        },
+        "resultCode": { "type": "string" }
+      },
+      "title": "CommonResponse«FindAllTraceRecordResponse»"
+    },
+    "CommonResponse«FindReferenceInfoResponse»": {
+      "type": "object",
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorCodeDes": { "type": "string" },
+        "item": {
+          "description": "业务对象",
+          "originalRef": "FindReferenceInfoResponse",
+          "$ref": "#/definitions/FindReferenceInfoResponse"
+        },
+        "resultCode": { "type": "string" }
+      },
+      "title": "CommonResponse«FindReferenceInfoResponse»"
+    },
+    "CommonResponse«NameList$FindAllByConditionResponse»": {
+      "type": "object",
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorCodeDes": { "type": "string" },
+        "item": {
+          "description": "业务对象",
+          "originalRef": "NameList$FindAllByConditionResponse",
+          "$ref": "#/definitions/NameList$FindAllByConditionResponse"
+        },
+        "resultCode": { "type": "string" }
+      },
+      "title": "CommonResponse«NameList$FindAllByConditionResponse»"
+    },
+    "CountryDto": {
+      "type": "object",
+      "properties": {
+        "countryType": {
+          "type": "string",
+          "description": "代表国家信息是否指人物的居住国或国籍所在国。对于实体来说，它指代相关国家（country ofaffiliation）"
+        },
+        "countryValueList": {
+          "type": "array",
+          "description": "国家值列表",
+          "items": { "type": "string" }
+        }
+      },
+      "title": "CountryDto"
+    },
+    "DescriptionDto": {
+      "type": "object",
+      "properties": {
+        "description1": {
+          "type": "string",
+          "description": "代表该人物或实体在Description 1 类别下的值。"
+        },
+        "description2": {
+          "type": "string",
+          "description": "代表该人物或实体在Description 2 类别下的值。"
+        },
+        "description3": {
+          "type": "string",
+          "description": "代表该人物或实体在Description 3 类别下的值。"
+        }
+      },
+      "title": "DescriptionDto"
+    },
+    "DescriptionReq": {
+      "type": "object",
+      "properties": {
+        "description1": {
+          "type": "string",
+          "description": "代表该人物或实体在Description 1 类别下的值。"
+        },
+        "description2": {
+          "type": "string",
+          "description": "代表该人物或实体在Description 2 类别下的值。"
+        },
+        "description3": {
+          "type": "string",
+          "description": "代表该人物或实体在Description 3 类别下的值。"
+        }
+      },
+      "title": "DescriptionReq"
+    },
+    "DowJones$FindAllByConditionRequest": {
+      "type": "object",
+      "properties": {
+        "country": { "type": "string", "description": "国家" },
+        "description": {
+          "description": "描述",
+          "originalRef": "DescriptionReq",
+          "$ref": "#/definitions/DescriptionReq"
+        },
+        "endTime": { "type": "string", "description": "结束时间" },
+        "id": { "type": "string", "description": "道琼斯id" },
+        "idNumber": { "type": "string", "description": "证件号" },
+        "name": {
+          "description": "名称",
+          "originalRef": "NameReq",
+          "$ref": "#/definitions/NameReq"
+        },
+        "pageNum": { "type": "integer", "format": "int32" },
+        "pageSize": { "type": "integer", "format": "int32" },
+        "referenceIdList": {
+          "type": "array",
+          "description": "名单列表",
+          "items": { "type": "string" }
+        },
+        "startTime": {
+          "type": "string",
+          "description": "开始时间（默认当前年月日）"
+        },
+        "type": {
+          "type": "string",
+          "description": "类型 Entity-实体 Person-个人"
+        }
+      },
+      "title": "DowJones$FindAllByConditionRequest"
+    },
+    "DowJones$FindAllByConditionResponse": {
+      "type": "object",
+      "properties": {
+        "summaryList": {
+          "description": "道琼斯概要列表",
+          "originalRef": "Page«DowJonesSummaryDto»",
+          "$ref": "#/definitions/Page«DowJonesSummaryDto»"
+        }
+      },
+      "title": "DowJones$FindAllByConditionResponse"
+    },
+    "DowJones$FindBaseInfoRequest": {
+      "type": "object",
+      "title": "DowJones$FindBaseInfoRequest"
+    },
+    "DowJones$FindBaseInfoResponse": {
+      "type": "object",
+      "properties": {
+        "countryList": {
+          "type": "array",
+          "description": "国家列表",
+          "items": {
+            "originalRef": "KVDataDto",
+            "$ref": "#/definitions/KVDataDto"
+          }
+        },
+        "description1": {
+          "type": "array",
+          "description": "描述1列表",
+          "items": {
+            "originalRef": "KVDataDto",
+            "$ref": "#/definitions/KVDataDto"
+          }
+        },
+        "description2": {
+          "type": "array",
+          "description": "描述2列表",
+          "items": {
+            "originalRef": "KVDataDto",
+            "$ref": "#/definitions/KVDataDto"
+          }
+        },
+        "description3": {
+          "type": "array",
+          "description": "描述3列表",
+          "items": {
+            "originalRef": "KVDataDto",
+            "$ref": "#/definitions/KVDataDto"
+          }
+        },
+        "typeList": {
+          "type": "array",
+          "description": "类型列表",
+          "items": {
+            "originalRef": "KVDataDto",
+            "$ref": "#/definitions/KVDataDto"
+          }
+        }
+      },
+      "title": "DowJones$FindBaseInfoResponse"
+    },
+    "DowJones$GetDetailRequest": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "道琼斯id" },
+        "type": {
+          "type": "string",
+          "description": "类型 Entity-实体 Person-个人"
+        }
+      },
+      "title": "DowJones$GetDetailRequest"
+    },
+    "DowJones$GetDetailResponse": {
+      "type": "object",
+      "properties": { "data": { "type": "object", "description": "数据" } },
+      "title": "DowJones$GetDetailResponse"
+    },
+    "DowJonesSummaryDto": {
+      "type": "object",
+      "properties": {
+        "countryList": {
+          "type": "array",
+          "description": "国家列表",
+          "items": {
+            "originalRef": "CountryDto",
+            "$ref": "#/definitions/CountryDto"
+          }
+        },
+        "createTime": { "type": "string", "description": "创建时间" },
+        "descriptionList": {
+          "type": "array",
+          "description": "描述列表",
+          "items": {
+            "originalRef": "DescriptionDto",
+            "$ref": "#/definitions/DescriptionDto"
+          }
+        },
+        "id": { "type": "string", "description": "道琼斯id" },
+        "idNumberList": {
+          "type": "array",
+          "description": "证件列表",
+          "items": {
+            "originalRef": "IdNumberDto",
+            "$ref": "#/definitions/IdNumberDto"
+          }
+        },
+        "nameList": {
+          "type": "array",
+          "description": "名称列表",
+          "items": { "originalRef": "NameDto", "$ref": "#/definitions/NameDto" }
+        },
+        "referenceIdList": {
+          "type": "array",
+          "description": "名单列表",
+          "items": { "type": "string" }
+        },
+        "type": {
+          "type": "string",
+          "description": "类型 Entity-实体 Person-个人"
+        }
+      },
+      "title": "DowJonesSummaryDto"
+    },
+    "FindAllByConditionRequest": {
+      "type": "object",
+      "required": ["nameListType"],
+      "properties": {
+        "conditions": {
+          "type": "array",
+          "description": "条件列表",
+          "items": {
+            "originalRef": "NameListConditionDto",
+            "$ref": "#/definitions/NameListConditionDto"
+          }
+        },
+        "nameListType": { "type": "string", "description": "名单类型" }
+      },
+      "title": "FindAllByConditionRequest"
+    },
+    "FindAllTraceRecordDetailRequest": {
+      "type": "object",
+      "properties": {
+        "dowJonesId": { "type": "string", "description": "道琼斯id" },
+        "id": { "type": "string", "description": "id" },
+        "idNumber": { "type": "string", "description": "证件号（原文或hash）" },
+        "merchantNo": { "type": "string", "description": "商户号" },
+        "name": { "type": "string", "description": "名称" },
+        "pageNum": { "type": "integer", "format": "int32" },
+        "pageSize": { "type": "integer", "format": "int32" },
+        "traceRecordId": { "type": "string", "description": "traceRecordId" }
+      },
+      "title": "FindAllTraceRecordDetailRequest"
+    },
+    "FindAllTraceRecordDetailResponse": {
+      "type": "object",
+      "properties": {
+        "traceRecordDetailList": {
+          "description": "回溯记录明细列表",
+          "originalRef": "Page«TraceRecordDetailDto»",
+          "$ref": "#/definitions/Page«TraceRecordDetailDto»"
+        }
+      },
+      "title": "FindAllTraceRecordDetailResponse"
+    },
+    "FindAllTraceRecordRequest": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "id" },
+        "nameListType": { "type": "string", "description": "名单类型 OFAC" },
+        "pageNum": { "type": "integer", "format": "int32" },
+        "pageSize": { "type": "integer", "format": "int32" },
+        "traceNo": { "type": "string", "description": "traceNo" }
+      },
+      "title": "FindAllTraceRecordRequest"
+    },
+    "FindAllTraceRecordResponse": {
+      "type": "object",
+      "properties": {
+        "traceRecordList": {
+          "description": "回溯记录列表",
+          "originalRef": "Page«TraceRecordDto»",
+          "$ref": "#/definitions/Page«TraceRecordDto»"
+        }
+      },
+      "title": "FindAllTraceRecordResponse"
+    },
+    "FindReferenceInfoRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "代表与一项制裁/官方名单关联的代码值。"
+        },
+        "description2Id": {
+          "type": "string",
+          "description": "代表制裁/官方名单的档案类型中Description2 ID的分类"
+        },
+        "name": {
+          "type": "string",
+          "description": "代表制裁/官方名单的名称。"
+        },
+        "pageNum": { "type": "integer", "format": "int32" },
+        "pageSize": { "type": "integer", "format": "int32" },
+        "status": {
+          "type": "string",
+          "description": "代表名单的状态：当前有效或已停止更新。 Current Suspended"
+        }
+      },
+      "title": "FindReferenceInfoRequest"
+    },
+    "FindReferenceInfoResponse": {
+      "type": "object",
+      "properties": {
+        "referenceList": {
+          "description": "名单列表",
+          "originalRef": "Page«ReferenceDto»",
+          "$ref": "#/definitions/Page«ReferenceDto»"
+        }
+      },
+      "title": "FindReferenceInfoResponse"
+    },
+    "IdDto": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "idHash": { "type": "string" }
+      },
+      "title": "IdDto"
+    },
+    "IdNumberDto": {
+      "type": "object",
+      "properties": {
+        "idType": { "type": "string", "description": "id类型" },
+        "idValueList": {
+          "type": "array",
+          "description": "id值列表",
+          "items": { "type": "string" }
+        }
+      },
+      "title": "IdNumberDto"
+    },
+    "KVDataDto": {
+      "type": "object",
+      "properties": {
+        "data": { "type": "string", "description": "数据" },
+        "id": { "type": "string", "description": "id" },
+        "pid": { "type": "string", "description": "父id （不一定有）" }
+      },
+      "title": "KVDataDto"
+    },
+    "NameDto": {
+      "type": "object",
+      "properties": {
+        "nameType": { "type": "string", "description": "名字类型。" },
+        "nameValueList": {
+          "type": "array",
+          "description": "名字值列表",
+          "items": {
+            "originalRef": "NameValueDto",
+            "$ref": "#/definitions/NameValueDto"
+          }
+        }
+      },
+      "title": "NameDto"
+    },
+    "NameList$FindAllByConditionResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "description": "名单结果列表",
+          "items": {
+            "originalRef": "NameListResultDto",
+            "$ref": "#/definitions/NameListResultDto"
+          }
+        }
+      },
+      "title": "NameList$FindAllByConditionResponse"
+    },
+    "NameListConditionDto": {
+      "type": "object",
+      "required": ["type", "value"],
+      "properties": {
+        "type": { "type": "string", "description": "类型" },
+        "value": { "type": "string", "description": "值" }
+      },
+      "title": "NameListConditionDto"
+    },
+    "NameListResultDto": {
+      "type": "object",
+      "properties": { "id": { "type": "string", "description": "id" } },
+      "title": "NameListResultDto"
+    },
+    "NameReq": {
+      "type": "object",
+      "properties": {
+        "entityName": {
+          "type": "string",
+          "description": "代表该实体名称 前缀（如果提供）及名字的合称"
+        },
+        "firstName": { "type": "string", "description": "代表该人物的名字。" },
+        "maidenName": {
+          "type": "string",
+          "description": "代表该人物的婚前姓氏"
+        },
+        "middleName": {
+          "type": "string",
+          "description": "代表该人物的中间名。"
+        },
+        "originalScriptName": {
+          "type": "string",
+          "description": "代表该人物或实体的原文名称。"
+        },
+        "surname": { "type": "string", "description": "代表该人物的姓氏。" }
+      },
+      "title": "NameReq"
+    },
+    "NameValueDto": {
+      "type": "object",
+      "properties": {
+        "entityName": {
+          "type": "string",
+          "description": "代表该实体名称 前缀（如果提供）及名字的合称"
+        },
+        "firstName": { "type": "string", "description": "代表该人物的名字。" },
+        "maidenName": {
+          "type": "string",
+          "description": "代表该人物的婚前姓氏"
+        },
+        "middleName": {
+          "type": "string",
+          "description": "代表该人物的中间名。"
+        },
+        "originalScriptName": {
+          "type": "string",
+          "description": "代表该人物或实体的原文名称。"
+        },
+        "surname": { "type": "string", "description": "代表该人物的姓氏。" }
+      },
+      "title": "NameValueDto"
+    },
+    "Pageable": {
+      "type": "object",
+      "properties": {
+        "offset": { "type": "integer", "format": "int64" },
+        "pageNumber": { "type": "integer", "format": "int32" },
+        "pageSize": { "type": "integer", "format": "int32" },
+        "paged": { "type": "boolean" },
+        "sort": { "originalRef": "Sort", "$ref": "#/definitions/Sort" },
+        "unpaged": { "type": "boolean" }
+      },
+      "title": "Pageable"
+    },
+    "Page«DowJonesSummaryDto»": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "originalRef": "DowJonesSummaryDto",
+            "$ref": "#/definitions/DowJonesSummaryDto"
+          }
+        },
+        "empty": { "type": "boolean" },
+        "first": { "type": "boolean" },
+        "last": { "type": "boolean" },
+        "number": { "type": "integer", "format": "int32" },
+        "numberOfElements": { "type": "integer", "format": "int32" },
+        "pageable": {
+          "originalRef": "Pageable",
+          "$ref": "#/definitions/Pageable"
+        },
+        "size": { "type": "integer", "format": "int32" },
+        "sort": { "originalRef": "Sort", "$ref": "#/definitions/Sort" },
+        "totalElements": { "type": "integer", "format": "int64" },
+        "totalPages": { "type": "integer", "format": "int32" }
+      },
+      "title": "Page«DowJonesSummaryDto»"
+    },
+    "Page«ReferenceDto»": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "originalRef": "ReferenceDto",
+            "$ref": "#/definitions/ReferenceDto"
+          }
+        },
+        "empty": { "type": "boolean" },
+        "first": { "type": "boolean" },
+        "last": { "type": "boolean" },
+        "number": { "type": "integer", "format": "int32" },
+        "numberOfElements": { "type": "integer", "format": "int32" },
+        "pageable": {
+          "originalRef": "Pageable",
+          "$ref": "#/definitions/Pageable"
+        },
+        "size": { "type": "integer", "format": "int32" },
+        "sort": { "originalRef": "Sort", "$ref": "#/definitions/Sort" },
+        "totalElements": { "type": "integer", "format": "int64" },
+        "totalPages": { "type": "integer", "format": "int32" }
+      },
+      "title": "Page«ReferenceDto»"
+    },
+    "Page«TraceRecordDetailDto»": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "originalRef": "TraceRecordDetailDto",
+            "$ref": "#/definitions/TraceRecordDetailDto"
+          }
+        },
+        "empty": { "type": "boolean" },
+        "first": { "type": "boolean" },
+        "last": { "type": "boolean" },
+        "number": { "type": "integer", "format": "int32" },
+        "numberOfElements": { "type": "integer", "format": "int32" },
+        "pageable": {
+          "originalRef": "Pageable",
+          "$ref": "#/definitions/Pageable"
+        },
+        "size": { "type": "integer", "format": "int32" },
+        "sort": { "originalRef": "Sort", "$ref": "#/definitions/Sort" },
+        "totalElements": { "type": "integer", "format": "int64" },
+        "totalPages": { "type": "integer", "format": "int32" }
+      },
+      "title": "Page«TraceRecordDetailDto»"
+    },
+    "Page«TraceRecordDto»": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "array",
+          "items": {
+            "originalRef": "TraceRecordDto",
+            "$ref": "#/definitions/TraceRecordDto"
+          }
+        },
+        "empty": { "type": "boolean" },
+        "first": { "type": "boolean" },
+        "last": { "type": "boolean" },
+        "number": { "type": "integer", "format": "int32" },
+        "numberOfElements": { "type": "integer", "format": "int32" },
+        "pageable": {
+          "originalRef": "Pageable",
+          "$ref": "#/definitions/Pageable"
+        },
+        "size": { "type": "integer", "format": "int32" },
+        "sort": { "originalRef": "Sort", "$ref": "#/definitions/Sort" },
+        "totalElements": { "type": "integer", "format": "int64" },
+        "totalPages": { "type": "integer", "format": "int32" }
+      },
+      "title": "Page«TraceRecordDto»"
+    },
+    "ReferenceDto": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "代表与一项制裁/官方名单关联的代码值。"
+        },
+        "createTime": { "type": "string", "description": "创建时间" },
+        "description2Id": {
+          "type": "string",
+          "description": "代表制裁/官方名单的档案类型中Description2 ID的分类"
+        },
+        "name": {
+          "type": "string",
+          "description": "代表制裁/官方名单的名称。"
+        },
+        "status": {
+          "type": "string",
+          "description": "代表名单的状态：当前有效或已停止更新。"
+        }
+      },
+      "title": "ReferenceDto"
+    },
+    "Sort": {
+      "type": "object",
+      "properties": {
+        "empty": { "type": "boolean" },
+        "sorted": { "type": "boolean" },
+        "unsorted": { "type": "boolean" }
+      },
+      "title": "Sort"
+    },
+    "TraceRecordDetailDto": {
+      "type": "object",
+      "properties": {
+        "createTime": { "type": "string" },
+        "data": { "type": "object", "description": "原始数据快照" },
+        "id": { "type": "string" },
+        "result": {
+          "description": "结果",
+          "originalRef": "TraceRecordResultDto",
+          "$ref": "#/definitions/TraceRecordResultDto"
+        },
+        "traceRecordId": { "type": "string" },
+        "type": { "type": "string", "description": "名单类型 OFAC" }
+      },
+      "title": "TraceRecordDetailDto"
+    },
+    "TraceRecordDto": {
+      "type": "object",
+      "properties": {
+        "createTime": { "type": "string" },
+        "id": { "type": "string" },
+        "nameListType": { "type": "string", "description": "名单类型 OFAC" },
+        "traceNo": { "type": "string" }
+      },
+      "title": "TraceRecordDto"
+    },
+    "TraceRecordResultDto": {
+      "type": "object",
+      "properties": {
+        "idSet": {
+          "type": "array",
+          "items": { "originalRef": "IdDto", "$ref": "#/definitions/IdDto" }
+        },
+        "merchantNoSet": { "type": "array", "items": { "type": "string" } },
+        "nameSet": { "type": "array", "items": { "type": "string" } }
+      },
+      "title": "TraceRecordResultDto"
+    },
+    "WalletResponse": {
+      "type": "object",
+      "properties": {
+        "errorCode": { "type": "string" },
+        "errorCodeDes": { "type": "string" },
+        "resultCode": { "type": "string" }
+      },
+      "title": "WalletResponse"
+    }
+  }
+}

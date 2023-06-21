@@ -174,28 +174,31 @@ export class SwaggerToModel {
             // 添加模型生成标识，防止重复
             this.modelNameArr[modelKey + '-model'].push(definitions.title)
             const fileTemps = tempData
-            const keys = Object.keys(definitions.properties)
-            const results = this.convertProperty(
-              definitions.properties,
-              modelKey,
-              summary
-            )
 
-            // 处理子项的属性
-            fileContent = this.processSubProperty(results, fileContent)
-            definitions.summary = summary
-            const strHtml = ejs.render(fileTemps, {
-              data: definitions,
-              descs: results,
-              keys: keys,
-            })
+            if (definitions.properties) {
+              const keys = Object.keys(definitions.properties)
+              const results = this.convertProperty(
+                definitions.properties,
+                modelKey,
+                summary
+              )
 
-            if (fileContent) {
-              fileContent = fileContent + '\r\n'
-            }
+              // 处理子项的属性
+              fileContent = this.processSubProperty(results, fileContent)
+              definitions.summary = summary
+              const strHtml = ejs.render(fileTemps, {
+                data: definitions,
+                descs: results,
+                keys: keys,
+              })
 
-            if (strHtml) {
-              fileContent = fileContent + strHtml
+              if (fileContent) {
+                fileContent = fileContent + '\r\n'
+              }
+
+              if (strHtml) {
+                fileContent = fileContent + strHtml
+              }
             }
           }
         })

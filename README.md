@@ -32,7 +32,7 @@ stt2 url http://XXX/swagger-ui.html // 把url对应的swagger生成相关的mode
 
 ```javascript
 // -- model样例
-import { itemResult } from "/@/models/httpResult";
+import { itemResult } from '/@/models/httpResult'
 
 // 查询准入评级明细
 export type AdmittanceRatingDto = {
@@ -44,16 +44,16 @@ export type AdmittanceRatingDto = {
   scopes: object, // 适用范围
   status: string, // 可用状态
   tags: Array<string>, // 标签
-};
+}
 export type resultAdmittanceRatingDtoInfo = Promise<
   itemResult<AdmittanceRatingDto>
->;
+>
 
 // -- API样例
-import { resultAdmittanceRatingDtoIte } from "/@/entitys/admittance";
-import { http } from "/@/utils/http";
+import { resultAdmittanceRatingDtoIte } from '/@/entitys/admittance'
+import { http } from '/@/utils/http'
 
-export const DOMAIN = "";
+export const DOMAIN = ''
 
 /**
  * 查询准入评级明细
@@ -64,20 +64,20 @@ export const qryAdmittanceRatingDetail = (data: {
   admittanceId: string,
 }): resultAdmittanceRatingDtoItem => {
   return http.request(
-    "get",
+    'get',
     DOMAIN +
-      "/admin/api/admittance/rating/detail" +
-      "?admittanceId=" +
+      '/admin/api/admittance/rating/detail' +
+      '?admittanceId=' +
       data.admittanceId,
     {}
-  );
-};
+  )
+}
 
 // -- apiHooks样例
 
-import { resultAdmittanceRatingDtoItem } from "/@/entitys/admittance";
-import { qryAdmittanceRatingDetail } from "/@/api/admittance";
-import { errorMessage } from "/@/utils/message/index";
+import { resultAdmittanceRatingDtoItem } from '/@/entitys/admittance'
+import { qryAdmittanceRatingDetail } from '/@/api/admittance'
+import { errorMessage } from '/@/utils/message/index'
 
 /**
  * 查询准入评级明细
@@ -88,18 +88,18 @@ export const useQryAdmittanceRatingDetail = async (data: {
   admittanceId: string,
 }): Promise<resultAdmittanceRatingDtoItem> => {
   try {
-    const result = await qryAdmittanceRatingDetail(data);
-    if (result.resultCode.toUpperCase() != "SUCCESS") {
-      errorMessage("查询准入评级明细失败，原因：" + result.errorCodeDes);
-      return null;
+    const result = await qryAdmittanceRatingDetail(data)
+    if (result.resultCode.toUpperCase() != 'SUCCESS') {
+      errorMessage('查询准入评级明细失败，原因：' + result.errorCodeDes)
+      return null
     } else {
-      return result;
+      return result
     }
   } catch (e) {
-    errorMessage("查询准入评级明细失败，信息：" + e.message);
-    return null;
+    errorMessage('查询准入评级明细失败，信息：' + e.message)
+    return null
   }
-};
+}
 ```
 
 说明
@@ -122,6 +122,9 @@ export const useQryAdmittanceRatingDetail = async (data: {
 
 - 0.1.3 <br/>
   1、适配多个模式的 swagger 工具<br/>
+
+- 0.1.4 <br/>
+  1、修改没有属性的实体报错问题<br/>
 
 ## License
 
