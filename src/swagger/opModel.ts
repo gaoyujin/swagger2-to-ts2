@@ -517,22 +517,24 @@ export class SwaggerToModel {
             // 添加模型生成标识，防止重复
             this.modelNameArr[modelKey + '-model'].push(lastName)
             const fileTemps = tempData
-            const keys = Object.keys(definitions!.properties)
-            const results = this.convertProperty(
-              definitions!.properties,
-              modelKey,
-              summary
-            )
-            definitions!.summary = summary
-            let strHtml = ejs.render(fileTemps, {
-              data: definitions,
-              descs: results,
-              keys: keys,
-            })
+            if (definitions && definitions!.properties) {
+              const keys = Object.keys(definitions!.properties)
+              const results = this.convertProperty(
+                definitions!.properties,
+                modelKey,
+                summary
+              )
+              definitions!.summary = summary
+              let strHtml = ejs.render(fileTemps, {
+                data: definitions,
+                descs: results,
+                keys: keys,
+              })
 
-            // 处理子项的属性
-            strHtml = this.processSubProperty(results, strHtml)
-            desc.subProperty = strHtml
+              // 处理子项的属性
+              strHtml = this.processSubProperty(results, strHtml)
+              desc.subProperty = strHtml
+            }
           }
         }
       } else if (propertyType === 'object') {
@@ -550,22 +552,25 @@ export class SwaggerToModel {
           // 添加模型生成标识，防止重复
           this.modelNameArr[modelKey + '-model'].push(lastName)
           const fileTemps = tempData
-          const keys = Object.keys(definitions!.properties)
-          const results = this.convertProperty(
-            definitions!.properties,
-            modelKey,
-            summary
-          )
-          definitions!.summary = summary
-          let strHtml = ejs.render(fileTemps, {
-            data: definitions,
-            descs: results,
-            keys: keys,
-          })
 
-          // 处理子项的属性
-          strHtml = this.processSubProperty(results, strHtml)
-          desc.subProperty = strHtml
+          if (definitions && definitions!.properties) {
+            const keys = Object.keys(definitions!.properties)
+            const results = this.convertProperty(
+              definitions!.properties,
+              modelKey,
+              summary
+            )
+            definitions!.summary = summary
+            let strHtml = ejs.render(fileTemps, {
+              data: definitions,
+              descs: results,
+              keys: keys,
+            })
+
+            // 处理子项的属性
+            strHtml = this.processSubProperty(results, strHtml)
+            desc.subProperty = strHtml
+          }
         }
       }
 
