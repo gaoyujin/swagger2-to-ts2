@@ -126,6 +126,9 @@ export const useQryAdmittanceRatingDetail = async (data: {
 - 0.1.4 <br/>
   1、修改没有属性的实体报错问题<br/>
 
+- 0.1.5 <br/>
+  1、实体没有属性导致的报错问题修改<br/>
+
 ## License
 
 Apache-2.0 © [gyj]()
