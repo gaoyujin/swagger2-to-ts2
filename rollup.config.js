@@ -24,7 +24,7 @@ export default [
       copy({
         targets: [{ src: 'templates', dest: 'dist' }],
       }),
-      terser()
+      terser(),
     ],
   },
   // {

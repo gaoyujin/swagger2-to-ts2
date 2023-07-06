@@ -29,53 +29,95 @@ export class SwaggerDataToFile {
     if (this.configData.fileMode === 'info') {
     } else {
       Object.keys(this.swaggerData.paths).forEach((key) => {
-        const exclude = this.checkExclude(key)
-        // 未被排除
-        if (!exclude) {
-          const className = this.checkPaths(key)
-          if (className) {
-            if (!pathArr[className]) {
-              pathArr[className] = getEmptyFileDesc()
-            }
-            pathArr[className].className = className
-            pathArr[className].apiPaths.push(key)
-            if (!pathArr[className].apiRefs[key]) {
-              pathArr[className].apiRefs[key] = getEmptyApiRefInfo()
-            }
-            pathArr[className].apiRefs[key].orignInfo =
-              this.swaggerData.paths[key]
-
-            pathArr[className].apiRefs[key].parameters = this.setParameters(
-              this.swaggerData.paths[key]
-            )
-
-            pathArr[className].apiRefs[key].parametersOrign = this.swaggerData
-              .paths[key].post
-              ? this.swaggerData.paths[key].post?.parameters
-              : this.swaggerData.paths[key].get
-              ? this.swaggerData.paths[key].get?.parameters
-              : undefined
-
-            pathArr[className].apiRefs[key].responses = this.swaggerData.paths[
-              key
-            ].post
-              ? this.swaggerData.paths[key].post?.responses[200].schema.$ref
-              : this.swaggerData.paths[key].get
-              ? this.swaggerData.paths[key].get?.responses[200].schema.$ref
-              : undefined
-
-            pathArr[className].apiRefs[key].responsesOrign = this.swaggerData
-              .paths[key].post
-              ? this.swaggerData.paths[key].post?.responses
-              : this.swaggerData.paths[key].get
-              ? this.swaggerData.paths[key].get?.responses
-              : undefined
+        if (
+          this.configData.onlyPath &&
+          this.configData.onlyPath.length > 0 &&
+          this.configData.onlyPath[0]
+        ) {
+          // 只生成某个路径
+          const only = this.checkOnlyPath(key)
+          if (only) {
+            this.setClassInfo(pathArr, key)
+          }
+        } else {
+          const exclude = this.checkExclude(key)
+          // 未被排除
+          if (!exclude) {
+            this.setClassInfo(pathArr, key)
           }
         }
       })
     }
 
     return pathArr
+  }
+
+  // 实体映射
+  setClassInfo(pathArr: Record<string, FileDesc>, key: string) {
+    const className = this.checkPaths(key)
+    if (className) {
+      if (!pathArr[className]) {
+        pathArr[className] = getEmptyFileDesc()
+      }
+      pathArr[className].className = className
+      pathArr[className].apiPaths.push(key)
+
+      if (!pathArr[className].apiRefs[key]) {
+        pathArr[className].apiRefs[key] = getEmptyApiRefInfo()
+      }
+      pathArr[className].apiRefs[key].orignInfo = this.swaggerData.paths[key]
+
+      pathArr[className].apiRefs[key].parameters = this.setParameters(
+        this.swaggerData.paths[key]
+      )
+
+      pathArr[className].apiRefs[key].parametersOrign = undefined
+      if (
+        this.swaggerData.paths[key].post &&
+        this.swaggerData.paths[key].post?.parameters
+      ) {
+        pathArr[className].apiRefs[key].parametersOrign =
+          this.swaggerData.paths[key].post?.parameters
+      } else if (
+        this.swaggerData.paths[key].get &&
+        this.swaggerData.paths[key].get?.parameters
+      ) {
+        pathArr[className].apiRefs[key].parametersOrign =
+          this.swaggerData.paths[key].get?.parameters
+      }
+
+      pathArr[className].apiRefs[key].responses = undefined
+      if (
+        this.swaggerData.paths[key].post &&
+        this.swaggerData.paths[key].post?.responses[200] &&
+        this.swaggerData.paths[key].post?.responses[200].schema
+      ) {
+        pathArr[className].apiRefs[key].responses =
+          this.swaggerData.paths[key].post?.responses[200].schema.$ref
+      } else if (
+        this.swaggerData.paths[key].get &&
+        this.swaggerData.paths[key].get?.responses[200] &&
+        this.swaggerData.paths[key].get?.responses[200].schema
+      ) {
+        pathArr[className].apiRefs[key].responses =
+          this.swaggerData.paths[key].get?.responses[200].schema.$ref
+      }
+
+      pathArr[className].apiRefs[key].responsesOrign = undefined
+      if (
+        this.swaggerData.paths[key].post &&
+        this.swaggerData.paths[key].post?.responses
+      ) {
+        pathArr[className].apiRefs[key].responsesOrign =
+          this.swaggerData.paths[key].post?.responses
+      } else if (
+        this.swaggerData.paths[key].get &&
+        this.swaggerData.paths[key].get?.responses
+      ) {
+        pathArr[className].apiRefs[key].responsesOrign =
+          this.swaggerData.paths[key].get?.responses
+      }
+    }
   }
 
   // 设置 parameters
@@ -97,6 +139,22 @@ export class SwaggerDataToFile {
       }
     }
     return resultArr
+  }
+
+  // 只生成某个路径
+  checkOnlyPath(path: string) {
+    let result = false
+    if (!path || !this.configData.onlyPath) {
+      return result
+    }
+
+    this.configData.onlyPath.forEach((route) => {
+      if (route && path.startsWith(route)) {
+        result = true
+      }
+    })
+
+    return result
   }
 
   // 判断是否被排除

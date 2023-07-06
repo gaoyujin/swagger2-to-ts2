@@ -19,3 +19,9 @@ program.parse(process.argv)
 // new SwaggerToTypescript('http://rmseventplatform.sdptest.shengpay.com/doc.html#', () => {
 //   console.log('运行了')
 // })
+
+// import { SwaggerToTypescript } from './swagger'
+
+// new SwaggerToTypescript('http://10.241.81.38:8085/swagger-ui.html#', () => {
+//   console.log('运行了')
+// })

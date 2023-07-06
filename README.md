@@ -132,6 +132,10 @@ export const useQryAdmittanceRatingDetail = async (data: {
 - 0.1.6 <br/>
   1、hoooks 中的无用代码删除<br/>
 
+- 0.1.7 <br/>
+  1、修改接口的 responses 没有绑定返回对象的问题<br/>
+  2、添加配置属性【onlyPath】，只生成某个路径，这个跟【excludeRoute】属性是互斥的<br/>
+
 ## License
 
 Apache-2.0 © [gyj]()
