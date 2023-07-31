@@ -2,9 +2,9 @@ export declare type ConfigModel = {
   isCreate: boolean // 是否创建
   dir: string // 模型添加的目录，相对项目src来说
   isCover: boolean // 是否覆盖
-  commonResponse: string[] // 通用返回的模型
-  pageResponse: string[] // 分页返回模型
-  listResponse: string[] // 列表返回模型
+  commonResponse: string // 通用返回的模型
+  pageResponse: string // 分页返回模型
+  listResponse: string // 列表返回模型
   utilsPath: string //
 }
 

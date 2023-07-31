@@ -28,7 +28,7 @@ stt2 url http://XXX/swagger-ui.html // 把url对应的swagger生成相关的mode
 - 生成的文件是 ts 格式的。（目前支持 ts 格式，所以配置文件中【fileType】修改无效）
 - 所有文件会根据 swagger 提供的说明描述，添加相关描述
 
-## 生成代码 demo：
+## 生成代码 demo
 
 ```javascript
 // -- model样例
@@ -135,6 +135,11 @@ export const useQryAdmittanceRatingDetail = async (data: {
 - 0.1.7 <br/>
   1、修改接口的 responses 没有绑定返回对象的问题<br/>
   2、添加配置属性【onlyPath】，只生成某个路径，这个跟【excludeRoute】属性是互斥的<br/>
+
+  - 0.1.7 -> 0.1.9<br/>
+    1、完善配置文件 swagger2ts.json 中的四属性：commonResponse、pageResponse、listResponse、utilsPath；utilsPath 描述的是接口返回对象的通用描述文件地址；commonResponse、pageResponse、listResponse 三个描述的是三种类型的返回结构，三个文件在 utilsPath 描述的文件中。<br/>
+    2、修改在同一个文件中，实体对象存在重复的问题<br/>
+    3、修改 api、apiHook 与 models 之间的引用错误问题<br/>
 
 ## License
 

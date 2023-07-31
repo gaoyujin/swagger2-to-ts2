@@ -222,32 +222,32 @@ export class SwaggerToApi {
           let importDesc = responseDesc;
 
           // 有嵌套
-          if (responseDesc.includes("«") && responseDesc.includes("»")) {
-            const preDesc = responseDesc.split("«");
-            importDesc = preDesc[0];
-            const nextDesc = preDesc[1].split("»");
-            lastName = nextDesc[0];
+          if (responseDesc.includes('«') && responseDesc.includes('»')) {
+            const preDesc = responseDesc.split('«')
+            importDesc = preDesc[preDesc.length - 2]
+            const nextDesc = preDesc[preDesc.length - 1].split('»')
+            lastName = nextDesc[0]
           }
 
-          // 那种类型的嵌套
-          if (importDesc) {
-            if (
-              this.configData.models?.commonResponse &&
-              this.configData.models?.commonResponse.includes(importDesc)
-            ) {
-              importDesc = "commonResponse";
-            } else if (
-              this.configData.models?.pageResponse &&
-              this.configData.models?.pageResponse.includes(importDesc)
-            ) {
-              importDesc = "pageResponse";
-            } else if (
-              this.configData.models?.listResponse &&
-              this.configData.models?.listResponse.includes(importDesc)
-            ) {
-              importDesc = "listResponse";
-            }
-          }
+          // // 那种类型的嵌套
+          // if (importDesc) {
+          //   if (
+          //     this.configData.models?.commonResponse &&
+          //     this.configData.models?.commonResponse.includes(importDesc)
+          //   ) {
+          //     importDesc = "commonResponse";
+          //   } else if (
+          //     this.configData.models?.pageResponse &&
+          //     this.configData.models?.pageResponse.includes(importDesc)
+          //   ) {
+          //     importDesc = "pageResponse";
+          //   } else if (
+          //     this.configData.models?.listResponse &&
+          //     this.configData.models?.listResponse.includes(importDesc)
+          //   ) {
+          //     importDesc = "listResponse";
+          //   }
+          // }
 
           // 获取返回类型
           responses = this.setApiModel(importDesc, lastName);
@@ -312,27 +312,30 @@ export class SwaggerToApi {
   // 添加Api调用的对象信息
   setApiModel(importDesc: string, lastName: string) {
     let strHtml = "";
-    switch (importDesc) {
-      case "commonResponse":
-        if (lastName != "object" && lastName != "string") {
-          strHtml = "result" + lastName + "Item";
-        } else {
-          strHtml = "resultHttp";
-        }
-        break;
-      case "PageResponse":
-        strHtml = "result" + lastName + "Page";
-        break;
-      case "ListResponse":
-        strHtml = "result" + lastName + "List";
-        break;
-      default:
-        if (lastName == "object" || lastName == "string") {
-          strHtml = "resultHttp";
-        } else {
-          strHtml = "result" + lastName + "Item";
-        }
-        break;
+    if (lastName.toUpperCase() != 'object'.toUpperCase() && lastName.toUpperCase() != 'string'.toUpperCase()) {
+      switch (importDesc.toUpperCase()) {
+        case "commonResponse".toUpperCase():
+          strHtml = 'result' + lastName + 'Info'
+          break;
+        case 'PageResponse'.toUpperCase():
+          strHtml = 'result' + lastName + 'Page'
+          break;
+        case 'List'.toUpperCase():
+        case "ListResponse".toUpperCase():
+          strHtml = 'result' + lastName + 'List'
+          break;
+        default:
+          break;
+      }
+    } else {
+
+      if (lastName.includes('object')) {
+        strHtml = 'commonObjectResopense'
+      }
+
+      if (lastName.includes('string')) {
+        strHtml = 'commonStringResopense'
+      }
     }
 
     return strHtml;

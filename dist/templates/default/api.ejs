@@ -6,7 +6,7 @@
  */
 export const <%=data.title %> = (data: <%=data.parData %>, config?: any): <%=data.responses %> => {
   return http.request("<%=data.method %>", DOMAIN + "<%=data.url %>"<% if(Object.keys(data.queryDesc).length>0) {%> <% for (let key of Object.keys(data.queryDesc)) { %> 
-    + "<%=key %>=" + <%=data.queryDesc[key] %><%} %><%}%>,
+    + "<%-key %>=" + <%=data.queryDesc[key] %><%} %><%}%>,
     {<% if(data.method != 'get') {%>data, ...config <%}%>}
   );
 };

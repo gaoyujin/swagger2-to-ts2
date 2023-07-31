@@ -20,9 +20,9 @@ const defaultConfig: ConfigInfo = {
     isCreate: true, // 是否创建
     dir: 'models', // 模型添加的目录，相对项目src来说
     isCover: false, // 是否覆盖，存在则不做处理，不存在则创建
-    commonResponse: ['CommonResponse'], // 对象返回模型
-    pageResponse: ['PageResponse'], // 分页返回模型
-    listResponse: ['ListResponse'], // 列表返回模型
+    commonResponse: 'itemResult', // 对象返回模型
+    pageResponse: 'pageResult', // 分页返回模型
+    listResponse: 'listResult', // 列表返回模型
     utilsPath: '/@/models/httpResult', // 通用实体的地址
   },
   enum: {
