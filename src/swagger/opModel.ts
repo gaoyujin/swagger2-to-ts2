@@ -325,7 +325,7 @@ export class SwaggerToModel {
           }
           importStr = importStr + this.configData.models.commonResponse
         } else if (
-          imortKey.toUpperCase() === 'PageResponse'.toUpperCase() &&
+          (imortKey.toUpperCase() === 'PageResponse'.toUpperCase() || imortKey.toUpperCase() === 'Page'.toUpperCase()) &&
           !importStr.includes(this.configData.models.pageResponse)
         ) {
           if (importStr) {
@@ -437,6 +437,7 @@ export class SwaggerToModel {
           )
         }
         break
+      case 'Page'.toUpperCase():
       case 'PageResponse'.toUpperCase():
         if (
           !this.modelNameArr[modelKey + '-model'].includes(

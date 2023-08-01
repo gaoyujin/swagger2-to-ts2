@@ -317,6 +317,7 @@ export class SwaggerToApi {
         case "commonResponse".toUpperCase():
           strHtml = 'result' + lastName + 'Info'
           break;
+        case 'Page'.toUpperCase():
         case 'PageResponse'.toUpperCase():
           strHtml = 'result' + lastName + 'Page'
           break;
