@@ -144,6 +144,9 @@ export const useQryAdmittanceRatingDetail = async (data: {
 - 0.1.9 -> 0.2.0<br/>
   1、添加对返回结构 Page<Object>结构的识别<br/>
 
+- 0.2.0 -> 0.2.1<br/>
+  1、修改 Get 接口的生成<br/>
+
 ## License
 
 Apache-2.0 © [gyj]()

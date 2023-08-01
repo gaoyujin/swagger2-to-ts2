@@ -381,7 +381,7 @@ export class SwaggerToModel {
         'commonStringResopense'
       )
     ) {
-      strHtml = 'export type result commonStringResopense = Promise<itemResult<' + lastName + '>>;' +
+      strHtml = 'export type commonStringResopense = Promise<itemResult<' + lastName + '>>;' +
         '\r\n\r\n'
 
       // 添加模型生成标识，防止重复
