@@ -1,0 +1,3445 @@
+{
+    " openapi ": " 3.0.0 ",
+    " info ": {
+        " description ": " rms - mso - merchant - rank ",
+        " version ": " 1.0 ",
+        " title ": " rms - mso - merchant - rank "
+    },
+    " tags ": [{
+            " name ": " appraisal - controller ",
+            " description ": " Appraisal Controller "
+        }, {
+            " name ": " hello - controller ",
+            " description ": " Hello Controller "
+        }, {
+            " name ": " quota - controller ",
+            " description ": " Quota Controller "
+        }, {
+            " name ": " rank - policy - controller ",
+            " description ": " Rank Policy Controller "
+        }, {
+            " name ": " rank - rule - controller ",
+            " description ": " Rank Rule Controller "
+        }, {
+            " name ": " rank - script - controller ",
+            " description ": " Rank Script Controller "
+        }
+    ],
+    " paths ": {
+        " / ": {
+            " get ": {
+                " tags ": [" hello - controller "],
+                " summary ": " hello ",
+                " operationId ": " helloUsingGET ",
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " application / json;
+                            charset = UTF - 8 ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / WalletResponse "
+                                }
+                            }
+                        }
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / appraisal / annualReview ": {
+            " post ": {
+                " tags ": [" appraisal - controller "],
+                " summary ": " 年审 ",
+                " operationId ": " annualReviewUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / AnnualReviewRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_AppraisalOutputDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/appraisal/annualReviewReview": {
+            "post": {
+                "tags": ["appraisal-controller"],
+                "summary": "年审复核",
+                "operationId": "annualReviewReviewUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AnnualReviewReviewRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_AppraisalOutputDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / appraisal / appraisal ": {
+            " post ": {
+                " tags ": [" appraisal - controller "],
+                " summary ": " 初评 ",
+                " operationId ": " appraisalUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / AppraisalRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_AppraisalOutputDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/appraisal/appraisalReview": {
+            "post": {
+                "tags": ["appraisal-controller"],
+                "summary": "初评复核",
+                "operationId": "appraisalReviewUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AppraisalReviewRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_AppraisalOutputDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / appraisal / get ": {
+            " post ": {
+                " tags ": [" appraisal - controller "],
+                " summary ": " 查询 ",
+                " operationId ": " getUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / appraisalGetRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_appraisalGetResponse_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/appraisal/getBaseInfo": {
+            "post": {
+                "tags": ["appraisal-controller"],
+                "summary": "查询基础信息",
+                "operationId": "getBaseInfoUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/appraisalGetBaseInfoRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_appraisalGetBaseInfoResponse_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / appraisal / getRecord ": {
+            " post ": {
+                " tags ": [" appraisal - controller "],
+                " summary ": " 查询记录 ",
+                " operationId ": " getRecordUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / appraisalGetRecordRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_AppraisalRecordDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/appraisal/list": {
+            "post": {
+                "tags": ["appraisal-controller"],
+                "summary": "列表",
+                "operationId": "listUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/appraisalListRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_Page_AppraisalMerchantDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / appraisal / manualModify ": {
+            " post ": {
+                " tags ": [" appraisal - controller "],
+                " summary ": " 人工修改 ",
+                " operationId ": " manualModifyUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / ManualModifyRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_AppraisalOutputDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/appraisal/reappraisal": {
+            "post": {
+                "tags": ["appraisal-controller"],
+                "summary": "重评",
+                "operationId": "reappraisalUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReappraisalRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_AppraisalOutputDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / appraisal / terminate ": {
+            " post ": {
+                " tags ": [" appraisal - controller "],
+                " summary ": " 终止 ",
+                " operationId ": " terminateUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / TerminateRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_AppraisalOutputDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/quota/get": {
+            "post": {
+                "tags": ["quota-controller"],
+                "summary": "查询",
+                "operationId": "getUsingPOST_1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/quotaGetRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_quotaGetResponse_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / quota / getBaseInfo ": {
+            " post ": {
+                " tags ": [" quota - controller "],
+                " summary ": " 查询基础信息 ",
+                " operationId ": " getBaseInfoUsingPOST_1 ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / quotaGetBaseInfoRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_quotaGetBaseInfoResponse_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/quota/getQuota": {
+            "post": {
+                "tags": ["quota-controller"],
+                "summary": "获取限额",
+                "operationId": "getQuotaUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetQuotaRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_QuotaDetailDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / quota / getRecord ": {
+            " post ": {
+                " tags ": [" quota - controller "],
+                " summary ": " 查询记录 ",
+                " operationId ": " getRecordUsingPOST_1 ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / quotaGetRecordRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_QuotaRecordDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/quota/list": {
+            "post": {
+                "tags": ["quota-controller"],
+                "summary": "列表",
+                "operationId": "listUsingPOST_1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/quotaListRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_Page_QuotaMerchantDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / quota / manualQuota ": {
+            " post ": {
+                " tags ": [" quota - controller "],
+                " summary ": " 人工限额 ",
+                " operationId ": " manualQuotaUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / ManualQuotaRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_QuotaOutputDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/quota/resumeAutomaticQuota": {
+            "post": {
+                "tags": ["quota-controller"],
+                "summary": "恢复系统限额",
+                "operationId": "resumeAutomaticQuotaUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResumeAutomaticQuotaRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_QuotaOutputDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / rank / policy / delete ": {
+            " post ": {
+                " tags ": [" rank - policy - controller "],
+                " summary ": " 删除 ",
+                " operationId ": " deleteUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / policyDeleteRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_object_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/rank/policy/get": {
+            "post": {
+                "tags": ["rank-policy-controller"],
+                "summary": "查询",
+                "operationId": "getUsingPOST_2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/policyGetRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_RankPolicyDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / rank / policy / list ": {
+            " post ": {
+                " tags ": [" rank - policy - controller "],
+                " summary ": " 列表 ",
+                " operationId ": " listUsingPOST_2 ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / policyListRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_Page_RankPolicyDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/rank/policy/save": {
+            "post": {
+                "tags": ["rank-policy-controller"],
+                "summary": "新增",
+                "operationId": "saveUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/policySaveRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_object_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / rank / policy / update ": {
+            " post ": {
+                " tags ": [" rank - policy - controller "],
+                " summary ": " 更新 ",
+                " operationId ": " updateUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / policyUpdateRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_object_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/rank/rule/delete": {
+            "post": {
+                "tags": ["rank-rule-controller"],
+                "summary": "删除",
+                "operationId": "deleteUsingPOST_1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ruleDeleteRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_object_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / rank / rule / get ": {
+            " post ": {
+                " tags ": [" rank - rule - controller "],
+                " summary ": " 查询 ",
+                " operationId ": " getUsingPOST_3 ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / ruleGetRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_RankRuleDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/rank/rule/list": {
+            "post": {
+                "tags": ["rank-rule-controller"],
+                "summary": "列表",
+                "operationId": "listUsingPOST_3",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ruleListRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_Page_RankRuleDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / rank / rule / save ": {
+            " post ": {
+                " tags ": [" rank - rule - controller "],
+                " summary ": " 新增 ",
+                " operationId ": " saveUsingPOST_1 ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / ruleSaveRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_object_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/rank/rule/update": {
+            "post": {
+                "tags": ["rank-rule-controller"],
+                "summary": "更新",
+                "operationId": "updateUsingPOST_1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ruleUpdateRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_object_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / rank / script / deleteRankScript ": {
+            " post ": {
+                " tags ": [" rank - script - controller "],
+                " summary ": " 删除脚本信息 ",
+                " operationId ": " deleteRankScriptUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / DeleteRankScriptRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_object_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/rank/script/getRankScript": {
+            "post": {
+                "tags": ["rank-script-controller"],
+                "summary": "查询指定脚本信息",
+                "operationId": "getRankScriptUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetRankScriptRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_RankScriptDto_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / rank / script / list ": {
+            " post ": {
+                " tags ": [" rank - script - controller "],
+                " summary ": " 列表 ",
+                " operationId ": " listUsingPOST_4 ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / scriptListRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_Page_RankScriptDto_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/rank/script/saveRankScript": {
+            "post": {
+                "tags": ["rank-script-controller"],
+                "summary": "新增脚本信息",
+                "operationId": "saveRankScriptUsingPOST",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SaveRankScriptRequest"
+                            }
+                        }
+                    },
+                    "description": "request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/ * ": {
+                                " schema ": {
+                                    " $ref ": " #  / components / schemas / CommonResponse_object_ "
+                                }
+                            }
+                        }
+                    },
+                    " 201 ": {
+                        " description ": " Created "
+                    },
+                    " 401 ": {
+                        " description ": " Unauthorized "
+                    },
+                    " 403 ": {
+                        " description ": " Forbidden "
+                    },
+                    " 404 ": {
+                        " description ": " Not Found "
+                    }
+                },
+                " deprecated ": false
+            }
+        },
+        " / api / rank / script / updateRankScript ": {
+            " post ": {
+                " tags ": [" rank - script - controller "],
+                " summary ": " 更新脚本信息 ",
+                " operationId ": " updateRankScriptUsingPOST ",
+                " requestBody ": {
+                    " content ": {
+                        " application / json ": {
+                            " schema ": {
+                                " $ref ": " #  / components / schemas / UpdateRankScriptRequest "
+                            }
+                        }
+                    },
+                    " description ": " request ",
+                    " required ": true
+                },
+                " responses ": {
+                    " 200 ": {
+                        " description ": " OK ",
+                        " content ": {
+                            " * /*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CommonResponse_object_"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "servers": [{
+            "url": "//rmsmsomr.sdptest.shengpay.com"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "AnnualReviewRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "extraMap": {
+                        "type": "object",
+                        "description": "额外数据",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    },
+                    "urlList": {
+                        "type": "array",
+                        "description": "附件列表",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "title": "AnnualReviewRequest"
+            },
+            "AnnualReviewReviewRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    }
+                },
+                "title": "AnnualReviewReviewRequest"
+            },
+            "AppraisalMerchantDto": {
+                "type": "object",
+                "properties": {
+                    "appraisalRecordId": {
+                        "type": "string",
+                        "description": "当前评级记录id"
+                    },
+                    "appraisalStatus": {
+                        "type": "string",
+                        "description": "评级状态"
+                    },
+                    "businessLicenseNo": {
+                        "type": "string",
+                        "description": "商户证件号"
+                    },
+                    "businessLicenseType": {
+                        "type": "string",
+                        "description": "商户证件类型"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    },
+                    "merchantEnName": {
+                        "type": "string",
+                        "description": "商户英文名称"
+                    },
+                    "merchantName": {
+                        "type": "string",
+                        "description": "商户名称"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    },
+                    "merchantStatus": {
+                        "type": "string",
+                        "description": "商户状态"
+                    },
+                    "merchantStatusDesc": {
+                        "type": "string",
+                        "description": "商户状态描述"
+                    },
+                    "nextAppraisalTime": {
+                        "type": "string",
+                        "description": "下次评级时间"
+                    },
+                    "operateUser": {
+                        "type": "string",
+                        "description": "操作用户"
+                    },
+                    "riskLevel": {
+                        "type": "string",
+                        "description": "风险等级"
+                    },
+                    "totalScore": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "总分"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "更新时间"
+                    }
+                },
+                "title": "AppraisalMerchantDto"
+            },
+            "AppraisalOperateRecordDto": {
+                "type": "object",
+                "properties": {
+                    "appraisalMerchantId": {
+                        "type": "string",
+                        "description": "评级商户id"
+                    },
+                    "appraisalOperateStatus": {
+                        "type": "string",
+                        "description": "评级操作"
+                    },
+                    "appraisalRecordId": {
+                        "type": "string",
+                        "description": "评级记录id"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "extraMap": {
+                        "type": "object",
+                        "description": "额外信息",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    },
+                    "operateTime": {
+                        "type": "string",
+                        "description": "操作时间"
+                    },
+                    "operateUser": {
+                        "type": "string",
+                        "description": "操作用户"
+                    },
+                    "resultCode": {
+                        "type": "string",
+                        "description": "返回码"
+                    },
+                    "resultMessage": {
+                        "type": "string",
+                        "description": "返回信息"
+                    },
+                    "totalScore": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "总分"
+                    },
+                    "urlList": {
+                        "type": "array",
+                        "description": "附件列表",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "title": "AppraisalOperateRecordDto"
+            },
+            "AppraisalOutputDto": {
+                "type": "object",
+                "properties": {
+                    "resultCode": {
+                        "type": "string",
+                        "description": "返回码"
+                    },
+                    "resultMessage": {
+                        "type": "string",
+                        "description": "返回信息"
+                    }
+                },
+                "title": "AppraisalOutputDto"
+            },
+            "AppraisalRecordDto": {
+                "type": "object",
+                "properties": {
+                    "appraisalMerchantId": {
+                        "type": "string",
+                        "description": "评级商户id"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    },
+                    "map": {
+                        "type": "object",
+                        "description": "入参"
+                    },
+                    "rankPolicyCode": {
+                        "type": "string",
+                        "description": "策略编号"
+                    },
+                    "rankPolicyName": {
+                        "type": "string",
+                        "description": "策略名称"
+                    },
+                    "resultCode": {
+                        "type": "string",
+                        "description": "返回码"
+                    },
+                    "resultMessage": {
+                        "type": "string",
+                        "description": "返回信息"
+                    },
+                    "ruleDetailList": {
+                        "type": "array",
+                        "description": "评级记录规则明细",
+                        "items": {
+                            "$ref": "#/components/schemas/AppraisalRecordRuleDetailDto"
+                        }
+                    },
+                    "totalScore": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "总分"
+                    }
+                },
+                "title": "AppraisalRecordDto"
+            },
+            "AppraisalRecordRuleDetailDto": {
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "description": "分类"
+                    },
+                    "input": {
+                        "type": "object",
+                        "description": "输入"
+                    },
+                    "leftValue": {
+                        "type": "string",
+                        "description": "左值"
+                    },
+                    "operate": {
+                        "type": "string",
+                        "description": "操作"
+                    },
+                    "resultCode": {
+                        "type": "string",
+                        "description": "返回码"
+                    },
+                    "resultMessage": {
+                        "type": "string",
+                        "description": "返回信息"
+                    },
+                    "rightValue": {
+                        "type": "string",
+                        "description": "右值"
+                    },
+                    "ruleCode": {
+                        "type": "string",
+                        "description": "规则编号"
+                    },
+                    "ruleName": {
+                        "type": "string",
+                        "description": "规则名称"
+                    },
+                    "ruleScore": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "规则得分"
+                    },
+                    "score": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "分数"
+                    },
+                    "scoreCode": {
+                        "type": "string",
+                        "description": "分数编号"
+                    },
+                    "scoreName": {
+                        "type": "string",
+                        "description": "分数名称"
+                    },
+                    "scriptCode": {
+                        "type": "string",
+                        "description": "脚本编号"
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "脚本名称"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "权重"
+                    }
+                },
+                "title": "AppraisalRecordRuleDetailDto"
+            },
+            "AppraisalRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    }
+                },
+                "title": "AppraisalRequest"
+            },
+            "AppraisalReviewRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "extraMap": {
+                        "type": "object",
+                        "description": "额外数据",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    }
+                },
+                "title": "AppraisalReviewRequest"
+            },
+            "DeleteRankScriptRequest": {
+                "type": "object",
+                "required": ["code"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "脚本编号"
+                    }
+                },
+                "title": "DeleteRankScriptRequest"
+            },
+            "GetQuotaRequest": {
+                "type": "object",
+                "required": ["merchantNo", "type"],
+                "properties": {
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "id"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "type"
+                    }
+                },
+                "title": "GetQuotaRequest"
+            },
+            "GetRankScriptRequest": {
+                "type": "object",
+                "required": ["code"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "脚本编号"
+                    }
+                },
+                "title": "GetRankScriptRequest"
+            },
+            "KVData": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "title": "KVData"
+            },
+            "ManualModifyRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    },
+                    "score": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "分数"
+                    }
+                },
+                "title": "ManualModifyRequest"
+            },
+            "ManualQuotaRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    },
+                    "quotaDetailDtoList": {
+                        "type": "array",
+                        "description": "限额明细",
+                        "items": {
+                            "$ref": "#/components/schemas/QuotaDetailDto"
+                        }
+                    }
+                },
+                "title": "ManualQuotaRequest"
+            },
+            "Pageable": {
+                "type": "object",
+                "properties": {
+                    "offset": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "pageNumber": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "paged": {
+                        "type": "boolean"
+                    },
+                    "sort": {
+                        "$ref": "#/components/schemas/Sort"
+                    },
+                    "unpaged": {
+                        "type": "boolean"
+                    }
+                },
+                "title": "Pageable"
+            },
+            "QuotaDetailDto": {
+                "type": "object",
+                "properties": {
+                    "amountEveryDay": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "单日限额"
+                    },
+                    "amountEveryMonth": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "单月限额"
+                    },
+                    "countEveryDay": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "单日限次"
+                    },
+                    "countEveryMonth": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "单月限次"
+                    },
+                    "singleAmount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "单笔限额"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "类型"
+                    }
+                },
+                "title": "QuotaDetailDto"
+            },
+            "QuotaMerchantDto": {
+                "type": "object",
+                "properties": {
+                    "allowAutomaticQuota": {
+                        "type": "boolean",
+                        "description": "是否允许自动限额"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    },
+                    "operateUser": {
+                        "type": "string",
+                        "description": "操作用户"
+                    },
+                    "quotaDetailList": {
+                        "type": "array",
+                        "description": "限额明细",
+                        "items": {
+                            "$ref": "#/components/schemas/QuotaDetailDto"
+                        }
+                    },
+                    "quotaRecordId": {
+                        "type": "string",
+                        "description": "当前限额记录id"
+                    },
+                    "totalScore": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "总分"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "更新时间"
+                    }
+                },
+                "title": "QuotaMerchantDto"
+            },
+            "QuotaOperateRecordDto": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "extraMap": {
+                        "type": "object",
+                        "description": "额外信息",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    },
+                    "operateTime": {
+                        "type": "string",
+                        "description": "操作时间"
+                    },
+                    "operateUser": {
+                        "type": "string",
+                        "description": "操作用户"
+                    },
+                    "quotaDetailList": {
+                        "type": "array",
+                        "description": "id",
+                        "items": {
+                            "$ref": "#/components/schemas/QuotaDetailDto"
+                        }
+                    },
+                    "quotaMerchantId": {
+                        "type": "string",
+                        "description": "限额商户id"
+                    },
+                    "quotaOperateStatus": {
+                        "type": "string",
+                        "description": "限额操作"
+                    },
+                    "quotaRecordId": {
+                        "type": "string",
+                        "description": "限额记录id"
+                    },
+                    "resultCode": {
+                        "type": "string",
+                        "description": "返回码"
+                    },
+                    "resultMessage": {
+                        "type": "string",
+                        "description": "返回信息"
+                    },
+                    "totalScore": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "总分"
+                    }
+                },
+                "title": "QuotaOperateRecordDto"
+            },
+            "QuotaOutputDto": {
+                "type": "object",
+                "properties": {
+                    "resultCode": {
+                        "type": "string",
+                        "description": "返回码"
+                    },
+                    "resultMessage": {
+                        "type": "string",
+                        "description": "返回信息"
+                    }
+                },
+                "title": "QuotaOutputDto"
+            },
+            "QuotaRecordDto": {
+                "type": "object",
+                "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    },
+                    "map": {
+                        "type": "object",
+                        "description": "入参"
+                    },
+                    "quotaMerchantId": {
+                        "type": "string",
+                        "description": "限额商户id"
+                    },
+                    "rankPolicyCode": {
+                        "type": "string",
+                        "description": "策略编号"
+                    },
+                    "rankPolicyName": {
+                        "type": "string",
+                        "description": "策略名称"
+                    },
+                    "resultCode": {
+                        "type": "string",
+                        "description": "返回码"
+                    },
+                    "resultMessage": {
+                        "type": "string",
+                        "description": "返回信息"
+                    },
+                    "ruleDetailList": {
+                        "type": "array",
+                        "description": "限额记录规则明细",
+                        "items": {
+                            "$ref": "#/components/schemas/QuotaRecordRuleDetailDto"
+                        }
+                    },
+                    "totalScore": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "总分"
+                    }
+                },
+                "title": "QuotaRecordDto"
+            },
+            "QuotaRecordRuleDetailDto": {
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "description": "分类"
+                    },
+                    "input": {
+                        "type": "object",
+                        "description": "输入"
+                    },
+                    "leftValue": {
+                        "type": "string",
+                        "description": "左值"
+                    },
+                    "operate": {
+                        "type": "string",
+                        "description": "操作"
+                    },
+                    "resultCode": {
+                        "type": "string",
+                        "description": "返回码"
+                    },
+                    "resultMessage": {
+                        "type": "string",
+                        "description": "返回信息"
+                    },
+                    "rightValue": {
+                        "type": "string",
+                        "description": "右值"
+                    },
+                    "ruleCode": {
+                        "type": "string",
+                        "description": "规则编号"
+                    },
+                    "ruleName": {
+                        "type": "string",
+                        "description": "规则名称"
+                    },
+                    "ruleScore": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "规则得分"
+                    },
+                    "score": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "分数"
+                    },
+                    "scoreCode": {
+                        "type": "string",
+                        "description": "分数编号"
+                    },
+                    "scoreName": {
+                        "type": "string",
+                        "description": "分数名称"
+                    },
+                    "scriptCode": {
+                        "type": "string",
+                        "description": "脚本编号"
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "脚本名称"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "权重"
+                    }
+                },
+                "title": "QuotaRecordRuleDetailDto"
+            },
+            "RankPolicyDto": {
+                "type": "object",
+                "required": ["code", "description", "name", "policyType"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名称"
+                    },
+                    "policyType": {
+                        "type": "string",
+                        "description": "等级类型"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "更新时间"
+                    }
+                },
+                "title": "RankPolicyDto"
+            },
+            "RankRuleDto": {
+                "type": "object",
+                "required": ["category", "code", "description", "name", "policyCode", "rankRuleScoreList", "scriptCode", "status", "weight"],
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "description": "分类"
+                    },
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名称"
+                    },
+                    "policyCode": {
+                        "type": "string",
+                        "description": "策略编号"
+                    },
+                    "rankRuleScoreList": {
+                        "type": "array",
+                        "description": "规则分数列表",
+                        "items": {
+                            "$ref": "#/components/schemas/RankRuleScoreDto"
+                        }
+                    },
+                    "scriptCode": {
+                        "type": "string",
+                        "description": "脚本编号"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "状态 Online Offline"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "更新时间"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "权重编号"
+                    }
+                },
+                "title": "RankRuleDto"
+            },
+            "RankRuleScoreDto": {
+                "type": "object",
+                "required": ["code", "description", "name", "operate", "rightValue", "score"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名称"
+                    },
+                    "operate": {
+                        "type": "string",
+                        "description": "操作"
+                    },
+                    "rightValue": {
+                        "type": "string",
+                        "description": "右值"
+                    },
+                    "score": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "分数"
+                    }
+                },
+                "title": "RankRuleScoreDto"
+            },
+            "RankScriptDto": {
+                "type": "object",
+                "required": ["code", "content", "name", "scriptType"],
+                "properties": {
+                    "agenda": {
+                        "type": "string",
+                        "description": "代理"
+                    },
+                    "code": {
+                        "type": "string",
+                        "description": "脚本编号"
+                    },
+                    "content": {
+                        "type": "string",
+                        "description": "内容"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "创建时间"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "脚本名称"
+                    },
+                    "scriptType": {
+                        "type": "string",
+                        "description": "脚本类型"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "更新时间"
+                    }
+                },
+                "title": "RankScriptDto"
+            },
+            "ReappraisalRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    }
+                },
+                "title": "ReappraisalRequest"
+            },
+            "ResumeAutomaticQuotaRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    }
+                },
+                "title": "ResumeAutomaticQuotaRequest"
+            },
+            "SaveRankScriptRequest": {
+                "type": "object",
+                "required": ["rankScriptDto"],
+                "properties": {
+                    "rankScriptDto": {
+                        "$ref": "#/components/schemas/RankScriptDto"
+                    }
+                },
+                "title": "SaveRankScriptRequest"
+            },
+            "Sort": {
+                "type": "object",
+                "properties": {
+                    "empty": {
+                        "type": "boolean"
+                    },
+                    "sorted": {
+                        "type": "boolean"
+                    },
+                    "unsorted": {
+                        "type": "boolean"
+                    }
+                },
+                "title": "Sort"
+            },
+            "TerminateRequest": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "描述"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    }
+                },
+                "title": "TerminateRequest"
+            },
+            "UpdateRankScriptRequest": {
+                "type": "object",
+                "required": ["rankScriptDto"],
+                "properties": {
+                    "rankScriptDto": {
+                        "$ref": "#/components/schemas/RankScriptDto"
+                    }
+                },
+                "title": "UpdateRankScriptRequest"
+            },
+            "WalletResponse": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "WalletResponse"
+            },
+            "appraisalGetBaseInfoRequest": {
+                "type": "object",
+                "title": "appraisalGetBaseInfoRequest"
+            },
+            "appraisalGetBaseInfoResponse": {
+                "type": "object",
+                "properties": {
+                    "appraisalOperateStatusList": {
+                        "type": "array",
+                        "description": "评级操作",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "appraisalRiskLevelList": {
+                        "type": "array",
+                        "description": "风险等级",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "appraisalStatusList": {
+                        "type": "array",
+                        "description": "评级状态",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "operateList": {
+                        "type": "array",
+                        "description": "操作",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "rankCategoryList": {
+                        "type": "array",
+                        "description": "大类",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "rankPolicyTypeList": {
+                        "type": "array",
+                        "description": "策略类型",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    }
+                },
+                "title": "appraisalGetBaseInfoResponse"
+            },
+            "appraisalGetRecordRequest": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    }
+                },
+                "title": "appraisalGetRecordRequest"
+            },
+            "appraisalGetRequest": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    }
+                },
+                "title": "appraisalGetRequest"
+            },
+            "appraisalGetResponse": {
+                "type": "object",
+                "properties": {
+                    "appraisalMerchantDto": {
+                        "$ref": "#/components/schemas/AppraisalMerchantDto"
+                    },
+                    "appraisalOperateRecordDtoList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AppraisalOperateRecordDto"
+                        }
+                    },
+                    "appraisalRecordDto": {
+                        "$ref": "#/components/schemas/AppraisalRecordDto"
+                    }
+                },
+                "title": "appraisalGetResponse"
+            },
+            "appraisalListRequest": {
+                "type": "object",
+                "properties": {
+                    "appraisalStatus": {
+                        "type": "string",
+                        "description": "评级状态"
+                    },
+                    "businessLicenseNo": {
+                        "type": "string",
+                        "description": "商户证件号"
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "description": "结束时间"
+                    },
+                    "merchantEnName": {
+                        "type": "string",
+                        "description": "商户英文名称"
+                    },
+                    "merchantName": {
+                        "type": "string",
+                        "description": "商户名称"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    },
+                    "pageNum": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "riskLevel": {
+                        "type": "string",
+                        "description": "风险等级"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "description": "开始时间（默认当前年月日）"
+                    }
+                },
+                "title": "appraisalListRequest"
+            },
+            "policyDeleteRequest": {
+                "type": "object",
+                "required": ["code"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    }
+                },
+                "title": "policyDeleteRequest"
+            },
+            "policyGetRequest": {
+                "type": "object",
+                "required": ["code"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    }
+                },
+                "title": "policyGetRequest"
+            },
+            "policyListRequest": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名称"
+                    },
+                    "pageNum": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "policyType": {
+                        "type": "string",
+                        "description": "策略类型 APPRAISAL_POLICY-评级策略 QUOTA_POLICY-限额策略"
+                    }
+                },
+                "title": "policyListRequest"
+            },
+            "policySaveRequest": {
+                "type": "object",
+                "required": ["rankPolicyDto"],
+                "properties": {
+                    "rankPolicyDto": {
+                        "$ref": "#/components/schemas/RankPolicyDto"
+                    }
+                },
+                "title": "policySaveRequest"
+            },
+            "policyUpdateRequest": {
+                "type": "object",
+                "required": ["rankPolicyDto"],
+                "properties": {
+                    "rankPolicyDto": {
+                        "$ref": "#/components/schemas/RankPolicyDto"
+                    }
+                },
+                "title": "policyUpdateRequest"
+            },
+            "quotaGetBaseInfoRequest": {
+                "type": "object",
+                "title": "quotaGetBaseInfoRequest"
+            },
+            "quotaGetBaseInfoResponse": {
+                "type": "object",
+                "properties": {
+                    "operateList": {
+                        "type": "array",
+                        "description": "操作",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "quotaDetailTypeList": {
+                        "type": "array",
+                        "description": "限额明细类型",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "quotaOperateStatusList": {
+                        "type": "array",
+                        "description": "限额操作",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "rankCategoryList": {
+                        "type": "array",
+                        "description": "大类",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    },
+                    "rankPolicyTypeList": {
+                        "type": "array",
+                        "description": "策略类型",
+                        "items": {
+                            "$ref": "#/components/schemas/KVData"
+                        }
+                    }
+                },
+                "title": "quotaGetBaseInfoResponse"
+            },
+            "quotaGetRecordRequest": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    }
+                },
+                "title": "quotaGetRecordRequest"
+            },
+            "quotaGetRequest": {
+                "type": "object",
+                "required": ["id"],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "id"
+                    }
+                },
+                "title": "quotaGetRequest"
+            },
+            "quotaGetResponse": {
+                "type": "object",
+                "properties": {
+                    "quotaMerchantDto": {
+                        "$ref": "#/components/schemas/QuotaMerchantDto"
+                    },
+                    "quotaOperateRecordDtoList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/QuotaOperateRecordDto"
+                        }
+                    },
+                    "quotaRecordDto": {
+                        "$ref": "#/components/schemas/QuotaRecordDto"
+                    }
+                },
+                "title": "quotaGetResponse"
+            },
+            "quotaListRequest": {
+                "type": "object",
+                "properties": {
+                    "endTime": {
+                        "type": "string",
+                        "description": "结束时间"
+                    },
+                    "merchantNo": {
+                        "type": "string",
+                        "description": "商户号"
+                    },
+                    "pageNum": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "description": "开始时间（默认当前年月日）"
+                    }
+                },
+                "title": "quotaListRequest"
+            },
+            "ruleDeleteRequest": {
+                "type": "object",
+                "required": ["code"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    }
+                },
+                "title": "ruleDeleteRequest"
+            },
+            "ruleGetRequest": {
+                "type": "object",
+                "required": ["code"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    }
+                },
+                "title": "ruleGetRequest"
+            },
+            "ruleListRequest": {
+                "type": "object",
+                "required": ["policyCode"],
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名称"
+                    },
+                    "pageNum": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "policyCode": {
+                        "type": "string",
+                        "description": "策略编号"
+                    }
+                },
+                "title": "ruleListRequest"
+            },
+            "ruleSaveRequest": {
+                "type": "object",
+                "required": ["rankRuleDto"],
+                "properties": {
+                    "rankRuleDto": {
+                        "$ref": "#/components/schemas/RankRuleDto"
+                    }
+                },
+                "title": "ruleSaveRequest"
+            },
+            "ruleUpdateRequest": {
+                "type": "object",
+                "required": ["rankRuleDto"],
+                "properties": {
+                    "rankRuleDto": {
+                        "$ref": "#/components/schemas/RankRuleDto"
+                    }
+                },
+                "title": "ruleUpdateRequest"
+            },
+            "scriptListRequest": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "description": "编号"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "名称"
+                    },
+                    "pageNum": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "scriptType": {
+                        "type": "string",
+                        "description": "脚本类型 APPRAISAL_SCRIPT-评级脚本 QUOTA_SCRIPT-限额脚本"
+                    }
+                },
+                "title": "scriptListRequest"
+            },
+            "CommonResponse_AppraisalOutputDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/AppraisalOutputDto"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«AppraisalOutputDto»"
+            },
+            "CommonResponse_AppraisalRecordDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/AppraisalRecordDto"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«AppraisalRecordDto»"
+            },
+            "CommonResponse_Page_AppraisalMerchantDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/Page_AppraisalMerchantDto_"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«Page«AppraisalMerchantDto»»"
+            },
+            "CommonResponse_Page_QuotaMerchantDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/Page_QuotaMerchantDto_"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«Page«QuotaMerchantDto»»"
+            },
+            "CommonResponse_Page_RankPolicyDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/Page_RankPolicyDto_"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«Page«RankPolicyDto»»"
+            },
+            "CommonResponse_Page_RankRuleDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/Page_RankRuleDto_"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«Page«RankRuleDto»»"
+            },
+            "CommonResponse_Page_RankScriptDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/Page_RankScriptDto_"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«Page«RankScriptDto»»"
+            },
+            "CommonResponse_QuotaDetailDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/QuotaDetailDto"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«QuotaDetailDto»"
+            },
+            "CommonResponse_QuotaOutputDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/QuotaOutputDto"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«QuotaOutputDto»"
+            },
+            "CommonResponse_QuotaRecordDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/QuotaRecordDto"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«QuotaRecordDto»"
+            },
+            "CommonResponse_RankPolicyDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/RankPolicyDto"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«RankPolicyDto»"
+            },
+            "CommonResponse_RankRuleDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/RankRuleDto"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«RankRuleDto»"
+            },
+            "CommonResponse_RankScriptDto_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/RankScriptDto"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«RankScriptDto»"
+            },
+            "CommonResponse_appraisalGetBaseInfoResponse_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/appraisalGetBaseInfoResponse"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«appraisalGetBaseInfoResponse»"
+            },
+            "CommonResponse_appraisalGetResponse_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/appraisalGetResponse"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«appraisalGetResponse»"
+            },
+            "CommonResponse_object_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "type": "object",
+                        "description": "业务对象"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«object»"
+            },
+            "CommonResponse_quotaGetBaseInfoResponse_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/quotaGetBaseInfoResponse"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«quotaGetBaseInfoResponse»"
+            },
+            "CommonResponse_quotaGetResponse_": {
+                "type": "object",
+                "properties": {
+                    "errorCode": {
+                        "type": "string"
+                    },
+                    "errorCodeDes": {
+                        "type": "string"
+                    },
+                    "item": {
+                        "$ref": "#/components/schemas/quotaGetResponse"
+                    },
+                    "resultCode": {
+                        "type": "string"
+                    }
+                },
+                "title": "CommonResponse«quotaGetResponse»"
+            },
+            "Page_AppraisalMerchantDto_": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AppraisalMerchantDto"
+                        }
+                    },
+                    "empty": {
+                        "type": "boolean"
+                    },
+                    "first": {
+                        "type": "boolean"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "numberOfElements": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageable": {
+                        "$ref": "#/components/schemas/Pageable"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sort": {
+                        "$ref": "#/components/schemas/Sort"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "title": "Page«AppraisalMerchantDto»"
+            },
+            "Page_QuotaMerchantDto_": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/QuotaMerchantDto"
+                        }
+                    },
+                    "empty": {
+                        "type": "boolean"
+                    },
+                    "first": {
+                        "type": "boolean"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "numberOfElements": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageable": {
+                        "$ref": "#/components/schemas/Pageable"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sort": {
+                        "$ref": "#/components/schemas/Sort"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "title": "Page«QuotaMerchantDto»"
+            },
+            "Page_RankPolicyDto_": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RankPolicyDto"
+                        }
+                    },
+                    "empty": {
+                        "type": "boolean"
+                    },
+                    "first": {
+                        "type": "boolean"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "numberOfElements": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageable": {
+                        "$ref": "#/components/schemas/Pageable"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sort": {
+                        "$ref": "#/components/schemas/Sort"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "title": "Page«RankPolicyDto»"
+            },
+            "Page_RankRuleDto_": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RankRuleDto"
+                        }
+                    },
+                    "empty": {
+                        "type": "boolean"
+                    },
+                    "first": {
+                        "type": "boolean"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "numberOfElements": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageable": {
+                        "$ref": "#/components/schemas/Pageable"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sort": {
+                        "$ref": "#/components/schemas/Sort"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "title": "Page«RankRuleDto»"
+            },
+            "Page_RankScriptDto_": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RankScriptDto"
+                        }
+                    },
+                    "empty": {
+                        "type": "boolean"
+                    },
+                    "first": {
+                        "type": "boolean"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "numberOfElements": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageable": {
+                        "$ref": "#/components/schemas/Pageable"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sort": {
+                        "$ref": "#/components/schemas/Sort"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "title": "Page«RankScriptDto»"
+            }
+        }
+    }
+}

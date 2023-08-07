@@ -1,12 +1,16 @@
 'use strict'
 import * as fs from 'fs'
 import * as path from 'path'
+import http from 'http'
+import https from 'https'
+import fetch from 'node-fetch'
 import { SwaggerDataToFile } from './convertData'
 import { CreateFile } from './opFile'
 import { ConfigInfo } from '../models/configEntity'
 import { Swagger2 } from '../models/controllerEntity'
 import { FileDesc } from '../models/fileEntity'
 import * as log from '../lib/utils/log.js'
+import converter from 'swagger2openapi'
 import axios from 'axios'
 
 const defaultConfig: ConfigInfo = {
@@ -112,7 +116,59 @@ export class SwaggerToTypescript {
     return fileName
   }
 
-  convertSwagger(callback: Function) {
+  converterSwaggerToOpenApi = (swagger: any) => {
+    if (!swagger.swagger) {
+      return swagger
+    }
+
+    // 因为脚手架要求termsOfService必须为URL
+    if (swagger.info && swagger.info.termsOfService) {
+      swagger.info.termsOfService = null
+    }
+
+    return new Promise((resolve, reject) => {
+      converter.convertObj(swagger, {}, (err, options) => {
+        log.hint('💺 将 Swagger 转化为 openAPI')
+        if (err) {
+          reject(err)
+          return
+        }
+        resolve(options.openapi)
+      })
+    })
+  }
+
+  getSchema = async (schemaPath: string) => {
+    if (schemaPath.startsWith('http')) {
+      const protocol = schemaPath.startsWith('https:') ? https : http
+      try {
+        const agent = new protocol.Agent({
+          rejectUnauthorized: false,
+        })
+        const json = await fetch(schemaPath, { agent }).then((rest) =>
+          rest.json()
+        )
+        return json
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log('fetch openapi error:', error)
+      }
+      return null
+    }
+    const schema = require(schemaPath)
+    return schema
+  }
+
+  getOpenAPIConfig = async (schemaPath: string) => {
+    const schema = await this.getSchema(schemaPath)
+    if (!schema) {
+      return null
+    }
+    const openAPI = await this.converterSwaggerToOpenApi(schema)
+    return openAPI
+  }
+
+  async convertSwagger(callback: Function) {
     // const demoData = fs.readFileSync(
     //   path.join(process.cwd(), '/demo/swagger3.json')
     // )
@@ -148,7 +204,12 @@ export class SwaggerToTypescript {
     if (this.configData.httpReplace) {
       swaggerUrl = swaggerUrl.replace('https', 'http')
     }
-    axios.get(swaggerUrl).then((response: any) => {
+
+    // 这个是后面需要改造的点
+    const openAPI = await this.getOpenAPIConfig(swaggerUrl)
+    console.log('数据：', openAPI)
+
+    axios.get(swaggerUrl).then(async (response: any) => {
       try {
         if (response.status == 200) {
           // 拿到swagger数据
@@ -158,6 +219,7 @@ export class SwaggerToTypescript {
             console.error('Only version 2.0 swagger is supported')
             return
           }
+
           this.configData.serveFileName = this.getServeName(swagger)
           // 转换信息
           const fileDesc = new SwaggerDataToFile(swagger, this.configData)
