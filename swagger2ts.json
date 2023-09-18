@@ -2,9 +2,9 @@
   "swaggerVersion": "2.0", // 支持的swagger版本
   "fileMode": "paths", // 生成文件的方式  info、paths（目前只支持paths模式）
   "createServe": true, // 为服务单独创立文件夹 (会根据swagger的info对象中的termsOfService属性生成文件夹，或者url域名的第一个字段)
-  "pathRoute": ["/api/", "/"], // 在 paths 模式中，截取不同文件的路径（默认分割为【'/admin/api/', '/api/', '/'】）
-  "onlyPath": [""], // 只生成某个路径 这个跟excludeRoute属性是互斥的
-  "excludeRoute": [], // 排除那些路径不做生成处理
+  "pathRoute": ["/admin/comp/"], // 在 paths 模式中，截取不同文件的路径（默认分割为【'/admin/api/', '/api/', '/'】）
+  "onlyPath": ["/admin/comp/traffic/"], // 只生成某个路径 这个跟excludeRoute属性是互斥的
+  "excludeRoute": [""], // 排除那些路径不做生成处理
   "template": "default", // 模板类型，目前只有default类型的模板，是基于公司的PC端脚手架配置
   "models": {
     "isCreate": true, // 是否创建

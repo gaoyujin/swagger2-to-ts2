@@ -342,36 +342,40 @@ export class SwaggerToApiUse {
 
   // 添加Api调用的对象信息
   setApiModel(importDesc: string, lastName: string) {
-    let strHtml = "";
-    if (lastName.toUpperCase() != 'object'.toUpperCase() && lastName.toUpperCase() != 'string'.toUpperCase()) {
+    let strHtml = ''
+    if (
+      lastName.toUpperCase() != 'object'.toUpperCase() &&
+      lastName.toUpperCase() != 'string'.toUpperCase()
+    ) {
       switch (importDesc.toUpperCase()) {
-        case "commonResponse".toUpperCase():
+        case 'commonResponse'.toUpperCase():
           strHtml = 'result' + lastName + 'Info'
-          break;
+          break
         case 'Page'.toUpperCase():
         case 'PageResponse'.toUpperCase():
           strHtml = 'result' + lastName + 'Page'
-          break;
+          break
         case 'List'.toUpperCase():
-        case "ListResponse".toUpperCase():
+        case 'ListResponse'.toUpperCase():
           strHtml = 'result' + lastName + 'List'
-          break;
+          break
         default:
-          break;
+          strHtml = lastName
+          break
       }
     } else {
       if (lastName.includes('object') || lastName.includes('string')) {
         if (lastName.includes('object')) {
-          strHtml = 'commonObjectResopense'
+          strHtml = 'commonObjectResponse'
         }
 
         if (lastName.includes('string')) {
-          strHtml = 'commonStringResopense'
+          strHtml = 'commonStringResponse'
         }
       }
     }
 
-    return strHtml;
+    return strHtml
   }
 
   // 获取模板信息

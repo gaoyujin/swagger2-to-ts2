@@ -206,8 +206,8 @@ export class SwaggerToTypescript {
     }
 
     // 这个是后面需要改造的点
-    const openAPI = await this.getOpenAPIConfig(swaggerUrl)
-    console.log('数据：', openAPI)
+    // const openAPI = await this.getOpenAPIConfig(swaggerUrl)
+    // console.log('数据：', openAPI)
 
     axios.get(swaggerUrl).then(async (response: any) => {
       try {

@@ -25,6 +25,6 @@ program.parse(process.argv)
 
 // import { SwaggerToTypescript } from './swagger'
 
-// new SwaggerToTypescript('http://10.241.81.38:8085/swagger-ui.html#', () => {
+// new SwaggerToTypescript('http://10.241.81.77:8080/swagger-ui.html#', () => {
 //   console.log('运行了')
 // })

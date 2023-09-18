@@ -147,6 +147,9 @@ export const useQryAdmittanceRatingDetail = async (data: {
 - 0.2.0 -> 0.2.1<br/>
   1、修改 Get 接口的生成<br/>
 
+- 0.2.2 -> 0.2.3<br/>
+  1、接口返回类型不是标准的 list 等格式时，接口没有返回类型问题修改<br/>
+
 ## License
 
 Apache-2.0 © [gyj]()
