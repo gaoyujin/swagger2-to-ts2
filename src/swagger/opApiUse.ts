@@ -168,12 +168,15 @@ export class SwaggerToApiUse {
           }
           break
         default:
-          isBody = false
-          parameDesc = ''
-          queryDesc = {}
           break
       }
     })
+
+    if (parameDesc) {
+      parameDesc = parameDesc.replace(/\r\n/g, '')
+      parameDesc = parameDesc.replace(/\r/g, '')
+    }
+
     result.query = queryDesc
     if (isBody) {
       result.desc = parameDesc
