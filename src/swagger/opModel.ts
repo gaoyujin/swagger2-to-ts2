@@ -378,15 +378,15 @@ export class SwaggerToModel {
     let strHtml = ''
     if (
       !this.modelNameArr[modelKey + '-model'].includes(
-        'commonStringResopense'
+        'commonStringResponse'
       )
     ) {
-      strHtml = 'export type commonStringResopense = Promise<itemResult<' + lastName + '>>;' +
+      strHtml = 'export type commonStringResponse = Promise<itemResult<' + lastName + '>>;' +
         '\r\n\r\n'
 
       // 添加模型生成标识，防止重复
       this.modelNameArr[modelKey + '-model'].push(
-        'commonStringResopense'
+        'commonStringResponse'
       )
     }
 
@@ -397,15 +397,15 @@ export class SwaggerToModel {
     let strHtml = ''
     if (
       !this.modelNameArr[modelKey + '-model'].includes(
-        'commonObjectResopense'
+        'commonObjectResponse'
       )
     ) {
-      strHtml = 'export type commonObjectResopense = Promise<itemResult<' + lastName + '>>;' +
+      strHtml = 'export type commonObjectResponse = Promise<itemResult<' + lastName + '>>;' +
         '\r\n\r\n'
 
       // 添加模型生成标识，防止重复
       this.modelNameArr[modelKey + '-model'].push(
-        'commonObjectResopense'
+        'commonObjectResponse'
       )
     }
 
