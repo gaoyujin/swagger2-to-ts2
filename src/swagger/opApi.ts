@@ -176,6 +176,15 @@ export class SwaggerToApi {
     return result
   }
 
+  // 获取返回对象
+  getResponsesDesc(responses:string) {
+    if (responses) {
+      return responses
+    } else {
+      return 'Promise<any>'
+    }
+  }
+
   // 创建相关的实体对象
   createApiFile(fileDesc: FileDesc, modelKey: string) {
     let fileContent = ''
@@ -261,7 +270,7 @@ export class SwaggerToApi {
           newResponses = newResponses.replace('Promise<', '')
           newResponses = newResponses.replace('>', '')
         }
-        if (!importRef.includes(newResponses)) {
+        if (!importRef.includes(newResponses) && newResponses) {
           importRef.push(newResponses)
         }
 
@@ -271,7 +280,7 @@ export class SwaggerToApi {
             method: method,
             parData: parameStr.desc ? parameStr.desc : '{}',
             queryDesc: parameStr.query,
-            responses: responses,
+            responses: this.getResponsesDesc(responses),
             url: url,
             summary: summary,
           },
@@ -337,7 +346,7 @@ export class SwaggerToApi {
           strHtml = 'result' + lastName + 'List'
           break
         default:
-          strHtml = 'Promise<' + lastName + '>'
+          strHtml = 'Promise<' + 'result' + importDesc + 'Self'  + '>'
           break
       }
     } else {

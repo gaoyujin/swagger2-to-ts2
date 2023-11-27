@@ -187,6 +187,15 @@ export class SwaggerToApiUse {
     return result
   }
 
+  // 获取返回对象
+  getResponsesDesc(responses:string) {
+    if (responses) {
+      return responses
+    } else {
+      return 'any'
+    }
+  }
+
   // 创建相关的ApiUse对象
   createApiUseFile(fileDesc: FileDesc, modelKey: string) {
     let fileContent = ''
@@ -268,11 +277,11 @@ export class SwaggerToApiUse {
           responses = this.setApiModel(importDesc, lastName)
         }
         const parameStr = this.convertParameter(apiInfo.orignInfo)
-        if (!importModelRef.includes(responses)) {
+        if (!importModelRef.includes(responses) && responses) {
           importModelRef.push(responses)
         }
 
-        if (!importApiRef.includes(methodName)) {
+        if (!importApiRef.includes(methodName) && methodName) {
           importApiRef.push(methodName)
         }
 
@@ -283,7 +292,7 @@ export class SwaggerToApiUse {
             method: method,
             parData: parameStr.desc ? parameStr.desc : '{}',
             queryDesc: parameStr.query,
-            responses: responses,
+            responses: this.getResponsesDesc(responses),
             url: url,
             summary: summary,
           },
@@ -363,7 +372,7 @@ export class SwaggerToApiUse {
           strHtml = 'result' + lastName + 'List'
           break
         default:
-          strHtml = lastName
+          strHtml =  'result' + importDesc + 'Self' 
           break
       }
     } else {

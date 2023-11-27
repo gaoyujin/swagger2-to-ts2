@@ -219,28 +219,8 @@ export class SwaggerToModel {
           lastName = nextDesc[0]
         }
 
-        // // 那种类型的嵌套
-        // if (importDesc) {
-        //   if (
-        //     this.configData.models?.commonResponse &&
-        //     this.configData.models?.commonResponse.includes(importDesc)
-        //   ) {
-        //     importDesc = 'commonResponse'
-        //   } else if (
-        //     this.configData.models?.pageResponse &&
-        //     this.configData.models?.pageResponse.includes(importDesc)
-        //   ) {
-        //     importDesc = 'pageResponse'
-        //   } else if (
-        //     this.configData.models?.listResponse &&
-        //     this.configData.models?.listResponse.includes(importDesc)
-        //   ) {
-        //     importDesc = 'listResponse'
-        //   }
-        // }
-
         // 添加import描述
-        if (!this.importArr[modelKey].includes(importDesc)) {
+        if (!this.importArr[modelKey].includes(importDesc) && importDesc) {
           this.importArr[modelKey].push(importDesc)
         }
 
@@ -287,9 +267,70 @@ export class SwaggerToModel {
           !lastName.includes('string')
         ) {
           const importStr = this.setApiModel(importDesc, lastName, modelKey)
-
+          // 通用模板的则直接绑定描述
           if (importStr) {
             fileContent = fileContent + importStr
+          }else {
+            // 生成实体
+            const parentDefinitions: DefinitionsInfo | null =
+              this.getDefinitionsInfo(responseDesc)
+            // 重置标题
+            parentDefinitions!.title = importDesc
+            if (
+              parentDefinitions &&
+              !this.modelNameArr[modelKey + '-model'].includes(importDesc)
+            ) {
+              // 添加模型生成标识，防止重复
+              this.modelNameArr[modelKey + '-model'].push(importStr)
+              const fileTemps = tempData
+              if (parentDefinitions.properties) {
+                const keys = Object.keys(parentDefinitions.properties)
+                const results = this.convertProperty(
+                  parentDefinitions.properties,
+                  modelKey,
+                  summary
+                )
+
+                parentDefinitions.summary = summary
+                const strHtml = ejs.render(fileTemps, {
+                  data: parentDefinitions,
+                  descs: results,
+                  keys: keys,
+                })
+
+                if (fileContent) {
+                  fileContent = fileContent + '\r\n'
+                }
+
+                if (strHtml) {
+                  fileContent = fileContent + strHtml
+                }
+
+                // 添加模型生成标识，防止重复
+                this.modelNameArr[modelKey + '-model'].push(importDesc)
+              }
+            }
+
+            // 生成import描述
+            if (
+              !this.modelNameArr[modelKey + '-model'].includes(
+                'result' + importDesc + 'Self'
+              )
+            ) {
+              fileContent =
+                fileContent +
+                'export type result' +
+                importDesc +
+                'Self = Promise<' +
+                importDesc +
+                '>;' +
+                '\r\n\r\n'
+
+              // 添加模型生成标识，防止重复
+              this.modelNameArr[modelKey + '-model'].push(
+                'result' + importDesc + 'Self'
+              )
+            }
           }
         } else if (importDesc &&
           (lastName.includes('object') ||
@@ -482,50 +523,6 @@ export class SwaggerToModel {
 
         break
       default:
-        // if (lastName != 'object' && lastName != 'string') {
-        //   // 记录引用
-        //   // 添加import描述
-        //   if (!this.importArr[modelKey].includes('itemResult')) {
-        //     this.importArr[modelKey].push('itemResult')
-        //   }
-        //   // 添加模型生成标识，防止重复
-        //   if (
-        //     !this.modelNameArr[modelKey + '-model'].includes(
-        //       'result' + lastName + 'Item'
-        //     )
-        //   ) {
-        //     strHtml =
-        //       strHtml +
-        //       'export type result' +
-        //       lastName +
-        //       'Item = Promise<itemResult<' +
-        //       lastName +
-        //       '>>;' +
-        //       '\r\n\r\n'
-
-        //     this.modelNameArr[modelKey + '-model'].push(
-        //       'result' + lastName + 'Item'
-        //     )
-        //   }
-        // } else {
-        //   // 添加模型生成标识，防止重复
-        //   if (
-        //     !this.modelNameArr[modelKey + '-model'].includes(
-        //       'result' + lastName + 'Info'
-        //     )
-        //   ) {
-        //     strHtml =
-        //       strHtml +
-        //       'export type result' +
-        //       lastName +
-        //       'Info = Promise<httpResult>;' +
-        //       '\r\n\r\n'
-
-        //     this.modelNameArr[modelKey + '-model'].push(
-        //       'result' + lastName + 'Info'
-        //     )
-        //   }
-        // }
         break
     }
 
