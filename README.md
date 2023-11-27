@@ -153,6 +153,9 @@ export const useQryAdmittanceRatingDetail = async (data: {
 - 0.2.3 -> 0.2.4<br/>
   1、接口函数，参数为{}的问题修改<br/>
 
+- 0.2.4 -> 0.2.6<br/>
+  1、处理自定义的返回类型的生成和绑定<br/>
+
 ## License
 
 Apache-2.0 © [gyj]()
