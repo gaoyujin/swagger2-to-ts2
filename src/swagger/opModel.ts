@@ -55,6 +55,7 @@ export class SwaggerToModel {
 
   // 入口函数
   createModels() {
+    debugger
     if (!this.configData.models || !this.configData.models.isCreate) {
       return
     }

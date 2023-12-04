@@ -197,20 +197,21 @@ export class SwaggerToTypescript {
     //   }
     // }, 100)
 
-    var swaggerUrl = this.swaggerUrl.replace('swagger-ui.html', 'v2/api-docs')
+    //var swaggerUrl = this.swaggerUrl.replace('swagger-ui.html', 'v2/api-docs')
     const httpUrl = this.swaggerUrl.split('://')
     const urlArr = httpUrl[1].split('/')
-    var swaggerUrl = httpUrl[0] + '://' + urlArr[0] + '/v2/api-docs'
+    var tempUrl = httpUrl[0] + '://' + urlArr[0] + '/v2/api-docs'
     if (this.configData.httpReplace) {
-      swaggerUrl = swaggerUrl.replace('https', 'http')
+      tempUrl = tempUrl.replace('https', 'http')
     }
 
     // 这个是后面需要改造的点
     // const openAPI = await this.getOpenAPIConfig(swaggerUrl)
     // console.log('数据：', openAPI)
 
-    axios.get(swaggerUrl).then(async (response: any) => {
+    axios.get(tempUrl).then(async (response: any) => {
       try {
+        debugger
         if (response.status == 200) {
           // 拿到swagger数据
           const swagger: Swagger2 = response.data

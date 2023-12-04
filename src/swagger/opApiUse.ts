@@ -250,12 +250,10 @@ export class SwaggerToApiUse {
           const paramArr = apiInfo.responses.split('/')
           const responseDesc = paramArr[paramArr.length - 1]
           let lastName = responseDesc
-          let importDesc = responseDesc
 
           // 有嵌套
           if (responseDesc.includes('«') && responseDesc.includes('»')) {
             const preDesc = responseDesc.split('«')
-            importDesc = preDesc[preDesc.length - 2]
             const nextDesc = preDesc[preDesc.length - 1].split('»')
             lastName = nextDesc[0]
           }
