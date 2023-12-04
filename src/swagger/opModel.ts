@@ -55,7 +55,6 @@ export class SwaggerToModel {
 
   // 入口函数
   createModels() {
-    debugger
     if (!this.configData.models || !this.configData.models.isCreate) {
       return
     }
@@ -283,7 +282,6 @@ export class SwaggerToModel {
 
   // 创建相关的实体对象
   createEntity(fileDesc: FileDesc, modelKey: string) {
-    debugger
     let fileContent = ''
     if (!fileDesc || !fileDesc.apiRefs) {
       return fileContent
@@ -370,7 +368,7 @@ export class SwaggerToModel {
           }
           importStr = importStr + this.configData.models.commonResponse
         } else if (
-          (imortKey.toUpperCase() === 'PageResponse'.toUpperCase() || imortKey.toUpperCase() === 'Page'.toUpperCase()) &&
+          (imortKey.toUpperCase() === 'PageResponse'.toUpperCase()) &&
           !importStr.includes(this.configData.models.pageResponse)
         ) {
           if (importStr) {
@@ -378,7 +376,7 @@ export class SwaggerToModel {
           }
           importStr = importStr + this.configData.models.pageResponse
         } else if (
-          (imortKey.toUpperCase() === 'ListResponse'.toUpperCase() || imortKey.toUpperCase() === 'List'.toUpperCase()) &&
+          (imortKey.toUpperCase() === 'ListResponse'.toUpperCase()) &&
           !importStr.includes(this.configData.models.listResponse)
         ) {
           if (importStr) {
@@ -617,19 +615,21 @@ export class SwaggerToModel {
         if (refStr) {
           const paramArr = refStr.split('/')
           const lastName = paramArr[paramArr.length - 1]
-          desc.type = lastName
+          const realName = this.computeName(lastName)
+          desc.type = realName
           desc.$ref = refStr
 
           const tempData = this.getTemplateInfo('models')
           const definitions: DefinitionsInfo | null =
             this.getDefinitionsInfo(lastName)
+          definitions!.title = realName
 
           if (
-            !this.modelNameArr[modelKey + '-model'].includes(lastName)
+            !this.modelNameArr[modelKey + '-model'].includes(realName)
           ) {
 
             // 添加模型生成标识，防止重复
-            this.modelNameArr[modelKey + '-model'].push(lastName)
+            this.modelNameArr[modelKey + '-model'].push(realName)
             const fileTemps = tempData
 
             if (definitions && definitions!.properties) {

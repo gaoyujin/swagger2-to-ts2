@@ -211,7 +211,6 @@ export class SwaggerToTypescript {
 
     axios.get(tempUrl).then(async (response: any) => {
       try {
-        debugger
         if (response.status == 200) {
           // 拿到swagger数据
           const swagger: Swagger2 = response.data
