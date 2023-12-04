@@ -185,6 +185,13 @@ export class SwaggerToApi {
     }
   }
 
+  // 设置名称
+  computeName(name: any) {
+    let desc = name.replaceAll("«",'')
+    desc = desc.replaceAll("»",'')
+    return desc
+  }
+
   // 创建相关的实体对象
   createApiFile(fileDesc: FileDesc, modelKey: string) {
     let fileContent = ''
@@ -241,28 +248,8 @@ export class SwaggerToApi {
             lastName = nextDesc[0]
           }
 
-          // // 那种类型的嵌套
-          // if (importDesc) {
-          //   if (
-          //     this.configData.models?.commonResponse &&
-          //     this.configData.models?.commonResponse.includes(importDesc)
-          //   ) {
-          //     importDesc = "commonResponse";
-          //   } else if (
-          //     this.configData.models?.pageResponse &&
-          //     this.configData.models?.pageResponse.includes(importDesc)
-          //   ) {
-          //     importDesc = "pageResponse";
-          //   } else if (
-          //     this.configData.models?.listResponse &&
-          //     this.configData.models?.listResponse.includes(importDesc)
-          //   ) {
-          //     importDesc = "listResponse";
-          //   }
-          // }
-
           // 获取返回类型
-          responses = this.setApiModel(importDesc, lastName)
+          responses = this.setApiModel(this.computeName(responseDesc), lastName)
         }
         const parameStr = this.convertParameter(apiInfo.orignInfo)
         let newResponses = responses
@@ -337,16 +324,17 @@ export class SwaggerToApi {
         case 'commonResponse'.toUpperCase():
           strHtml = 'result' + lastName + 'Info'
           break
-        case 'Page'.toUpperCase():
+        //case 'Page'.toUpperCase():
         case 'PageResponse'.toUpperCase():
           strHtml = 'result' + lastName + 'Page'
           break
-        case 'List'.toUpperCase():
+        //case 'List'.toUpperCase():
         case 'ListResponse'.toUpperCase():
           strHtml = 'result' + lastName + 'List'
           break
         default:
-          strHtml = 'Promise<' + 'result' + importDesc + 'Self'  + '>'
+          //strHtml = 'Promise<' + 'result' + importDesc + 'Self'  + '>'
+          strHtml = 'Promise<' + importDesc + '>'
           break
       }
     } else {

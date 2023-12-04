@@ -17,7 +17,7 @@ program.parse(process.argv)
 // import { SwaggerToTypescript } from './swagger'
 
 // new SwaggerToTypescript(
-//   'http://rmsmsomr.sdptest.shengpay.com/doc.html#/home',
+//   'http://10.241.81.23:8080/swagger-ui.html#',
 //   () => {
 //     console.log('运行了')
 //   }

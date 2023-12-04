@@ -156,6 +156,9 @@ export const useQryAdmittanceRatingDetail = async (data: {
 - 0.2.4 -> 0.2.6<br/>
   1、处理自定义的返回类型的生成和绑定<br/>
 
+- 0.2.6 -> 0.2.8<br/>
+  1、支持生成所有类型的请求实体和返回嵌套实体<br/>
+
 ## License
 
 Apache-2.0 © [gyj]()

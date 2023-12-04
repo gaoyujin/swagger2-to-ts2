@@ -144,8 +144,145 @@ export class SwaggerToModel {
     return subContent
   }
 
+
+  // 生产返回实体
+  createApiModel(
+    definitions: any,
+    modelKey: string,
+    summary: string,
+    fileContent: string
+  ) {
+    const fileTemps = this.getTemplateInfo('models')
+    // 添加模型生成标识，防止重复
+    this.modelNameArr[modelKey + '-model'].push(definitions.title)
+    if (definitions.properties) {
+      const keys = Object.keys(definitions.properties)
+      const results = this.convertProperty(
+        definitions.properties,
+        modelKey,
+        summary
+      )
+
+      // 处理子项的属性
+      fileContent = this.processSubProperty(results, fileContent)
+      definitions.summary = summary
+      const strHtml = ejs.render(fileTemps, {
+        data: definitions,
+        descs: results,
+        keys: keys,
+      })
+
+      if (fileContent) {
+        fileContent = fileContent + '\r\n'
+      }
+
+      if (strHtml) {
+        fileContent = fileContent + strHtml
+      }
+    }
+
+    return fileContent
+  }
+
+  // 计算所有的实体对象
+  computeModel(responseDesc: string, count: number) {
+    if (count === 0) {
+      return responseDesc
+    } else {
+      const preDesc = responseDesc.split('«')
+      let result= ''
+      for (let i = count; i < preDesc.length; i++) {
+        let desc = preDesc[i]
+        const tempDesc = desc.split('»')
+        desc = tempDesc[0]
+        if (result != '') {
+          result = result + '«'
+          result = result + desc + '»'
+        } else {
+          result = desc
+        }
+      }
+      return result
+    }
+  }
+
+  // 设置名称
+  computeName(name: any) {
+    let desc = name.replaceAll("«",'')
+    desc = desc.replaceAll("»",'')
+    return desc
+  }
+
+  // 处理返回对象
+  newProcessResponse(
+    responseDesc: string,
+    modelKey: string,
+    summary: string,
+    fileContent: string
+  ) {
+    // 有嵌套
+    if (responseDesc.includes('«') && responseDesc.includes('»')) {
+      const preDesc = responseDesc.split('«')
+      let count = 0
+      preDesc.forEach((item) => {
+        const objectDesc = this.computeModel(responseDesc, count)
+        const nameDesc = this.computeName(objectDesc)
+
+        // 添加import描述
+        if (!this.importArr[modelKey].includes(nameDesc) && nameDesc) {
+          this.importArr[modelKey].push(nameDesc)
+
+          // 获取实体描述
+          const definitions: DefinitionsInfo | null =
+            this.getDefinitionsInfo(objectDesc)
+          if (definitions && definitions!.title) {
+            definitions!.title = nameDesc
+          }
+          if (
+            definitions &&
+            !this.modelNameArr[modelKey + '-model'].includes(nameDesc)
+          ) {
+            fileContent = this.createApiModel(
+              definitions,
+              modelKey,
+              summary,
+              fileContent
+            )
+          }
+        }
+
+        count = count + 1
+      })
+    } else {
+      // 添加import描述
+      if (!this.importArr[modelKey].includes(responseDesc) && responseDesc) {
+        this.importArr[modelKey].push(responseDesc)
+
+        // 获取实体描述
+        const definitions: DefinitionsInfo | null =
+          this.getDefinitionsInfo(responseDesc)
+
+        if (
+          definitions &&
+          !this.modelNameArr[modelKey + '-model'].includes(definitions.title)
+        ) {
+          fileContent = this.createApiModel(
+            definitions,
+            modelKey,
+            summary,
+            fileContent
+          )
+        }
+      }
+    }
+
+    return fileContent
+  }
+
+
   // 创建相关的实体对象
   createEntity(fileDesc: FileDesc, modelKey: string) {
+    debugger
     let fileContent = ''
     if (!fileDesc || !fileDesc.apiRefs) {
       return fileContent
@@ -209,147 +346,13 @@ export class SwaggerToModel {
       if (apiInfo && apiInfo.responses) {
         const paramArr = apiInfo.responses.split('/')
         const responseDesc = paramArr[paramArr.length - 1]
-        let lastName = responseDesc
-        let importDesc = responseDesc
-        // 有嵌套
-        if (responseDesc.includes('«') && responseDesc.includes('»')) {
-          const preDesc = responseDesc.split('«')
-          importDesc = preDesc[preDesc.length - 2]
-          const nextDesc = preDesc[preDesc.length - 1].split('»')
-          lastName = nextDesc[0]
-        }
-
-        // 添加import描述
-        if (!this.importArr[modelKey].includes(importDesc) && importDesc) {
-          this.importArr[modelKey].push(importDesc)
-        }
-
-        const definitions: DefinitionsInfo | null =
-          this.getDefinitionsInfo(lastName)
-
-        if (
-          definitions &&
-          !this.modelNameArr[modelKey + '-model'].includes(definitions.title)
-        ) {
-          // 添加模型生成标识，防止重复
-          this.modelNameArr[modelKey + '-model'].push(definitions.title)
-          const fileTemps = tempData
-          if (definitions.properties) {
-            const keys = Object.keys(definitions.properties)
-            const results = this.convertProperty(
-              definitions.properties,
-              modelKey,
-              summary
-            )
-
-            // 处理子项的属性
-            fileContent = this.processSubProperty(results, fileContent)
-            definitions.summary = summary
-            const strHtml = ejs.render(fileTemps, {
-              data: definitions,
-              descs: results,
-              keys: keys,
-            })
-
-            if (fileContent) {
-              fileContent = fileContent + '\r\n'
-            }
-
-            if (strHtml) {
-              fileContent = fileContent + strHtml
-            }
-          }
-        }
-
-        if (
-          importDesc &&
-          !lastName.includes('object') &&
-          !lastName.includes('string')
-        ) {
-          const importStr = this.setApiModel(importDesc, lastName, modelKey)
-          // 通用模板的则直接绑定描述
-          if (importStr) {
-            fileContent = fileContent + importStr
-          }else {
-            // 生成实体
-            const parentDefinitions: DefinitionsInfo | null =
-              this.getDefinitionsInfo(responseDesc)
-            // 重置标题
-            parentDefinitions!.title = importDesc
-            if (
-              parentDefinitions &&
-              !this.modelNameArr[modelKey + '-model'].includes(importDesc)
-            ) {
-              // 添加模型生成标识，防止重复
-              this.modelNameArr[modelKey + '-model'].push(importStr)
-              const fileTemps = tempData
-              if (parentDefinitions.properties) {
-                const keys = Object.keys(parentDefinitions.properties)
-                const results = this.convertProperty(
-                  parentDefinitions.properties,
-                  modelKey,
-                  summary
-                )
-
-                parentDefinitions.summary = summary
-                const strHtml = ejs.render(fileTemps, {
-                  data: parentDefinitions,
-                  descs: results,
-                  keys: keys,
-                })
-
-                if (fileContent) {
-                  fileContent = fileContent + '\r\n'
-                }
-
-                if (strHtml) {
-                  fileContent = fileContent + strHtml
-                }
-
-                // 添加模型生成标识，防止重复
-                this.modelNameArr[modelKey + '-model'].push(importDesc)
-              }
-            }
-
-            // 生成import描述
-            if (
-              !this.modelNameArr[modelKey + '-model'].includes(
-                'result' + importDesc + 'Self'
-              )
-            ) {
-              fileContent =
-                fileContent +
-                'export type result' +
-                importDesc +
-                'Self = Promise<' +
-                importDesc +
-                '>;' +
-                '\r\n\r\n'
-
-              // 添加模型生成标识，防止重复
-              this.modelNameArr[modelKey + '-model'].push(
-                'result' + importDesc + 'Self'
-              )
-            }
-          }
-        } else if (importDesc &&
-          (lastName.includes('object') ||
-            lastName.includes('string'))) {
-
-          let strHtml = ''
-          if (lastName.includes('object')) {
-            strHtml = this.setObjectModel(lastName, modelKey)
-          }
-
-          if (lastName.includes('string')) {
-            strHtml = this.setStringModel(lastName, modelKey)
-          }
-
-          if (strHtml) {
-            fileContent = fileContent + strHtml
-          }
-
-        }
+        
+        fileContent = this.newProcessResponse(
+          responseDesc,
+          modelKey,
+          summary,
+          fileContent
+        )
       }
     })
 
@@ -478,7 +481,7 @@ export class SwaggerToModel {
           )
         }
         break
-      case 'Page'.toUpperCase():
+      //case 'Page'.toUpperCase():
       case 'PageResponse'.toUpperCase():
         if (
           !this.modelNameArr[modelKey + '-model'].includes(
@@ -499,7 +502,7 @@ export class SwaggerToModel {
           )
         }
         break
-      case 'List'.toUpperCase():
+      //case 'List'.toUpperCase():
       case 'ListResponse'.toUpperCase():
         // 添加模型生成标识，防止重复
         if (
